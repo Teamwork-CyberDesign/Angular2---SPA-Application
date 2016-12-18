@@ -13,12 +13,13 @@ import { APP_BASE_HREF } from '@angular/common';
 
 
 import { UserService } from './services/user.service';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
     imports: [BrowserModule, routing, HttpModule, FormsModule], //other modules the app depends on
     declarations: [AppComponent, AboutComponent, HomeComponent, LoginComponent, RegisterComponent], // declare all derectives and components
     bootstrap: [AppComponent], // root component to bootstarp
-    providers: [{ provide: APP_BASE_HREF, useValue: '/' }, UserService]
+    providers: [{ provide: APP_BASE_HREF, useValue: '/' }, UserService, AuthenticationService]
 })
 export class AppModule {
 }

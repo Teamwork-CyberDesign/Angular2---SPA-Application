@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { User } from '.././models/user';
 import { UserService } from '.././services/user.service';
 
 @Component({
@@ -18,8 +17,9 @@ export class RegisterComponent {
 
     register() {
        this.userService.createUser(this.model)
-       .subscribe(
+       .then(
            data => {
+               console.log(data);
                this.router.navigate(['/login']);
            },
            error => {
