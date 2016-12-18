@@ -2,9 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
-    template: `<div class="col-md-6 col-md-offset-3">
-    <h2>Login</h2>
-</div>`
+    templateUrl: 'login.component.html'
 })
 
 export class LoginComponent{
