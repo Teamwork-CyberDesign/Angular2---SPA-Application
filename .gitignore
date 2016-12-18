@@ -257,11 +257,8 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 .idea
-[Nn]ode_modules
 node_modules/
 node_module/
 bower_components/
 .bin/
-.vscode/
-ProjectsTracker/app/views/index.pug
->>>>>>> origin/master
+typings/
