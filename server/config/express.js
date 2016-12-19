@@ -68,7 +68,7 @@ function initAppComponents(app, connectionString, appSecret) {
 // eslint-disable-next-line
 module.exports = (app, config) => {
     initUtils(app, config.rootPath);
-    initAppComponents(app, config.db.local, config.appSecret);
+    initAppComponents(app, config.db, config.appSecret);
     initErrorHandling(app);
 
 
