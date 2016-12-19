@@ -5,12 +5,15 @@ let express = require("express"),
     cookieParser = require("cookie-parser"),
     logger = require("morgan"),
     // flash = require("connect-flash-plus"),
-    // roles = require("./roles"),
     // paginate = require("express-paginate"),
     path = require("path");
 
 function initUtils(app, rootPath) {
     app.use("/", express.static(path.join(rootPath, "../dist")));
+    app.get('/*', function(req, res){
+        res.sendFile(path.join(rootPath, "../dist/index.html"));
+    });
+
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(cookieParser());
@@ -23,7 +26,7 @@ function initErrorHandling(app) {
         err.status = 404;
         next(err);
     });
-    //
+
     // // CSRF token errors here
     // app.use((err, req, res, next) => {
     //     if (err.code !== "EBADCSRFTOKEN") {
@@ -34,8 +37,7 @@ function initErrorHandling(app) {
     //     res.status(403)
     //         .render("error", { error, message });
     // });
-    //
-    // // error handler
+
     // // eslint-disable-next-line
     app.use((err, req, res, next) => {
         // set locals, only providing error in development
@@ -52,8 +54,9 @@ function initErrorHandling(app) {
     });
 }
 
-function initAppComponents(app, connectionString) {
-    require("./session")(app, connectionString);
+function initAppComponents(app, connectionString, appSecret) {
+    require("./mongoose")(connectionString);
+    require("./session")(app, connectionString, appSecret);
     require("./passport")(app);
 
     const User = require("../models/user-model");
@@ -61,12 +64,11 @@ function initAppComponents(app, connectionString) {
     const controllers = require("../controllers")(data);
 
     require("../routers")(app, controllers);
-    require("./mongoose")(connectionString);
 }
 // eslint-disable-next-line
 module.exports = (app, config) => {
     initUtils(app, config.rootPath);
-    initAppComponents(app, config.db.local);
+    initAppComponents(app, config.db.local, config.appSecret);
     initErrorHandling(app);
 
 

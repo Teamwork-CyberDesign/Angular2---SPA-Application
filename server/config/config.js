@@ -9,12 +9,14 @@ module.exports = {
             local: "mongodb://localhost/cyber-design",
             cloud: process.env.DB_CONNECTION
         },
-        port: process.env.PORT || 3000
+        port: process.env.PORT || 3000,
+        appSecret: process.env.APP_SESSION_SECRET
     },
     production: {
         rootPath,
         db: { cloud: process.env.DB_CONNECTION },
-        port: process.env.PORT || 3000
+        port: process.env.PORT || 3000,
+        appSecret: process.env.APP_SESSION_SECRET
     },
     mailOptions: {
         host: "in-v3.mailjet.com",
@@ -23,6 +25,5 @@ module.exports = {
             user: process.env.EMAIL_USERNAME,
             pass: process.env.EMAIL_PASSWORD
         }
-    },
-    appSecret: process.env.APP_SESSION_SECRET
+    }
 };

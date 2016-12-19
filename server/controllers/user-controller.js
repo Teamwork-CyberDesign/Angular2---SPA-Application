@@ -22,7 +22,7 @@ module.exports = function (data) {
 
             return data.registerUser(firstName, lastName, username, password, email)
                 .then(user => {
-                    return res.json(JSON.stringify("User registered"));
+                    return res.json(JSON.stringify(user));
                 })
                 .catch(err => {
                     // req.flash("errorMessage", err.message);
@@ -67,22 +67,6 @@ module.exports = function (data) {
                     res.redirect("/");
                 });
         },
-        searchUsersAjax(req, res) {
-            // let username = req.query.username;
-            // data.searchUsers(username)
-            //     .then(users => {
-            //         let sentUsers = users
-            //             .slice(0, 10)
-            //             .map(user => {
-            //                 return {
-            //                     username: user.username,
-            //                     _id: user._id
-            //                 };
-            //             });
-            //
-            //         res.json(sentUsers);
-            //     });
-        },
         loginLocal(req, res, next) {
             const auth = passport.authenticate("local", (err, user) => {
                 if (err) {
@@ -102,7 +86,7 @@ module.exports = function (data) {
                     }
 
                     // req.flash("successMessage", "You have logged in successfully!");
-                    res.json(JSON.stringify("You have logged in successfully!"));
+                    res.json(JSON.stringify({ username: user.username, token: req.sessionID}));
                     // res.redirect(req.session.returnTo || "/");
                     req.session.returnTo = null;
                 });

@@ -53,17 +53,17 @@ module.exports = function (models) {
             // });
         },
         findUserByUsername(username) {
-            // return new Promise((resolve, reject) => {
-            //     User.findOne()
-            //         .byName(username)
-            //         .exec((err, user) => {
-            //             if (err) {
-            //                 return reject(err);
-            //             }
-            //
-            //             return resolve(user);
-            //         });
-            // });
+            return new Promise((resolve, reject) => {
+                User.findOne()
+                    .byName(username)
+                    .exec((err, user) => {
+                        if (err) {
+                            return reject(err);
+                        }
+            
+                        return resolve(user);
+                    });
+            });
         },
         findUserById(id) {
             return new Promise((resolve, reject) => {
@@ -151,19 +151,6 @@ module.exports = function (models) {
                         resolve(user);
                     });
                 });
-            });
-        },
-        findUserByUsername(username) {
-            return new Promise((resolve, reject) => {
-                User.findOne()
-                    .byName(username)
-                    .exec((err, user) => {
-                        if (err) {
-                            return reject(err);
-                        }
-
-                        return resolve(user);
-                    });
             });
         },
         // paginatedUsers(page, limit) {

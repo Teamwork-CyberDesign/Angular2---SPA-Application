@@ -262,3 +262,4 @@ node_module/
 bower_components/
 .bin/
 typings/
+nodemon.json
