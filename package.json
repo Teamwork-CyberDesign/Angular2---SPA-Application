@@ -2,9 +2,12 @@
   "name": "angular2-start",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "engines": {
+    "node": "7.2.1"
+  },
+  "main": "server/server.js",
   "scripts": {
-    "build:dev": "webpack --config client/config/webpack.dev.js --progress --profile",
+    "build:dev": "webpack --config client/config/webpack.dev.js --progress --profile --display-error-details",
     "build:prod": "webpack --config client/config/webpack.prod.js  --progress --profile --bail",
     "build": "npm run build:dev",
     "clean:dist": "npm run rimraf -- dist",
@@ -12,16 +15,18 @@
     "clean:start": "npm start",
     "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist",
     "rimraf": "rimraf",
-    "server:dev": "concurrently \"npm run watch:dev\" \"nodemon server/server.js\"",
-    "server:prod": "http-server dist --cors",
     "server": "npm run server:dev",
-    "start": "npm run server:dev",
-    "watch:dev": "npm run build:dev -- --watch --display-error-details",
+    "server:dev": "concurrently \"npm run watch:dev\" \"nodemon server/server.js\"",
+    "server:prod": "node server/server.js",
+    "start": "npm run server:prod",
+    "start:dev": "npm run server:dev",
+    "watch:dev": "npm run build:dev -- --watch",
     "watch:prod": "npm run build:prod -- --watch",
     "watch": "npm run watch:dev",
     "webpack-dev-server": "webpack-dev-server",
     "webpack": "webpack",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "heroku-postbuild": "npm run build:prod"
   },
   "keywords": [],
   "author": "",
@@ -47,13 +52,14 @@
     "cookie-parser": "^1.4.3",
     "copy-webpack-plugin": "^4.0.1",
     "core-js": "^2.4.1",
+    "css-loader": "^0.26.1",
     "eslint": "^3.12.2",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.24.1",
-    "http-server": "^0.9.0",
     "jquery": "^3.1.1",
     "mongoose": "^4.7.3",
     "morgan": "^1.7.0",
@@ -70,17 +76,12 @@
     "webpack-dev-server": "^1.16.2",
     "webpack-merge": "^1.1.1",
     "zone": "^0.3.4",
-    "zone.js": "^0.6.25"
+    "zone.js": "^0.6.25",
+    "typings": "^1.4.0"
   },
   "devDependencies": {
-    "concurrently": "^3.1.0",
-    "css-loader": "^0.26.1",
-    "file-loader": "^0.9.0",
     "lite-server": "^2.2.2",
     "live-server": "^1.1.0",
-    "style-loader": "^0.13.1",
-    "tslint": "^4.1.1",
-    "typescript": "^2.0.3",
-    "typings": "^1.4.0"
+    "typescript": "^2.0.3"
   }
 }
