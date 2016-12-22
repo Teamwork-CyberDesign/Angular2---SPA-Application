@@ -1,12 +1,18 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-    selector: 'app-about',
-    template: `<h1>{{welcome}}</h1>`
+    templateUrl: 'about.component.html'
 })
-export class AboutComponent {
-    welcome : string;
-    constructor(){
-        this.welcome = "Welcome to about page"
-    };
+export class AboutComponent implements OnInit{
+    returnUrl: string;
+  
+    constructor(
+        private route: ActivatedRoute,
+    ) {}
+
+        ngOnInit(){
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    }
+
 };
