@@ -1,0 +1,13 @@
+<table class="table">
+        <thead>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>LastName</th>
+            <th>Role Type</th>
+        </thead>
+        <tbody>
+            <tr users-properties *ngFor="let user of users" (click)="onSelect(user)">
+                <td>{{user.username}}</td>
+            </tr>
+        </tbody>
+    </table>
