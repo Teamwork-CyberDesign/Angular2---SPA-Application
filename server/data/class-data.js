@@ -46,6 +46,13 @@ module.exports = function (models) {
             return new Promise((resolve, reject) => {
                 Class.findById(id)
                     .populate("students")
+                    .populate({
+                        path: 'students',
+                        populate: {
+                            path: 'user',
+                            model: 'User'
+                        }
+                    })
                     .exec((err, user) => {
                         if (err) {
                             return reject(err);

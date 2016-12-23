@@ -7,7 +7,8 @@ const Schema = mongoose.Schema;
 
 let TeacherSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: "User" },
-    classes: { type: [Schema.Types.ObjectId], ref: "Class"},
+    username: { type: String, unique: true },
+    classes: [{ type: Schema.Types.ObjectId, ref: "Class"}],
     subject: { type: String },
 });
 

@@ -27,6 +27,16 @@ module.exports = function (data) {
                     res.json(JSON.stringify(err));
                 });
         },
+        findStudentByUsername(req, res) {
+            let username = req.query.username;
+            return data.findStudentByUsername(username)
+                .then(teacher => {
+                    res.json(JSON.stringify(teacher));
+                })
+                .catch(err => {
+                    res.json(JSON.stringify(err));
+                });
+        },
         addMark(req, res) {
             let {
                 username,
