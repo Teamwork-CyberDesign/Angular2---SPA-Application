@@ -15,6 +15,7 @@ import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service';
 import { SortByFirstNamePipe } from './pipes/sort-by-first-name';
 import { SortByFirstThenByLastNamePipe } from './pipes/sort-by-first-then-last-name';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -30,6 +31,7 @@ import { SortByFirstThenByLastNamePipe } from './pipes/sort-by-first-then-last-n
         RegisterComponent,
         AddMarkComponent,
         UsersComponent,
+        PageNotFoundComponent,
         SortByFirstNamePipe,
         SortByFirstThenByLastNamePipe
     ],
