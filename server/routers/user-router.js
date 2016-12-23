@@ -3,4 +3,5 @@
 module.exports = (server, userController, isAuthenticated) => {
     server.post("/api/users", userController.createUser);
     server.post("/api/authenticate", userController.loginLocal);
+    server.get("/api/users", userController.viewAllUsers);
 };

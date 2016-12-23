@@ -4,6 +4,13 @@ const passport = require("passport");
 
 module.exports = function (data) {
     return {
+        viewAllUsers(req, res) {
+            data.getAllUsers()
+            .then(users => {
+                console.log(users);
+                res.json(JSON.stringify(users));
+            });
+        },
         viewUserByName(req, res) {
             data.findUserByUsername(req.params.name)
                 .then(foundUsers => {

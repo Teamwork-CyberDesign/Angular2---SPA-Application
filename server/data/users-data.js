@@ -77,15 +77,15 @@ module.exports = function (models) {
             });
         },
         getAllUsers() {
-            // return new Promise((resolve, reject) => {
-            //     User.find((err, users) => {
-            //         if (err) {
-            //             return reject(err);
-            //         }
-            //
-            //         return resolve(users);
-            //     });
-            // });
+             return new Promise((resolve, reject) => {
+                 User.find((err, users) => {
+                     if (err) {
+                         return reject(err);
+                     }
+            
+                     return resolve(users);
+                 });
+            });
         },
         searchUsers(username) {
             // return new Promise((resolve, reject) => {
