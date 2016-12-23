@@ -13,8 +13,8 @@ import { routing } from './app.routing';
 import { APP_BASE_HREF } from '@angular/common';
 import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service';
-import { SortByFirstNamePipe } from './pipes/sort-by-first-name';
-import { SortByFirstThenByLastNamePipe } from './pipes/sort-by-first-then-last-name';
+import { SortByFirstNamePipe } from './pipes/sort-by-first-name.pipe';
+import { SortByFirstThenByLastNamePipe } from './pipes/sort-by-first-then-last-name.pipe';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
