@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 
 let ClassSchema = new Schema({
     grade: { type: String, unique: true },
-    students: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    students: [{ type: Schema.Types.ObjectId, ref: 'Student' }],
     subjects: { type: [String] },
 });
 

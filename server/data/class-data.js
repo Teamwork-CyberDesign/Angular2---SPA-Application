@@ -26,6 +26,13 @@ module.exports = function (models) {
             return new Promise((resolve, reject) => {
                 Class.findOne({ grade })
                     .populate("students")
+                    .populate({
+                        path: 'students',
+                        populate: {
+                            path: 'user',
+                            model: 'User'
+                        }
+                    })
                     .exec((err, cl) => {
                         if (err) {
                             return reject(err);
@@ -40,23 +47,25 @@ module.exports = function (models) {
                 Class.findById(id)
                     .populate("students")
                     .exec((err, user) => {
-                    if (err) {
-                        return reject(err);
-                    }
+                        if (err) {
+                            return reject(err);
+                        }
 
-                    return resolve(user);
-                });
+                        return resolve(user);
+                    });
             });
         },
         addStudentsToClass(userIds, grade) {
-            if(!Array.isArray(userIds)) {
+            if (!Array.isArray(userIds)) {
                 userIds = [userIds];
             }
 
             return this.findClassByGradeAndLetter(grade)
                 .then(cl => {
                     userIds.forEach(id => {
-                        cl.students.push(id);
+                        if (cl.students.indexOf(id) < 0) {
+                            cl.students.push(id);
+                        }
                     });
 
                     cl.save();
