@@ -6,13 +6,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let ClassSchema = new Schema({
-    grade: Number,
-    letter: {
-        type: String,
-        minLength: 1,
-        maxLength: 1,
-    },
-    students: [{ type : Schema.Types.ObjectId, ref: 'User' }],
+    grade: { type: String, unique: true },
+    students: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     subjects: { type: [String] },
 });
 

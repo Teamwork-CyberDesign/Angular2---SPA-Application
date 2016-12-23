@@ -1,18 +1,19 @@
 /* globals require */
 "use strict";
-let express = require("express"),
+const express = require("express"),
     bodyParser = require("body-parser"),
     cookieParser = require("cookie-parser"),
     logger = require("morgan"),
     // flash = require("connect-flash-plus"),
     // paginate = require("express-paginate"),
-    path = require("path");
+    path = require("path"),
+    User = require("../models/user-model"),
+    Student = require("../models/student-model"),
+    Teacher = require("../models/teacher-model"),
+    Class = require("../models/class-model");
 
 function initUtils(app, rootPath) {
     app.use("/", express.static(path.join(rootPath, "../dist")));
-    app.get('/*', function(req, res){
-        res.sendFile(path.join(rootPath, "../dist/index.html"));
-    });
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +21,11 @@ function initUtils(app, rootPath) {
     app.use(logger("dev"));
 }
 
-function initErrorHandling(app) {
+function initErrorHandling(app, rootPath) {
+    app.get('/*', function (req, res) {
+        res.sendFile(path.join(rootPath, "../dist/index.html"));
+    });
+
     app.use((req, res, next) => {
         let err = new Error("We can't seem to find the page you are looking for!");
         err.status = 404;
@@ -50,7 +55,7 @@ function initErrorHandling(app) {
 
         res.status(err.status || 500);
 
-        res.json({err: err.message});
+        res.json({ err: err.message });
     });
 }
 
@@ -59,17 +64,15 @@ function initAppComponents(app, connectionString, appSecret) {
     require("./session")(app, connectionString, appSecret);
     require("./passport")(app);
 
-    const User = require("../models/user-model");
-    const data = require("../data")({ User });
+    const data = require("../data")({ User, Student, Teacher, Class });
     const controllers = require("../controllers")(data);
-
     require("../routers")(app, controllers);
 }
 // eslint-disable-next-line
 module.exports = (app, config) => {
     initUtils(app, config.rootPath);
     initAppComponents(app, config.db, config.appSecret);
-    initErrorHandling(app);
+    initErrorHandling(app, config.rootPath);
 
 
     // // Global Vars
