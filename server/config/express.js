@@ -50,7 +50,7 @@ function initErrorHandling(app) {
 
         res.status(err.status || 500);
 
-        res.json(JSON.stringify(err));
+        res.json({err: err.message});
     });
 }
 

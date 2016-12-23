@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const constants = require("../config/constants");
 const passHasher = require("../utils/salt-hash-password");
-const roles = ["admin", "user"];
+const roles = ["student", "teacher", "headmaster"];
 
 let UserSchema = new Schema({
     firstName: { type: String, required: true },
@@ -47,14 +47,10 @@ let UserSchema = new Schema({
     role: {
         type: String,
         enum: roles,
-        default: "user"
+        default: "student"
     },
     resetPasswordToken: String,
-    resetPasswordExpires: Date,
-    imagePath: {
-        type: String,
-        default: "../public/uploads/default.png"
-    }
+    resetPasswordExpires: Date
 });
 
 UserSchema
