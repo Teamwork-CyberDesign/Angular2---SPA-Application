@@ -26,7 +26,7 @@ module.exports = function (models) {
         findTeacherByUserId(user) {
             return new Promise((resolve, reject) => {
                 Teacher.findOne({ user })
-                    .populate("user")
+                    .populate("user", "-password -salt")
                     .populate("classes")
                     .exec((err, cl) => {
                         if (err) {
@@ -41,7 +41,7 @@ module.exports = function (models) {
             let query = { "username": new RegExp(username, "i") };
             return new Promise((resolve, reject) => {
                 Teacher.findOne(query)
-                    .populate("user")
+                    .populate("user", "-password -salt")
                     .populate("classes")
                     .exec((err, cl) => {
                         if (err) {
@@ -55,7 +55,7 @@ module.exports = function (models) {
         findTeacherById(id) {
             return new Promise((resolve, reject) => {
                 Teacher.findById(id)
-                    .populate("user")
+                    .populate("user", "-password -salt")
                     .populate("classes")
                     .exec((err, user) => {
                         if (err) {
