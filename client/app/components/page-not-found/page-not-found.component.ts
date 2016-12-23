@@ -1,18 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     templateUrl: 'page-not-found.component.html'
 })
-export class PageNotFoundComponent implements OnInit{
+export class PageNotFoundComponent implements OnInit {
     returnUrl: string;
 
-    constructor(
-        private route: ActivatedRoute,
-    ) {}
-
-    ngOnInit(){
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    constructor(private route: ActivatedRoute) {
     }
 
-};
+    ngOnInit() {
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    }
+}

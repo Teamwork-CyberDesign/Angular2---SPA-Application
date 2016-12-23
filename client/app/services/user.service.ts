@@ -31,9 +31,9 @@ export class UserService {
         return this.put(user);
     }
 
-    //deleteUser(id: string){
+    // deleteUser(id: string){
     // TODO:
-    //}
+    // }
 
     private post(user: User): Promise<User> {
         let headers = new Headers({
