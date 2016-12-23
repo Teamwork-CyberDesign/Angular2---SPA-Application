@@ -26,7 +26,7 @@ module.exports = function (data) {
                 })
                 .catch(err => {
                     // req.flash("errorMessage", err.message);
-                    res.redirect("/");
+                    res.json(JSON.stringify(err));
                 });
         },
         handleForgottenPassword(req, res) {
