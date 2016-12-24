@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent} from './components/register/register.component';
 import { AboutComponent } from './components/about/about.component';
 import { AddMarkComponent } from './components/create-mark/addMark.component';
+import { AddClassComponent } from './components/create-class/addClass.component';
 import { UsersComponent } from './components/users/users.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'about', component: AboutComponent },
   { path: 'addMark', component: AddMarkComponent },
+  { path: 'addClass', component: AddClassComponent },
   { path: 'users', component: UsersComponent },
   { path: '', component: HomeComponent, pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent }// redirect to home page on load

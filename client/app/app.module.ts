@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component'; // import home
 import { LoginComponent } from './components/login/login.component'; // import login component
 import { RegisterComponent } from './components/register/register.component'; // import register component
 import { AddMarkComponent } from './components/create-mark/addMark.component'; // import component for adding marks
+import { AddClassComponent } from './components/create-class/addClass.component'; // import component for adding marks
 import { UsersComponent } from './components/users/users.component';
 import { AboutComponent } from './components/about/about.component'; // import about component
 import { routing } from './app.routing';
@@ -30,6 +31,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
         LoginComponent,
         RegisterComponent,
         AddMarkComponent,
+        AddClassComponent,
         UsersComponent,
         PageNotFoundComponent,
         SortByFirstNamePipe,
