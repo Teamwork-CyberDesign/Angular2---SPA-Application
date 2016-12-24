@@ -1,7 +1,7 @@
-//import {Student} from './student';
+import {Student} from './student';
 
 export class Class {
     grade: string;
-    subjects: string;
-    students: string;
+    subjects: [string];
+    students: [Student];
 }
