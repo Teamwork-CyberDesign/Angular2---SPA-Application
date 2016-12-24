@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, style, state, transition, animate,keyframes, AnimationMetadata } from '@angular/core';
 
 @Component({
     selector: 'app-home',
-    template: `<h1>{{welcome}}</h1>`
+    templateUrl: 'home.component.html'
 })
 export class HomeComponent {
-    welcome: string;
+    title: string;
 
     constructor() {
-        this.welcome = 'Welcome to home page';
+        this.title = 'School administrative software';
     };
 }
