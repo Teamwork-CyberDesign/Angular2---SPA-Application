@@ -1,17 +1,17 @@
 <div class="col-md-6 col-md-offset-3">
     <h2>Add Class to School</h2>
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+    <form name="form" (ngSubmit)="f.form.valid && loadNewClass()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted}">
             <label for="subjects">Subjects</label>
-            <input type="text" class="form-control" name="subjects" [(ngModel)]="model.subjects" #name="ngModel" required />
+            <input type="text" class="form-control" name="subjects" [(ngModel)]="model.subjects" #subjects="ngModel" required />
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted}">
             <label for="grade">Grade</label>
-            <input type="text" class="form-control" name="grade" [(ngModel)]="model.grade" #value="ngModel" required />
+            <input type="text" class="form-control" name="grade" [(ngModel)]="model.grade" #grade="ngModel" required />
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted}">
             <label for="student">Students</label>
-            <input type="text" class="form-control" name="grade" [(ngModel)]="model.students" #value="ngModel" required />
+            <input type="text" class="form-control" name="grade" [(ngModel)]="model.students" #students="ngModel" required />
         </div>
         <div class="form-group">
             <button [disabled]="loading" class="btn btn-success">Submit</button>

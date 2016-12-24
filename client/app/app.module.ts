@@ -13,6 +13,7 @@ import { AboutComponent } from './components/about/about.component'; // import a
 import { routing } from './app.routing';
 import { APP_BASE_HREF } from '@angular/common';
 import { UserService } from './services/user.service';
+import { ClassService } from './services/class.service';
 import { AuthenticationService } from './services/authentication.service';
 import { SortByFirstNamePipe } from './pipes/sort-by-first-name.pipe';
 import { SortByFirstThenByLastNamePipe } from './pipes/sort-by-first-then-last-name.pipe';
@@ -41,7 +42,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
         UserService,
-        AuthenticationService]
+        AuthenticationService,
+        ClassService]
 })
 export class AppModule {
 }

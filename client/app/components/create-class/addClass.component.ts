@@ -1,16 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component} from '@angular/core';
+import { Router } from '@angular/router';
+import { ClassService } from '../../services/class.service';
 
 @Component({
     templateUrl: 'add-class.component.html'
 })
-export class AddClassComponent implements OnInit {
+export class AddClassComponent{
     returnUrl: string;
-
-    constructor(private route: ActivatedRoute,) {
+    model: any = {};
+    constructor(
+    private router: Router,
+    private classService: ClassService) {
     }
 
-    ngOnInit() {
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+ 
+
+    loadNewClass() {
+        this.classService.createClass(this.model)
+            .then(
+                data => {
+                    console.log(data);
+                    this.router.navigate(['/']);
+                },
+                error => {
+                    console.log(error);
+                }
+            );
     }
 }
