@@ -1,9 +1,6 @@
 li a {
     color:white
 }
-li :hover {
-    background-color:lightblue 
-}
 li a:hover {
     color:lightblue;
     background-color: lightblue
