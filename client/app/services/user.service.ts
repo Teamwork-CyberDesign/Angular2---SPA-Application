@@ -13,7 +13,7 @@ export class UserService {
 
     getAllUsers() {
         return this.http.get(this.usersUrl)
-            .map(res => res.json() as User[]);
+            .map(res => res.json());
     }
 
    // getUserById(id: string) {
@@ -48,7 +48,7 @@ export class UserService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
-        let url = `${this.usersUrl}/${user.id}`;
+        let url = `${this.usersUrl}/${user._id}`;
 
         return this.http
             .put(url, JSON.stringify(user), { headers: headers })

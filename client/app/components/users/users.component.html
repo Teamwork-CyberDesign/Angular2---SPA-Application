@@ -6,7 +6,7 @@
             <th>Role Type</th>
         </thead>
         <tbody>
-            <tr *ngFor="let user of users">
+            <tr *ngFor="let user of users" [attr.user]="user">
                 <td>{{user}}</td>
             </tr>
         </tbody>

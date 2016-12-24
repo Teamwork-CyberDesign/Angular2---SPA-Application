@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
@@ -8,19 +8,27 @@ import { UserService } from '../../services/user.service';
     templateUrl: 'users.component.html'
 })
 
-export class UsersComponent{
+export class UsersComponent implements OnInit{
     users: User[];
     selectedUser: User;
     error: any;
 
     constructor(private router: Router,
                 private userService: UserService) {
-         this.userService.getAllUsers()
-             .subscribe(users => {
-                 this.users = users;
-             });
     }
 
+    ngOnInit() {
+        this.loadUsers()
+    }
+
+    loadUsers() {
+         this.userService.getAllUsers()
+                           .subscribe(
+                               users => this.users = users,
+                                err => {
+                                    console.log(err);
+                                });
+    }1
     onSelect(user: User): void {
         this.selectedUser = user;
     }
