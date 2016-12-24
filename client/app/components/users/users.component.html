@@ -6,8 +6,8 @@
             <th>Role Type</th>
         </thead>
         <tbody>
-            <tr users-properties *ngFor="let user of users" (click)="onSelect(user)">
-                <td>{{user.username}}</td>
+            <tr *ngFor="let user of users">
+                <td>{{user}}</td>
             </tr>
         </tbody>
     </table>

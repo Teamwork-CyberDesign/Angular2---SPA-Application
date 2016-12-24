@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 import { User } from '../models/user';
 
 @Injectable()
 export class UserService {
-    private usersUrl = 'api/users';
+    private usersUrl = '/api/users';
 
     constructor(private http: Http) {
     }
 
-    getAllUsers(): Promise<User[]> {
-        return this.http
-            .get(this.usersUrl)
-            .toPromise()
-            .then(response => response.json().data as User[])
-            .catch(this.handleError);
+    getAllUsers() {
+        return this.http.get(this.usersUrl)
+            .map(res => res.json() as User[]);
     }
 
-    getUserById(id: string) {
-        return this.getAllUsers()
-            .then(users => users.find(user => user.id === id));
-    }
+   // getUserById(id: string) {
+     //   return this.getAllUsers()
+       //     .then(users => users.find(user => user.id === id));
+    //}
 
     createUser(user: User): Promise<User> {
         return this.post(user);
