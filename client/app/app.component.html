@@ -1,19 +1,20 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-dark bg-primary">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-          <li><a routerLink="/addMark" routerLinkActive="active">Add Mark</a></li>
-          <li><a routerLink="/addClass" routerLinkActive="active">Add Class</a></li>
-          <li><a routerLink="/about" routerLinkActive="active">About</a></li>
-          <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-          <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
-          <li><a routerLink="/users" routerLinkActive="active">View All Users</a></li>
-          <li><a routerLink="/logout" routerLinkActive="active">Logout</a></li>
+          <li class="nav-item active"><a class="navbar-brand" routerLink="/home" routerLinkActive="active">Home</a></li>
+          <li class="nav-item"><a class="navbar-brand" routerLink="/addMark" routerLinkActive="active">Add Mark</a></li>
+          <li class="nav-item"><a class="navbar-brand" routerLink="/addClass" routerLinkActive="active">Add Class</a></li>
+          <li class="nav-item"><a class="navbar-brand" routerLink="/about" routerLinkActive="active">About</a></li>
+          <li class="nav-item"><a class="navbar-brand" routerLink="/login" routerLinkActive="active">Login</a></li>
+          <li class="nav-item"><a class="navbar-brand" routerLink="/register" routerLinkActive="active">Register</a></li>
+          <li class="nav-item"><a class="navbar-brand" routerLink="/users" routerLinkActive="active">View All Users</a></li>
+          <li class="nav-item"><a class="navbar-brand" routerLink="/logout" routerLinkActive="active">Logout</a></li>
         </ul>
+        <form class="form-inline float-xs-right">
+          <input class="form-control" type="text" placeholder="Search">
+        </form>
       </div>
-    </div>
   </div>
 </nav>
 <div class="container">
