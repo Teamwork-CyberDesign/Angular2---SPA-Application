@@ -22,6 +22,8 @@ import { PageNotFoundComponent } from './components/page-not-found';
 import { AjaxRequesterService } from './services/requester.service';
 import { ClassListComponent } from './components/class-list';
 import { SingleClassComponent } from './components/single-class';
+import { AuthGuard } from './services/auth-guard.service';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -29,7 +31,8 @@ import { SingleClassComponent } from './components/single-class';
         routing,
         HttpModule,
         FormsModule,
-        Ng2AutoCompleteModule],
+        Ng2AutoCompleteModule,
+        SimpleNotificationsModule],
     declarations: [ // declare all derectives and components
         AppComponent,
         AboutComponent,
@@ -51,7 +54,8 @@ import { SingleClassComponent } from './components/single-class';
         UserService,
         AuthenticationService,
         ClassService,
-        AjaxRequesterService]
+        AjaxRequesterService,
+        AuthGuard]
 })
 export class AppModule {
 }

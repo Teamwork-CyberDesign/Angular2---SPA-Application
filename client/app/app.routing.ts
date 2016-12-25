@@ -10,6 +10,7 @@ import { AddClassComponent } from './components/create-class/addClass.component'
 import { UsersComponent } from './components/users/users.component';
 import { PageNotFoundComponent } from './components/page-not-found';
 import { ClassListComponent } from './components/class-list';
+import { AuthGuard } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,7 +20,7 @@ const appRoutes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'addMark', component: AddMarkComponent },
   { path: 'addClass', component: AddClassComponent },
-  { path: 'classes', component: ClassListComponent },
+  { path: 'classes', component: ClassListComponent,  canActivate: [AuthGuard] },
   { path: 'users', component: UsersComponent },
   { path: '', component: HomeComponent, pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent }// redirect to home page on load

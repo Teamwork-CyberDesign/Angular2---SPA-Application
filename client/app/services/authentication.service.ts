@@ -9,7 +9,11 @@ const storageSessionKey = 'currentUser';
 
 @Injectable()
 export class AuthenticationService {
-    constructor(private requester: AjaxRequesterService<User>) {
+    private requester: AjaxRequesterService<User>;
+    private loggedUser: User;
+
+    constructor(requester: AjaxRequesterService<User>) {
+        this.requester = requester;
     }
 
     login(username: string, password: string): Observable<User> {
@@ -36,4 +40,10 @@ export class AuthenticationService {
     isLoggedIn(): boolean {
         return !!localStorage.getItem(storageSessionKey) && !!localStorage.getItem(storageUserKey);
     }
+
+    // userIs(role: string): boolean {
+    //     if (!this.isLoggedIn()) {
+    //         return false;
+    //     }
+    // }
 }

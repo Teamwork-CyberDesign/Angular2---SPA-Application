@@ -46,6 +46,9 @@ module.exports = function (data) {
                 .catch(err => {
                     res.json(JSON.stringify(err));
                 });
+        },
+        getClassesForUser(req, res) {
+
         }
     };
 };

@@ -29,7 +29,7 @@ export class ClassService {
     getClassesForCurrentUser() {
         let user = this.auth.currentUser();
         if (user) {
-            return this.requester.get(this.classUrl);
+            return this.requester.get(this.classUrl + `?user=${user}`);
         }
     }
 }

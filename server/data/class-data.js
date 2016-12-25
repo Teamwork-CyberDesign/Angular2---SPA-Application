@@ -97,6 +97,12 @@ module.exports = function (models) {
                         return resolve(user);
                     });
             });
+        },
+        getClassesForUser(username) {
+            this.findTeacherByUsername(username)
+                .then(teacher => {
+                    console.log(teacher);
+                })
         }
     };
 };
