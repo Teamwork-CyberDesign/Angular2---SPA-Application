@@ -18,6 +18,10 @@ export class UserService {
         return this.requester.get(this.usersUrl);
     }
 
+    getUserByUsername(username: string): Observable<User> {
+        return this.requester.get(this.usersUrl + `/${username}`)[0];
+    }
+
     createUser(user: User): Observable<User> {
         return this.requester.post(this.usersUrl, user);
     }

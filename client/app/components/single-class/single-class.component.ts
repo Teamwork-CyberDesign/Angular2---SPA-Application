@@ -1,22 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Class } from '../../models/class';
+import { Student } from '../../models/student';
 
 @Component({
     selector: 'single-class',
     templateUrl: 'single-class.component.html'
 })
 
-export class SingleClassComponent implements OnInit {
+export class SingleClassComponent {
     @Input() data: Class;
+    private currentStudent: Student;
 
     constructor() {
+        this.currentStudent = new Student();
     }
 
-    ngOnInit() {
-        this.getClasses();
-    }
-
-    private getClasses(): void {
-        console.log(this.data);
+    onEditClick(student: Student) {
+        this.currentStudent = student;
     }
 }

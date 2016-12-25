@@ -14,7 +14,7 @@ module.exports = function (data) {
         viewUserByName(req, res) {
             data.findUserByUsername(req.params.name)
                 .then(foundUsers => {
-                    let user = foundUsers[0];
+                    let user = foundUsers;
                     res.json(JSON.stringify(user));
                 });
         },
