@@ -17,7 +17,7 @@ import { ClassService } from './services/class.service';
 import { AuthenticationService } from './services/authentication.service';
 import { SortByFirstNamePipe } from './pipes/sort-by-first-name.pipe';
 import { SortByFirstThenByLastNamePipe } from './pipes/sort-by-first-then-last-name.pipe';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './components/page-not-found';
 
 @NgModule({
     imports: [ // other modules the app depends on

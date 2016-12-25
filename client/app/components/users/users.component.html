@@ -7,7 +7,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let user of users" [attr.user]="user">
-                <td>{{user}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.role}}</td>
             </tr>
         </tbody>
     </table>

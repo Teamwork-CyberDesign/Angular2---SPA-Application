@@ -13,7 +13,7 @@ export class UserService {
 
     getAllUsers() {
         return this.http.get(this.usersUrl)
-            .map(res => res.json());
+            .map(res => JSON.parse(res.json()));
     }
 
    // getUserById(id: string) {
