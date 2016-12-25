@@ -27,7 +27,7 @@ export class ClassService {
     }
 
     getClassesForCurrentUser(): Observable<Class[]> {
-        let username = this.auth.currentUser();
+        let username = this.auth.getCurrentUser();
         if (username) {
             return this.requester.get(this.classUrl + '/' + username);
         }

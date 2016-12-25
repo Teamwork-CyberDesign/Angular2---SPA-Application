@@ -13,8 +13,7 @@ export class ClassListComponent implements OnInit {
 
     constructor(private data: ClassService) {
         this.currentSelection = new Class();
-        this.currentSelection.grade = '' ;
-        this.currentSelection.students = [];
+
     }
 
     ngOnInit() {
@@ -24,8 +23,15 @@ export class ClassListComponent implements OnInit {
     private getClasses(): void {
         this.data.getClassesForCurrentUser()
             .subscribe(cl => {
-                this.classes = cl;
-                this._currentSelection = cl[0];
+                if (!Array.isArray(cl) || cl.length === 0) {
+                    let blankClass = new Class();
+                    this.classes = [];
+                    this._currentSelection = blankClass;
+                } else {
+                    this.classes = cl;
+                    this._currentSelection = cl[0];
+                }
+
             });
     }
 

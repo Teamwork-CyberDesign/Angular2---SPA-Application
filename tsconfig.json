@@ -9,8 +9,6 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "noUnusedParameters": true,
-    "noUnusedLocals": true,
     "exclude": [
       "./client",
       "**/*.spec.ts"

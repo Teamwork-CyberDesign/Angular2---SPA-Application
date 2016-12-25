@@ -58,7 +58,6 @@ module.exports = function (models) {
                         if (err) {
                             return reject(err);
                         }
-                        console.log(teacher.classes[1].students[0].user);
                         return resolve(teacher);
                     });
             });
