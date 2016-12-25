@@ -8,6 +8,10 @@ import { ClassService } from '../../services/class.service';
 export class AddClassComponent {
     returnUrl: string;
     model: any = {};
+    subjects: string[] = ['Geometry', 'Mathematics', 'Chemistry', 'Biology', 'Geography'];
+    grades: string[] = ['8A', '9A', '10A', '11A', '12A'];
+    autoCompleteModelSubjects: any;
+    autoCompleteModelGrades: any;
 
     constructor(private router: Router,
                 private classService: ClassService) {

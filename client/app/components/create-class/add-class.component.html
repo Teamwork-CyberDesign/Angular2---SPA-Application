@@ -3,23 +3,11 @@
     <form name="form" (ngSubmit)="f.form.valid && loadNewClass()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted}">
             <label for="subjects">Subjects</label>
-            <select class="form-control" name="subjects" [(ngModel)]="grades" #grade="ngModel" multiple required> 
-                <option value="Geometry" >Geometry</option>
-                <option value="Algebra">Algebra</option>
-                <option value="History">History</option>
-                <option value="Geography">Geography</option>
-                <option value="Sport">Sport</option>
-            </select>
+            <input class="form-control" ng2-auto-complete [(ngModel)]="autoCompleteModelSubjects" name="subjects" [source]="subjects" required />
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted}">
             <label for="grade">Grade</label>
-            <select class="form-control" name="grade" [(ngModel)]="model.grade" #grade="ngModel" required> 
-                <option value="8A" >8A</option>
-                <option value="9A">9A</option>
-                <option value="10A">10A</option>
-                <option value="11A">11A</option>
-                <option value="12A">12A</option>
-            </select>
+            <input class="form-control" ng2-auto-complete [(ngModel)]="autoCompleteModelGrades" name="grades" [source]="grades" #grade="ngModel" required />
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted}">
             <label for="student">Students</label>
