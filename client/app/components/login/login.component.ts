@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
+import { NotificationsService} from 'angular2-notifications';
 
 @Component({
     templateUrl: 'login.component.html'
@@ -12,12 +13,12 @@ export class LoginComponent implements OnInit {
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
-                private authenticationService: AuthenticationService) {
+                private authenticationService: AuthenticationService,
+                private notifier: NotificationsService) {
     }
 
     ngOnInit() {
-        this.authenticationService.logout();
-
+        this.logout();
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
@@ -26,11 +27,21 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     console.log(data);
-                    this.router.navigate([this.returnUrl]);
+                    if (data.username === this.model.username){
+                        this.router.navigate([this.returnUrl]);
+                        this.notifier.success('Success', 'You have logged in successfully');
+                    }else{
+                        this.notifier.error('Error', 'Invalid username or password');
+                    }
                 },
                 error => {
+                    this.notifier.success('Error', error);
                     console.log(error);
                 }
             );
+    }
+
+    logout(){
+        this.authenticationService.logout();
     }
 }

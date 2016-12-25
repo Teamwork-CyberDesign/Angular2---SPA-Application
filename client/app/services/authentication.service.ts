@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import { AjaxRequesterService } from './requester.service';
 import { User } from '../models/user';
 import { Observable } from 'rxjs';
+import { NotificationsService} from 'angular2-notifications';
 
 const storageUserKey = 'currentUser';
 // const storageUserRoleKey = 'userRole';
@@ -11,8 +12,9 @@ const storageSessionKey = 'sessionKey';
 @Injectable()
 export class AuthenticationService {
     private requester: AjaxRequesterService<User>;
-
-    constructor(requester: AjaxRequesterService<User>) {
+    
+    constructor(requester: AjaxRequesterService<User>,
+    private notifier: NotificationsService) {
         this.requester = requester;
     }
 
@@ -31,6 +33,7 @@ export class AuthenticationService {
     logout(): void {
         localStorage.removeItem(storageSessionKey);
         localStorage.removeItem(storageUserKey);
+        this.notifier.success('Success', 'You have logged out successfully');
     }
 
     currentUser(): string {
