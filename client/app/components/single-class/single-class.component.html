@@ -1,0 +1,20 @@
+<h3>Now viewing {{data.grade}} class</h3>
+
+<table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Marks</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of data.students">
+        <td>{{student.classNumber}}</td>
+        <td>{{student.user.firstName + ' ' + student.user.lastName}}</td>
+        <td><span *ngFor="let mark of student.marks">{{mark.subject}}</span></td>
+        <th><button>Edit</button></th>
+    </tr>
+    </tbody>
+</table>

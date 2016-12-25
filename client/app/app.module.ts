@@ -21,6 +21,7 @@ import { SortByFirstThenByLastNamePipe } from './pipes/sort-by-first-then-last-n
 import { PageNotFoundComponent } from './components/page-not-found';
 import { AjaxRequesterService } from './services/requester.service';
 import { ClassListComponent } from './components/class-list';
+import { SingleClassComponent } from './components/single-class';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -40,6 +41,7 @@ import { ClassListComponent } from './components/class-list';
         UsersComponent,
         PageNotFoundComponent,
         ClassListComponent,
+        SingleClassComponent,
         SortByFirstNamePipe,
         SortByFirstThenByLastNamePipe
     ],

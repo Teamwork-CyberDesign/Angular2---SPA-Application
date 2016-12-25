@@ -2,18 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Class } from '../../models/class';
 import { ClassService } from '../../services/class.service';
 
-// import { Router } from '@angular/router';
-
 @Component({
     selector: 'class-list',
     templateUrl: 'class-list.component.html'
 })
 
 export class ClassListComponent implements OnInit {
-    classes: Class[];
-    error: any;
+    private classes: Class[];
+    private _currentSelection: Class;
 
     constructor(private data: ClassService) {
+        this.currentSelection = new Class();
+        this.currentSelection.grade = '' ;
+        this.currentSelection.students = [];
     }
 
     ngOnInit() {
@@ -21,9 +22,28 @@ export class ClassListComponent implements OnInit {
     }
 
     private getClasses(): void {
-        this.data.getClass()
+        this.data.getClassesForCurrentUser()
             .subscribe(cl => {
                 this.classes = cl;
+                this._currentSelection = cl[0];
             });
+    }
+
+    public get currentSelection(): Class {
+        return this._currentSelection;
+    }
+
+    public set currentSelection(cl: Class) {
+        if (cl == null) {
+            throw new Error('Current selection cannot be null!');
+        }
+
+        this._currentSelection = cl;
+    }
+
+    private showClassInfo(classNumber) {
+        let currentClass = this.classes.filter(cl => cl.grade === classNumber)[0];
+        this.currentSelection = currentClass;
+        console.log(currentClass);
     }
 }

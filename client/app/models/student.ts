@@ -1,10 +1,9 @@
-import { Person } from './person';
+import { User } from './user';
+import { MarkInfo } from './mark-info';
 
-export class Student implements Person {
-    _id: string;
-    firstName: string;
-    lastName: string;
-    class: string;
-    subjects: any[];
-    teachers: any[];
+export class Student {
+    user: User;
+    classNumber: number;
+    egn: number;
+    marks: MarkInfo[];
 }

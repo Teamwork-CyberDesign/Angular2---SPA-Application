@@ -1,7 +1,13 @@
-li a {
-    color:white
+.nav.navbar-nav > li > a {
+    color: #fff
 }
-li a:hover {
-    color:lightblue;
-    background-color: lightblue
+
+.nav.navbar-nav > li > a:hover {
+    color: #bdc3c7;
+    background-color: #fff
+}
+
+.nav.navbar-nav > li > a.active {
+    color: #fff;
+    background-color: #bdc3c7
 }

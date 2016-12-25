@@ -4,12 +4,17 @@ import 'rxjs/add/operator/map';
 import { Class } from '../models/class';
 import { AjaxRequesterService } from './requester.service';
 import { Observable } from 'rxjs';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class ClassService {
     private classUrl = '/api/class';
+    private requester: AjaxRequesterService<Class>;
+    private auth: AuthenticationService;
 
-    constructor(private requester: AjaxRequesterService<Class>) {
+    constructor(requester: AjaxRequesterService<Class>, auth: AuthenticationService) {
+        this.requester = requester;
+        this.auth = auth;
     }
 
     createClass(cl: Class): Observable<Class> {
@@ -17,7 +22,14 @@ export class ClassService {
         return this.requester.post(this.classUrl, cl);
     }
 
-    getClass(/*classNumber: string*/) {
+    getClasses(/*classNumber: string*/): Observable<Class[]> {
         return this.requester.get(this.classUrl);
+    }
+
+    getClassesForCurrentUser() {
+        let user = this.auth.currentUser();
+        if (user) {
+            return this.requester.get(this.classUrl);
+        }
     }
 }
