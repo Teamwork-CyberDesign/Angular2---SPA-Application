@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component'; // import home components
 import { LoginComponent } from './components/login/login.component'; // import login component
@@ -26,7 +27,8 @@ import { ClassListComponent } from './components/class-list';
         BrowserModule,
         routing,
         HttpModule,
-        FormsModule],
+        FormsModule,
+        Ng2AutoCompleteModule],
     declarations: [ // declare all derectives and components
         AppComponent,
         AboutComponent,
