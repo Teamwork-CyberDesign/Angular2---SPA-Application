@@ -1,8 +1,10 @@
-import { Component, style, state, transition, animate,keyframes, AnimationMetadata } from '@angular/core';
+import { Component } from '@angular/core';
+import {flyInAnimation} from '../../animations/fly-in';
 
 @Component({
     selector: 'app-home',
-    templateUrl: 'home.component.html'
+    templateUrl: 'home.component.html',
+    animations: flyInAnimation
 })
 export class HomeComponent {
     title: string;
