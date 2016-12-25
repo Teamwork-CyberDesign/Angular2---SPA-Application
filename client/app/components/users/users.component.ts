@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import { Router } from '@angular/router';
-import {User} from '../../models/user';
-import {UserService} from '../../services/user.service';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'users',
@@ -24,7 +24,10 @@ export class UsersComponent implements OnInit {
     loadUsers() {
         this.userService.getAllUsers()
             .subscribe(
-                users => this.users =  users as User[],
+                users => {
+                    this.users = users as User[];
+                    console.log(this.users);
+                },
                 err => {
                     console.log(err);
                 });
