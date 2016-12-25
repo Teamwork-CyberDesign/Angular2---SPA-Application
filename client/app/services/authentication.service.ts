@@ -3,7 +3,7 @@ import 'rxjs/add/operator/map';
 import { AjaxRequesterService } from './requester.service';
 import { User } from '../models/user';
 import { Observable } from 'rxjs';
-import { NotificationsService} from 'angular2-notifications';
+import { NotificationsService } from 'angular2-notifications';
 
 const storageUserKey = 'currentUser';
 // const storageUserRoleKey = 'userRole';
@@ -12,10 +12,12 @@ const storageSessionKey = 'sessionKey';
 @Injectable()
 export class AuthenticationService {
     private requester: AjaxRequesterService<User>;
-    
+    private notifier: NotificationsService;
+
     constructor(requester: AjaxRequesterService<User>,
-    private notifier: NotificationsService) {
+                notifier: NotificationsService) {
         this.requester = requester;
+        this.notifier = notifier;
     }
 
     login(username: string, password: string): Observable<User> {

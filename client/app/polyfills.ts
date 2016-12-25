@@ -2,6 +2,7 @@ import 'core-js/es6';
 import 'core-js/es7/reflect';
 // import '../node_modules/core-js/client/shim.min.js'
 // import '../node_modules/reflect-metadata/Reflect.js'
+import 'web-animations-js';
 require('zone.js/dist/zone');
 
 if (process.env.ENV === 'production') {

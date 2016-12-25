@@ -6,10 +6,13 @@
                 <h4 class="modal-title">{{data.user.firstName + " " + data.user.lastName}}</h4>
             </div>
             <div class="modal-body">
-                <p *ngFor="let markInfo of data.marks">{{markInfo.subject}} <span *ngFor="let mark of markInfo.marks">{{mark}} </span></p>
+                <p *ngFor="let markInfo of (data.marks | filterByTeacherSubject:'bio')">{{markInfo.subject}}
+                    <span *ngFor="let mark of markInfo.marks">{{mark}} </span>
+                </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>

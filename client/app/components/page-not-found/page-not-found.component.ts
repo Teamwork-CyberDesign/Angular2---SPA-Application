@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: 'page-not-found.component.html'
 })
 export class PageNotFoundComponent implements OnInit {
-    returnUrl: string;
+    private returnUrl: string;
 
     constructor(private route: ActivatedRoute) {
     }

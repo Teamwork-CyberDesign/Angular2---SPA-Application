@@ -27,6 +27,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { TeacherGuard } from './services/teacher-guard.service';
 import { SingleStudentComponent } from './components/single-student/single-student.component';
 import { SortByClassNumberPipe } from './pipes/sort-by-class-number.pipe';
+import { FilterByTeacherSubjectPipe } from './pipes/filter-by-teacher-subject.pipe';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -51,7 +52,8 @@ import { SortByClassNumberPipe } from './pipes/sort-by-class-number.pipe';
         SingleStudentComponent,
         SortByFirstNamePipe,
         SortByFirstThenByLastNamePipe,
-        SortByClassNumberPipe
+        SortByClassNumberPipe,
+        FilterByTeacherSubjectPipe
     ],
     bootstrap: [AppComponent], // root component to bootstarp
     providers: [

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Student } from '../../models/student';
 
 @Component({
@@ -6,14 +6,11 @@ import { Student } from '../../models/student';
     templateUrl: 'single-student.component.html'
 })
 
-export class SingleStudentComponent implements OnInit {
+export class SingleStudentComponent {
     @Input() data: Student;
 
     constructor() {
         this.data = new Student();
-    }
-
-    ngOnInit() {
     }
 
     public get console() {

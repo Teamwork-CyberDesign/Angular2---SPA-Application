@@ -75,6 +75,7 @@
     "style-loader": "^0.13.1",
     "tslint": "^4.1.1",
     "typings": "^1.4.0",
+    "web-animations-js": "^2.2.2",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2",
     "webpack-merge": "^1.1.1",

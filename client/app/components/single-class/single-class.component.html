@@ -15,10 +15,10 @@
         <td>{{student.user.firstName + ' ' + student.user.lastName}}</td>
         <td><span *ngFor="let mark of student.marks">{{mark.subject}}</span></td>
         <td>
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editStudentModal" (click)="onEditClick(student)">edit</button>
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editStudentModal" (click)="onEditClick(student)">Edit</button>
         </td>
     </tr>
     </tbody>
 </table>
 
-<single-student [data]="currentStudent"></single-student>
+<single-student [(data)]="currentStudent"></single-student>
