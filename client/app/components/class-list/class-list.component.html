@@ -1,5 +1,5 @@
 <ul class="breadcrumb">
-    <li *ngFor="let cl of classes"><a (click)="showClassInfo($event.target.innerHTML)" href="#">{{cl.grade}}</a></li>
+    <li *ngFor="let cl of classes"><a (click)="showClassInfo($event.target.innerHTML)">{{cl.grade}}</a></li>
 </ul>
 
 <single-class [data]="currentSelection"></single-class>

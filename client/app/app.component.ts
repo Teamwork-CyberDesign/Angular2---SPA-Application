@@ -7,6 +7,11 @@ import { AuthenticationService } from './services/authentication.service';
 })
 export class AppComponent {
     private auth: AuthenticationService;
+    private notifierOptions = {
+        timeOut: 10000,
+        preventDuplicates: true,
+        position: ['bottom', 'left']
+    };
 
     constructor(auth: AuthenticationService) {
         this.auth = auth;

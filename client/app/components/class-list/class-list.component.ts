@@ -42,6 +42,6 @@ export class ClassListComponent implements OnInit {
     }
 
     private showClassInfo(classNumber) {
-        this.currentSelection = this.classes.find(cl => cl.grade === classNumber)[0];
+        this.currentSelection = this.classes.filter(cl => cl.grade === classNumber)[0];
     }
 }

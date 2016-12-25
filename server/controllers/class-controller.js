@@ -3,7 +3,7 @@ module.exports = function (data) {
     return {
         findClassByGradeAndLetter(req, res) {
             let grade = req.query.grade;
-            if(grade) {
+            if (grade) {
                 return data.findClassByGradeAndLetter(grade)
                     .then(cl => {
                         res.json(JSON.stringify(cl));
@@ -16,6 +16,9 @@ module.exports = function (data) {
                     .then(classes => {
                         res.json(JSON.stringify(classes));
                     })
+                    .catch(err => {
+                        res.json(JSON.stringify(err));
+                    });
             }
         },
         createClass(req, res) {
@@ -47,8 +50,15 @@ module.exports = function (data) {
                     res.json(JSON.stringify(err));
                 });
         },
-        getClassesForUser(req, res) {
-
+        findClassesForUser(req, res) {
+            let user = req.params.user;
+            return data.getClassesForUser(user)
+                .then(classes => {
+                    res.json(JSON.stringify(classes));
+                })
+                .catch(err => {
+                    res.json(JSON.stringify(err));
+                });
         }
     };
 };

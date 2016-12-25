@@ -5,12 +5,12 @@ import { User } from '../models/user';
 import { Observable } from 'rxjs';
 
 const storageUserKey = 'currentUser';
-const storageSessionKey = 'currentUser';
+// const storageUserRoleKey = 'userRole';
+const storageSessionKey = 'sessionKey';
 
 @Injectable()
 export class AuthenticationService {
     private requester: AjaxRequesterService<User>;
-    private loggedUser: User;
 
     constructor(requester: AjaxRequesterService<User>) {
         this.requester = requester;

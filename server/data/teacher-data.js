@@ -43,12 +43,23 @@ module.exports = function (models) {
                 Teacher.findOne(query)
                     .populate("user", "-password -salt")
                     .populate("classes")
-                    .exec((err, cl) => {
+                    .populate({
+                        path: 'classes',
+                        populate: {
+                            path: 'students',
+                            model: 'Student',
+                            populate: {
+                                path: 'user',
+                                model: 'User'
+                            }
+                        }
+                    })
+                    .exec((err, teacher) => {
                         if (err) {
                             return reject(err);
                         }
-
-                        return resolve(cl);
+                        console.log(teacher.classes[1].students[0].user);
+                        return resolve(teacher);
                     });
             });
         },

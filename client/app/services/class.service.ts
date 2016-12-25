@@ -26,10 +26,10 @@ export class ClassService {
         return this.requester.get(this.classUrl);
     }
 
-    getClassesForCurrentUser() {
-        let user = this.auth.currentUser();
-        if (user) {
-            return this.requester.get(this.classUrl + `?user=${user}`);
+    getClassesForCurrentUser(): Observable<Class[]> {
+        let username = this.auth.currentUser();
+        if (username) {
+            return this.requester.get(this.classUrl + '/' + username);
         }
     }
 }

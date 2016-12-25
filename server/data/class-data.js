@@ -99,9 +99,9 @@ module.exports = function (models) {
             });
         },
         getClassesForUser(username) {
-            this.findTeacherByUsername(username)
+            return this.findTeacherByUsername(username)
                 .then(teacher => {
-                    console.log(teacher);
+                    return teacher.classes;
                 })
         }
     };

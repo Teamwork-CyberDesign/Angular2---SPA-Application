@@ -24,6 +24,7 @@ import { ClassListComponent } from './components/class-list';
 import { SingleClassComponent } from './components/single-class';
 import { AuthGuard } from './services/auth-guard.service';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { TeacherGuard } from './services/teacher-guard.service';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -55,7 +56,8 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
         AuthenticationService,
         ClassService,
         AjaxRequesterService,
-        AuthGuard]
+        AuthGuard,
+        TeacherGuard]
 })
 export class AppModule {
 }
