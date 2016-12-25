@@ -24,7 +24,10 @@ export class UsersComponent implements OnInit {
     loadUsers() {
         this.userService.getAllUsers()
             .subscribe(
-                users => this.users = users,
+                users => {
+                this.users = users
+                console.log(this.users);
+                },
                 err => {
                     console.log(err);
                 });

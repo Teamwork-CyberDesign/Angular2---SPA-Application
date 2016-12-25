@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { Observable} from 'rxjs';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { User } from '../models/user';
@@ -11,7 +12,7 @@ export class UserService {
     constructor(private http: Http) {
     }
 
-    getAllUsers() {
+    getAllUsers(): Observable<User> {
         return this.http.get(this.usersUrl)
             .map(res => JSON.parse(res.json()));
     }
