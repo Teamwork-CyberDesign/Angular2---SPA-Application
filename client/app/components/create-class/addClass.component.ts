@@ -1,23 +1,21 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClassService } from '../../services/class.service';
 
 @Component({
     templateUrl: 'add-class.component.html'
 })
-export class AddClassComponent{
+export class AddClassComponent {
     returnUrl: string;
     model: any = {};
-    constructor(
-    private router: Router,
-    private classService: ClassService) {
-    }
 
- 
+    constructor(private router: Router,
+                private classService: ClassService) {
+    }
 
     loadNewClass() {
         this.classService.createClass(this.model)
-            .then(
+            .subscribe(
                 data => {
                     console.log(data);
                     this.router.navigate(['/']);

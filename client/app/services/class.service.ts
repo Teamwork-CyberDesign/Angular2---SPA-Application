@@ -1,28 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { Class } from '../models/class';
+import { AjaxRequesterService } from './requester.service';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ClassService {
-private classUrl = '/api/class';
+    private classUrl = '/api/class';
 
-    constructor(private http: Http) {
+    constructor(private requester: AjaxRequesterService<Class>) {
     }
 
-    createClass(cl: Class): Promise<Class> {
+    createClass(cl: Class): Observable<Class> {
         console.log(cl);
-        return this.post(cl);
+        return this.requester.post(this.classUrl, cl);
     }
 
-    private post(cl: Class): Promise<Class> {
-        let headers = new Headers({
-            'Content-Type': 'application/json'
-        });
-        return this.http
-            .post(this.classUrl, JSON.stringify(cl), { headers: headers })
-            .toPromise()
-            .then(res => res.json().data)
+    getClass(/*classNumber: string*/) {
+        return this.requester.get(this.classUrl);
     }
 }

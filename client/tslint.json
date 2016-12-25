@@ -20,7 +20,7 @@
     "member-access": false,
     "member-ordering": [
       true,
-      "static-before-instance",
+      "public-before-private",
       "variables-before-functions"
     ],
     "no-arg": true,

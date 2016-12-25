@@ -18,6 +18,8 @@ import { AuthenticationService } from './services/authentication.service';
 import { SortByFirstNamePipe } from './pipes/sort-by-first-name.pipe';
 import { SortByFirstThenByLastNamePipe } from './pipes/sort-by-first-then-last-name.pipe';
 import { PageNotFoundComponent } from './components/page-not-found';
+import { AjaxRequesterService } from './services/requester.service';
+import { ClassListComponent } from './components/class-list';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -35,6 +37,7 @@ import { PageNotFoundComponent } from './components/page-not-found';
         AddClassComponent,
         UsersComponent,
         PageNotFoundComponent,
+        ClassListComponent,
         SortByFirstNamePipe,
         SortByFirstThenByLastNamePipe
     ],
@@ -43,7 +46,8 @@ import { PageNotFoundComponent } from './components/page-not-found';
         { provide: APP_BASE_HREF, useValue: '/' },
         UserService,
         AuthenticationService,
-        ClassService]
+        ClassService,
+        AjaxRequesterService]
 })
 export class AppModule {
 }

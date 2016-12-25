@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { AjaxRequesterService } from './requester.service';
+import { User } from '../models/user';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthenticationService {
-    constructor(private http: Http) {
+    constructor(private requester: AjaxRequesterService<User>) {
     }
 
-    login(username: string, password: string) {
-        return this.http.post('/api/authenticate', { username: username, password: password })
-            .map((response: Response) => {
-                let user = JSON.parse(response.json());
-                if (user && user.token) {
-                    localStorage.setItem('currentUser', JSON.stringify(user.username));
-                    localStorage.setItem('session', JSON.stringify(user.token));
+    login(username: string, password: string): Observable<User> {
+        return this.requester.post('/api/authenticate', { username: username, password: password })
+            .flatMap((sessionInfo) => {
+                if (sessionInfo.username && sessionInfo.token) {
+                    localStorage.setItem('currentUser', sessionInfo.username);
+                    localStorage.setItem('session', sessionInfo.token);
                 }
+
+                return Promise.resolve(sessionInfo);
             });
     }
 

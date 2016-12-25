@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit {
     loadUsers() {
         this.userService.getAllUsers()
             .subscribe(
-                users => this.users = users,
+                users => this.users =  users as User[],
                 err => {
                     console.log(err);
                 });

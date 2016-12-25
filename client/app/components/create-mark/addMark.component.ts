@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AddMarkComponent implements OnInit {
     returnUrl: string;
 
-    constructor(private route: ActivatedRoute,) {
+    constructor(private route: ActivatedRoute) {
     }
 
     ngOnInit() {

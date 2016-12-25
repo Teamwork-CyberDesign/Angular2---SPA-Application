@@ -3,13 +3,20 @@ module.exports = function (data) {
     return {
         findClassByGradeAndLetter(req, res) {
             let grade = req.query.grade;
-            return data.findClassByGradeAndLetter(grade)
-                .then(cl => {
-                    res.json(JSON.stringify(cl));
-                })
-                .catch(err => {
-                    res.json(JSON.stringify(err));
-                });
+            if(grade) {
+                return data.findClassByGradeAndLetter(grade)
+                    .then(cl => {
+                        res.json(JSON.stringify(cl));
+                    })
+                    .catch(err => {
+                        res.json(JSON.stringify(err));
+                    });
+            } else {
+                return data.getAllClasses()
+                    .then(classes => {
+                        res.json(JSON.stringify(classes));
+                    })
+            }
         },
         createClass(req, res) {
             let {

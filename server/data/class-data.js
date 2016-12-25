@@ -77,6 +77,26 @@ module.exports = function (models) {
 
                     cl.save();
                 })
+        },
+        getAllClasses() {
+            return new Promise((resolve, reject) => {
+                Class.find()
+                    .populate("students")
+                    .populate({
+                        path: 'students',
+                        populate: {
+                            path: 'user',
+                            model: 'User'
+                        }
+                    })
+                    .exec((err, user) => {
+                        if (err) {
+                            return reject(err);
+                        }
+
+                        return resolve(user);
+                    });
+            });
         }
     };
 };

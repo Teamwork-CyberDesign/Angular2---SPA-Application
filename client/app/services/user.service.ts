@@ -1,63 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { User } from '../models/user';
+import { AjaxRequesterService } from './requester.service';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class UserService {
+    private requester: AjaxRequesterService<User>;
     private usersUrl = '/api/users';
 
-    constructor(private http: Http) {
+    constructor(requester: AjaxRequesterService<User>) {
+        this.requester = requester;
     }
 
-    getAllUsers() {
-        return this.http.get(this.usersUrl)
-            .map(res => JSON.parse(res.json()));
+    getAllUsers(): Observable<User[] | User> {
+        return this.requester.get(this.usersUrl);
     }
 
-   // getUserById(id: string) {
-     //   return this.getAllUsers()
-       //     .then(users => users.find(user => user.id === id));
-    //}
-
-    createUser(user: User): Promise<User> {
-        return this.post(user);
+    createUser(user: User): Observable<User> {
+        return this.requester.post(this.usersUrl, user);
     }
 
-    updateUser(user: User): Promise<User> {
-        return this.put(user);
+    updateUser(user: User): Observable<User> {
+        return this.requester.put(this.usersUrl, user);
     }
 
     // deleteUser(id: string){
     // TODO:
     // }
-
-    private post(user: User): Promise<User> {
-        let headers = new Headers({
-            'Content-Type': 'application/json'
-        });
-        return this.http
-            .post(this.usersUrl, JSON.stringify(user), { headers: headers })
-            .toPromise()
-            .then(res => res.json().data)
-            .catch(this.handleError);
-    }
-
-    private put(user: User): Promise<User> {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        let url = `${this.usersUrl}/${user._id}`;
-
-        return this.http
-            .put(url, JSON.stringify(user), { headers: headers })
-            .toPromise()
-            .then(() => user)
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error.message || error);
-    }
 }

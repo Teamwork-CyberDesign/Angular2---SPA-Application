@@ -15,7 +15,7 @@ export class RegisterComponent {
 
     register() {
         this.userService.createUser(this.model)
-            .then(
+            .subscribe(
                 data => {
                     console.log(data);
                     this.router.navigate(['/login']);
