@@ -5,7 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent} from './components/register/register.component';
 import { AboutComponent } from './components/about/about.component';
-import { AddMarkComponent } from './components/create-mark/addMark.component';
+import { AddMarkComponent } from './components/add-mark/add-mark.component';
 import { AddClassComponent } from './components/create-class/addClass.component';
 import { UsersComponent } from './components/users/users.component';
 import { PageNotFoundComponent } from './components/page-not-found';
@@ -28,3 +28,4 @@ const appRoutes: Routes = [
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+
