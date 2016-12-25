@@ -36,7 +36,7 @@ export class AuthenticationService {
         this.notifier.success('Success', 'You have logged out successfully');
     }
 
-    currentUser(): string {
+    getCurrentUser(): string {
         return localStorage.getItem(storageUserKey);
     }
 
