@@ -11,7 +11,8 @@
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted}">
             <label for="student">Students</label>
-            <input type="text" class="form-control" name="grade" [(ngModel)]="model.students" #students="ngModel" required />
+            <input class="form-control" ng2-auto-complete [(ngModel)]="students" name="students" [source]="students" value-property-name="firstName"
+                 display-property-name="lastName" [ngModelOptions]="{standalone: true}" required />
         </div>
         <div class="form-group">
             <button [disabled]="loading" class="btn btn-success">Submit</button>

@@ -3,7 +3,13 @@ export class User {
     username: string;
     firstName: string;
     lastName: string;
+    fullName: string;
     password: string;
     token: string;
     role: string;
+
+    constructor(){
+
+    this.fullName = this.firstName + " " + this.lastName;
+    }
 }
