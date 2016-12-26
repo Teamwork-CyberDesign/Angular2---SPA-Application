@@ -28,6 +28,7 @@ import { TeacherGuard } from './services/teacher-guard.service';
 import { SingleStudentComponent } from './components/single-student/single-student.component';
 import { SortByClassNumberPipe } from './pipes/sort-by-class-number.pipe';
 import { FilterByTeacherSubjectPipe } from './pipes/filter-by-teacher-subject.pipe';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -63,7 +64,8 @@ import { FilterByTeacherSubjectPipe } from './pipes/filter-by-teacher-subject.pi
         ClassService,
         AjaxRequesterService,
         AuthGuard,
-        TeacherGuard]
+        TeacherGuard,
+        CookieService]
 })
 export class AppModule {
 }

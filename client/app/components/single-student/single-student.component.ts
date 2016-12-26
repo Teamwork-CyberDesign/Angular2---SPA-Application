@@ -22,11 +22,7 @@ export class SingleStudentComponent {
     }
 
     private addMark(mark, subject) {
-        console.log(mark);
-        console.log(subject);
         let markInfo = this.data.marks.filter(info => info.subject === subject)[0];
         markInfo.marks.push(+mark);
-
-
     }
 }
