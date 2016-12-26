@@ -1,17 +1,28 @@
 <div class="clear-background">
-<h1 [@animate]="'fadeIn'">{{title}}</h1>
-<section>
-    <h2 [@animate]="'fadeIn'">Web gradebook and parent portals</h2>
-    <p [@animate]="'fadeInDown'">From online inquiries and applications, to managing student and staff data, to connecting with students and families via web and mobile, our platform can transform your school.</p>
-    <ul [@animate]="'fadeInUp'">
-        <li [@animate]="'fadeInLeft'">Streamline administrative tasks and save time with our student information system.</li>
-        <li [@animate]="'fadeInRight'">Manage student information across your entire school district.</li>
-        <li [@animate]="'fadeInLeft'">Improve school-to-home communication with web portals for teachers, students and parents.</li>
-        <li [@animate]="'fadeInRight'">Make information easily available online for students, parents and staff.</li>
-        <li [@animate]="'fadeInLeft'">Access and manage student data on phones and tablets with our mobile apps.</li>
-        <li [@animate]="'fadeInRight'">Manage your entire admissions process, from online applications to enrollment.</li>
-        <li [@animate]="'fadeInLeft'">Improve professional development with classroom walkthroughs and teacher evaluations.</li>
-        <li [@animate]="'fadeInRight'">Impress your school community with a great-looking, affordable responsive website.</li>
-    </ul>
-</section>
+    <img src="../../../images/home.png" width="100%"/>
+    <h1 [@animate]="'fadeIn'">{{title}}</h1>
+    <section class="section">
+        <h2 [@animate]="'fadeIn'">Web gradebook and parent portals</h2>
+        <p [@animate]="'fadeInDown'">From online inquiries and applications, to managing student and staff data, to connecting with students and families via web and mobile, our platform can transform your school.</p>
+        <ul [@animate]="'fadeInUp'">
+            <li [@animate]="'fadeInLeft'">Streamline administrative tasks and save time with our student information system.</li>
+            <li [@animate]="'fadeInRight'">Manage student information across your entire school district.</li>
+            <li [@animate]="'fadeInLeft'">Improve school-to-home communication with web portals for teachers, students and parents.</li>
+            <li [@animate]="'fadeInRight'">Make information easily available online for students, parents and staff.</li>
+            <li [@animate]="'fadeInLeft'">Access and manage student data on phones and tablets with our mobile apps.</li>
+            <li [@animate]="'fadeInRight'">Manage your entire admissions process, from online applications to enrollment.</li>
+            <li [@animate]="'fadeInLeft'">Improve professional development with classroom walkthroughs and teacher evaluations.</li>
+            <li [@animate]="'fadeInRight'">Impress your school community with a great-looking, affordable responsive website.</li>
+        </ul>
+    </section>
+    <article class="article">
+        <h2 [@animate]="'fadeIn'">TOP CLASSES</h2>
+        <div class="row" *ngFor="let class of classes" [attr.class]="class">
+            <div class="col-md-6 mb-r">
+                <h3 class="section-heading" [@animate]="'zoomIn'">{{class.grade}}</h3>
+                <div [@animate]="'zoomIn'" *ngFor="let subject of class.subjects">Subject: {{subject}}</div>
+                <button class="btn btn-info btn-outline-blue"><i class="fa fa-clone left"></i> View students</button>
+            </div>
+        </div>
+    </article>
 </div>
