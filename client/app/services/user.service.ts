@@ -23,11 +23,11 @@ export class UserService {
     }
 
     createUser(user: User): Observable<User> {
-        return this.requester.post(this.usersUrl, user);
+        return this.requester.post(this.usersUrl, user, false);
     }
 
     updateUser(user: User): Observable<User> {
-        return this.requester.put(this.usersUrl, user);
+        return this.requester.put(this.usersUrl, user, true);
     }
 
     // deleteUser(id: string){

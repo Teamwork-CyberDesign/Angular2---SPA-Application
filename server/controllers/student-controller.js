@@ -41,12 +41,12 @@ module.exports = function (data) {
             let {
                 username,
                 subject,
-                mark,
+                marks,
             } = req.body;
 
-            return data.addMarkToStudent(username, subject, mark)
-                .then(student => {
-                    res.json(JSON.stringify(student));
+            return data.addMarkToStudent(username, subject, marks)
+                .then(() => {
+                    res.json(JSON.stringify("Marks updated successfully!"));
                 })
                 .catch(err => {
                     res.json(JSON.stringify(err));

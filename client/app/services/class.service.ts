@@ -19,7 +19,7 @@ export class ClassService {
 
     createClass(cl: Class): Observable<Class> {
         console.log(cl);
-        return this.requester.post(this.classUrl, cl);
+        return this.requester.post(this.classUrl, cl, true);
     }
 
     getClasses(/*classNumber: string*/): Observable<Class[]> {

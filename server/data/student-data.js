@@ -64,17 +64,21 @@ module.exports = function (models) {
                     });
             });
         },
-        addMarkToStudent(username, subject, mark) {
+        addMarkToStudent(username, subject, marks) {
+            if(!Array.isArray(marks)) {
+                marks = [...marks];
+            }
+
             return this.findStudentByUsername(username)
                 .then(student => {
                     let subjectMarks = student.marks.filter(markInfo => markInfo.subject.toLowerCase() === subject.toLowerCase());
 
                     if (subjectMarks.length < 1) {
                         student.marks.push({ subject, marks: [] });
-                        student.marks[student.marks.length - 1].marks.push(mark);
+                        student.marks[student.marks.length - 1].marks = marks;
                     }
                     else {
-                        subjectMarks[0].marks.push(mark);
+                        subjectMarks[0].marks = marks;
                     }
 
                     student.save();

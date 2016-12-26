@@ -26,7 +26,7 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string): Observable<User> {
-        return this.requester.post('/api/authenticate', { username: username, password: password })
+        return this.requester.post('/api/authenticate', { username: username, password: password }, false)
             .flatMap((sessionInfo) => {
                 if (sessionInfo.username && sessionInfo.token) {
                     let now = new Date();
