@@ -30,6 +30,7 @@ import { SortByClassNumberPipe } from './pipes/sort-by-class-number.pipe';
 import { FilterByTeacherSubjectPipe } from './pipes/filter-by-teacher-subject.pipe';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { StudentService } from './services/student.service';
+import { AveragePipe } from './pipes/average.pipe';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -55,7 +56,8 @@ import { StudentService } from './services/student.service';
         SortByFirstNamePipe,
         SortByFirstThenByLastNamePipe,
         SortByClassNumberPipe,
-        FilterByTeacherSubjectPipe
+        FilterByTeacherSubjectPipe,
+        AveragePipe
     ],
     bootstrap: [AppComponent], // root component to bootstarp
     providers: [
