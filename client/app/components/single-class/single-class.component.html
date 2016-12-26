@@ -6,6 +6,7 @@
         <th>Class Number</th>
         <th>Name</th>
         <th>Marks</th>
+        <th>Average</th>
         <th>Edit</th>
     </tr>
     </thead>
@@ -14,6 +15,7 @@
         <td>{{student.classNumber}}</td>
         <td>{{student.user.firstName + ' ' + student.user.lastName}}</td>
         <td><span *ngFor="let markInfo of (student.marks | filterByTeacherSubject:'bio')"><span *ngFor="let mark of markInfo.marks"> {{mark}}</span></span></td>
+        <td><span *ngFor="let markInfo of (student.marks | filterByTeacherSubject:'bio')"><span>{{markInfo.marks | average}}</span></span></td>
         <td>
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editStudentModal" (click)="onEditClick(student)">Edit</button>
         </td>

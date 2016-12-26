@@ -10,6 +10,8 @@ import { StudentService } from '../../services/student.service';
 
 export class SingleStudentComponent {
     @Input() data: Student;
+    // private revertData: Student;
+
     private notifier: NotificationsService;
     private studentService: StudentService;
 
@@ -31,5 +33,8 @@ export class SingleStudentComponent {
         let markInfo = this.data.marks.filter(info => info.subject === subject)[0];
         markInfo.marks.push(+mark);
         this.notifier.success('Mark added successfully!', '');
+    }
+
+    private revertToPrevious() {
     }
 }
