@@ -3,16 +3,34 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">{{data.user.firstName + " " + data.user.lastName}}</h4>
+                <h4 class="modal-title">{{data.classNumber}}: {{data.user.firstName + " " + data.user.lastName}}</h4>
             </div>
             <div class="modal-body">
-                <p *ngFor="let markInfo of (data.marks | filterByTeacherSubject:'bio')">{{markInfo.subject}}
+                Current marks:
+                <p *ngFor="let markInfo of (data.marks | filterByTeacherSubject:'bio')" #subject>{{markInfo.subject}}
                     <span *ngFor="let mark of markInfo.marks">{{mark}} </span>
                 </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="addMark">Select new mark:</label>
+                        <select class="form-control" name="addMark" id="addMark" #addMarkSelect>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                        <button type="button" class="btn btn-success" (click)="addMark(addMarkSelect.value, 'bio')">Add mark
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal"
+                                (click)="saveStudent(addMarkSelect.value)">Save
+                        </button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
