@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {flyInAnimation} from '../../animations/fly-in';
+import { animateFactory } from 'ng2-animate';
 
 @Component({
     selector: 'app-home',
     templateUrl: 'home.component.html',
-    animations: flyInAnimation
+    animations:  [animateFactory(1000, 200, 'ease-in')]
 })
 export class HomeComponent {
     title: string;
