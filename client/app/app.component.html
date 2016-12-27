@@ -35,7 +35,7 @@
                 <li *ngIf="!auth.isLoggedIn()" class="nav-item"><a class="" routerLink="/login" routerLinkActive="active">Login</a></li>
                 <li *ngIf="!auth.isLoggedIn()" class="nav-item"><a class="" routerLink="/register" routerLinkActive="active">Register</a></li>
                 <li *ngIf="auth.isLoggedIn()" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hi, <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hi, {{auth.getCurrentUser()}}<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li class="nav-item"><a class="" routerLink="/profile" routerLinkActive="active">My Profile</a></li>
                         <li class="nav-item"><a class="" routerLink="/logout" routerLinkActive="active">Logout</a></li>
