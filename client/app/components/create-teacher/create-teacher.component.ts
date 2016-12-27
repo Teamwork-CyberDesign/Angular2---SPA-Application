@@ -45,11 +45,19 @@ export class CreateTeacherComponent {
 
     createTeacher() {
         this.teacherService.createTeacher(this.model)
-            .subscribe(() => {
-                this.notifier.success('Teacher successfully created!', '');
-            }, (err) => {
-                this.notifier.error('Error', err);
-            });
+            .subscribe(
+                (result) => {
+                    if (result.errmsg && result.errmsg.indexOf('duplicate') > -1) {
+                        this.notifier.error('Error', 'Teacher already exists!');
+                    } else if (result.errmsg) {
+                        this.notifier.error('Error', result.errmsg);
+                    } else {
+                        this.notifier.success('Teacher successfully created!', '');
+                    }
+                },
+                (err) => {
+                    this.notifier.error('Error', err);
+                });
     }
 
     toggleClass(classId) {

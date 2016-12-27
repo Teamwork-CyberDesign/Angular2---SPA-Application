@@ -13,7 +13,11 @@ module.exports = function (models) {
                             return reject(err);
                         }
                         user.role = 'teacher';
-                        user.save();
+                        user.save(err => {
+                            if (err) {
+                                reject(err);
+                            }
+                        });
 
                         let teacher = new Teacher({
                             user: user._id,

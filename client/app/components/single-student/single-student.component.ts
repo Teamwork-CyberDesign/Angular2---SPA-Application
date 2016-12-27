@@ -23,20 +23,20 @@ export class SingleStudentComponent {
         this.studentService = studentService;
     }
 
-    private saveStudent() {
+    private saveStudent(): void {
         this.studentService.addMarksToStudent(this.data, this.subject)
             .subscribe(() => {
                 this.notifier.success('Student saved!', 'Hopefully');
             });
     }
 
-    private addMark(mark) {
+    private addMark(mark): void {
         let markInfo = this.data.marks.filter(info => info.subject === this.subject)[0];
         markInfo.marks.push(+mark);
         this.notifier.success('Mark added successfully!', '');
     }
 
-    private removeMark(mark) {
+    private removeMark(mark): void {
         let markInfo = this.data.marks.filter(info => info.subject === this.subject)[0];
         let index = markInfo.marks.indexOf(+mark);
         if (index > -1) {

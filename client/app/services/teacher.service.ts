@@ -18,20 +18,17 @@ export class TeacherService {
         this.auth = auth;
     }
 
-    createTeacher(teacher: Teacher): Observable<Teacher> {
-        // TODO:
-        console.log(teacher);
+    createTeacher(teacher: Teacher): Observable<any> {
         let teacherToSend = {
             username: teacher.user.username,
             classes: teacher.classes,
             subject: Subject[teacher.subject]
         };
 
-        console.log(teacherToSend);
         return this.requester.post(this.url, teacherToSend, true);
     }
 
-    getTeacherByUser(username: string): Observable<Teacher | Teacher[]> {
+    getTeacherByUser(username: string): Observable<any> {
         return this.requester.get(this.url + `/${username}`);
     }
 
