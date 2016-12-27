@@ -5,7 +5,7 @@ import { animateFactory } from 'ng2-animate';
 @Component({
     selector: 'app-root',
     templateUrl: 'app.component.html',
-    animations:  [animateFactory(1000, 200, 'ease-in')]
+    animations:  [animateFactory(800, 200, 'ease-in')]
 })
 export class AppComponent {
     show: boolean = true;

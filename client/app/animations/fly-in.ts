@@ -8,7 +8,7 @@ export const flyInAnimation = [
                     opacity: 0,
                     transform: 'translateX(-100%)'
                 }),
-                animate('2.6s ease-in')
+                animate('1.0s ease-in')
             ]),
             transition('* => void', [
                 animate('0.2s 10 ease-out', style({
