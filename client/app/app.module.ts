@@ -12,6 +12,7 @@ import { AddClassComponent } from './components/create-class/addClass.component'
 import { UsersComponent } from './components/users/users.component';
 import { ProfileComponent } from './components/student-profile/profile.component';
 import { AboutComponent } from './components/about/about.component'; // import about component
+import { CeiboShare } from 'ng2-social-share';
 import { routing } from './app.routing';
 import { APP_BASE_HREF } from '@angular/common';
 import { UserService } from './services/user.service';
@@ -59,7 +60,8 @@ import { AveragePipe } from './pipes/average.pipe';
         SortByFirstThenByLastNamePipe,
         SortByClassNumberPipe,
         FilterByTeacherSubjectPipe,
-        AveragePipe
+        AveragePipe,
+        CeiboShare
     ],
     bootstrap: [AppComponent], // root component to bootstarp
     providers: [
