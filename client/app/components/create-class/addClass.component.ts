@@ -5,7 +5,7 @@ import { ClassService } from '../../services/class.service';
 import { UserService } from '../../services/user.service';
 import { subjects} from '../../utils/subjects-data';
 import { grades} from '../../utils/grades-data';
-import { User } from '../../models/user';
+import { User } from '../../models';
 
 @Component({
     templateUrl: 'add-class.component.html'

@@ -35,6 +35,7 @@ import { StudentService } from './services/student.service';
 import { AveragePipe } from './pipes/average.pipe';
 import { TeacherService } from './services/teacher.service';
 import { CreateTeacherComponent } from './components/create-teacher/create-teacher.component';
+import { FilterClassBySubject } from './pipes/filter-class-by-subject.pipe';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -64,6 +65,7 @@ import { CreateTeacherComponent } from './components/create-teacher/create-teach
         SortByClassNumberPipe,
         FilterByTeacherSubjectPipe,
         AveragePipe,
+        FilterClassBySubject,
         CeiboShare
     ],
     bootstrap: [AppComponent], // root component to bootstarp

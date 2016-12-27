@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Student } from '../../models/student';
+import { Student } from '../../models';
 import { NotificationsService } from 'angular2-notifications';
 import { StudentService } from '../../services/student.service';
+import { Subject } from '../../enums/subject';
 
 @Component({
     selector: 'single-student',
@@ -10,7 +11,7 @@ import { StudentService } from '../../services/student.service';
 
 export class SingleStudentComponent {
     @Input() data: Student;
-    @Input() subject: string;
+    @Input() subject: Subject;
     // private revertData: Student;
 
     private notifier: NotificationsService;

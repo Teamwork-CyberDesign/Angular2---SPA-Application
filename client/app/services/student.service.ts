@@ -5,6 +5,7 @@ import { AjaxRequesterService } from './requester.service';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
 import { Student } from '../models/student';
+import { Subject } from '../enums/subject';
 
 @Injectable()
 export class StudentService {
@@ -18,13 +19,11 @@ export class StudentService {
     }
 
     createStudent(student: Student): Observable<Student> {
-        console.log(student);
         return this.requester.post(this.studentUrl, student, true);
     }
 
-    addMarksToStudent(student: Student, subject: string): Observable<Student> {
+    addMarksToStudent(student: Student, subject: Subject): Observable<Student> {
         let marks = student.marks.filter(info => info.subject === subject)[0].marks;
-
         return this.requester.put(this.studentUrl + `/add-marks`, {
             marks,
             username: student.user.username,

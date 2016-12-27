@@ -3,25 +3,22 @@
     <form name="form" (ngSubmit)="f.form.valid && createTeacher()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
             <label for="username">Teacher username: </label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="model.user.username"
+            <input type="text" class="form-control" id="username" name="username" [(ngModel)]="model.user.username"
                    #username="ngModel" required/>
             <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
         </div>
         <div class="form-group">
             <label for="subject">Subject</label>
-            <select class="form-control" name="subject" id="subject" [(ngModel)]="model.subject" #subject="ngModel" required>
-                <option value="Biology" selected="selected">Biology</option>
-                <option value="Maths">Maths</option>
-                <option value="English">English</option>
-                <option value="History">History</option>
-                <option value="Geography">Geography</option>
+            <select class="form-control" name="subject" id="subject" (change)="handleSelectChange($event.target.value)" required>
+                <option *ngFor="let sub of subjects" value="{{sub}}" selected>{{sub}}</option>
             </select>
         </div>
         <div class="form-group">
             Classes:
-            <span *ngFor="let grade of classes">
-                <label> {{grade}}
-                    <input type="checkbox" value="{{grade}}">
+            <span *ngIf="loading" class="text-success">Loading classes...</span>
+            <span *ngFor="let cl of (classes | filterClassBySubject: model.subject)">
+                <label> {{cl.grade}}
+                    <input type="checkbox" value="{{cl._id}}" (change)="toggleClass($event.target.value)">
                 </label>
             </span>
         </div>

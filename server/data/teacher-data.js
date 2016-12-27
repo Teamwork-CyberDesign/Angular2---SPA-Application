@@ -2,25 +2,34 @@
 "use strict";
 
 module.exports = function (models) {
-    let { Teacher } = models;
+    let { Teacher, User } = models;
 
     return {
-        createTeacher(user, username, subject, classes) {
-            let teacher = new Teacher({
-                user,
-                username,
-                subject,
-                classes
-            });
-
+        createTeacher(username, subject, classes) {
             return new Promise((resolve, reject) => {
-                teacher.save((err) => {
-                    if (err) {
-                        return reject(err);
-                    }
+                User.findOne({ username })
+                    .exec((err, user) => {
+                        if (err) {
+                            return reject(err);
+                        }
+                        user.role = 'teacher';
+                        user.save();
 
-                    return resolve(teacher);
-                });
+                        let teacher = new Teacher({
+                            user: user._id,
+                            username,
+                            subject,
+                            classes
+                        });
+
+                        teacher.save((err) => {
+                            if (err) {
+                                return reject(err);
+                            }
+
+                            return resolve(teacher);
+                        });
+                    });
             });
         },
         findTeacherByUserId(user) {

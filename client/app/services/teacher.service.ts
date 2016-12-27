@@ -5,6 +5,7 @@ import { AjaxRequesterService } from './requester.service';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
 import { Teacher } from '../models/teacher';
+import { Subject } from '../enums/subject';
 
 @Injectable()
 export class TeacherService {
@@ -20,7 +21,14 @@ export class TeacherService {
     createTeacher(teacher: Teacher): Observable<Teacher> {
         // TODO:
         console.log(teacher);
-        return this.requester.post(this.url, teacher, true);
+        let teacherToSend = {
+            username: teacher.user.username,
+            classes: teacher.classes,
+            subject: Subject[teacher.subject]
+        };
+
+        console.log(teacherToSend);
+        return this.requester.post(this.url, teacherToSend, true);
     }
 
     getTeacherByUser(username: string): Observable<Teacher | Teacher[]> {

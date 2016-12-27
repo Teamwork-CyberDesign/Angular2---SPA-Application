@@ -1,17 +1,32 @@
 import { Component } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
 import { ClassService } from '../../services/class.service';
-import { Teacher } from '../../models/teacher';
+import { Class, Teacher } from '../../models';
+import { Subject } from '../../enums/subject';
+import { TeacherService } from '../../services/teacher.service';
 
 @Component({
     templateUrl: 'create-teacher.component.html'
 })
 export class CreateTeacherComponent {
+    private teacherService: TeacherService;
+    private notifier: NotificationsService;
+    private classService: ClassService;
     private model: Teacher;
-    private classes: string[];
+    private classes: Class[];
+    private subjects: string[];
+    private loading: boolean = true;
 
-    constructor(private classService: ClassService,
-                private notifier: NotificationsService) {
+    constructor(classService: ClassService,
+                teacherService: TeacherService,
+                notifier: NotificationsService) {
+        this.classService = classService;
+        this.notifier = notifier;
+        this.teacherService = teacherService;
+        this.subjects = Object.keys(Subject)
+            .map(s => Subject[s])
+            .filter(v => typeof v === 'string');
+
         this.model = new Teacher();
         this.classes = [];
     }
@@ -20,9 +35,8 @@ export class CreateTeacherComponent {
         this.classService.getClasses()
             .subscribe(
                 (classes) => {
-                    classes.forEach(cl => {
-                        this.classes.push(cl.grade);
-                    });
+                    this.classes = classes;
+                    this.loading = false;
                 },
                 (err) => {
                     this.notifier.error('Error', err.message);
@@ -30,6 +44,24 @@ export class CreateTeacherComponent {
     }
 
     createTeacher() {
-        console.log(this.model);
+        this.teacherService.createTeacher(this.model)
+            .subscribe(() => {
+                this.notifier.success('Teacher successfully created!', '');
+            }, (err) => {
+                this.notifier.error('Error', err);
+            });
+    }
+
+    toggleClass(classId) {
+        let index = this.model.classes.indexOf(classId);
+        if (index > -1) {
+            this.model.classes.splice(index, 1);
+        } else {
+            this.model.classes.push(classId);
+        }
+    }
+
+    handleSelectChange(subject: string) {
+        this.model.subject = Subject[subject];
     }
 }

@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Class } from '../../models/class';
-import { Student } from '../../models/student';
+import { Class, Student } from '../../models';
 
 @Component({
     selector: 'single-class',

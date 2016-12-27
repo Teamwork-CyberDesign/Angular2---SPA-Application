@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { subjects} from '../../utils/subjects-data';
 import { UserService } from '../../services/user.service';
-import { User } from '../../models/user';
+import { User } from '../../models';
 
 @Component({
     templateUrl: 'add-mark.component.html'

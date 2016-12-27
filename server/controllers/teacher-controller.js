@@ -23,13 +23,12 @@ module.exports = function (data) {
         },
         createTeacher(req, res) {
             let {
-                user,
                 username,
                 classes,
                 subject
             } = req.body;
 
-            return data.createTeacher(user, username, subject, classes)
+            return data.createTeacher(username, subject, classes)
                 .then(teacher => {
                     res.json(JSON.stringify(teacher));
                 })

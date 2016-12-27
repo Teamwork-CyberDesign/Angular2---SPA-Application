@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClassService } from '../../services/class.service';
-import { Class } from '../../models/class';
+import { Class } from '../../models';
 import { animateFactory } from 'ng2-animate';
 
 @Component({

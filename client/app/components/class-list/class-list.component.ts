@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Class } from '../../models/class';
+import { Class, Teacher } from '../../models';
 import { ClassService } from '../../services/class.service';
-import { Teacher } from '../../models/teacher';
 import { AuthenticationService } from '../../services/authentication.service';
 import { TeacherService } from '../../services/teacher.service';
 import { NotificationsService } from 'angular2-notifications';
