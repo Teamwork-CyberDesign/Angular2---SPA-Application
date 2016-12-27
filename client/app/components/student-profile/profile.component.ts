@@ -27,7 +27,6 @@ export class ProfileComponent implements OnInit {
             .subscribe(
                 data => {
                     this.user = data[0] as User;
-                    console.log(this.user);
                     // this.router.navigate(['/profile']);
                 },
                 error => {

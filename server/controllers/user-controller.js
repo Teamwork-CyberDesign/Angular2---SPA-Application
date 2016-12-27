@@ -6,10 +6,10 @@ module.exports = function (data) {
     return {
         viewAllUsers(req, res) {
             data.getAllUsers()
-            .then(users => {
-                console.log(users);
-                res.json(JSON.stringify(users));
-            });
+                .then(users => {
+                    console.log(users);
+                    res.json(JSON.stringify(users));
+                });
         },
         viewUserByName(req, res) {
             data.findUserByUsername(req.params.name)
@@ -93,7 +93,7 @@ module.exports = function (data) {
                     }
 
                     // req.flash("successMessage", "You have logged in successfully!");
-                    res.json(JSON.stringify({ username: user.username, token: req.sessionID}));
+                    res.json(JSON.stringify({ username: user.username, token: req.sessionID, role: user.role }));
                     // res.redirect(req.session.returnTo || "/");
                     req.session.returnTo = null;
                 });

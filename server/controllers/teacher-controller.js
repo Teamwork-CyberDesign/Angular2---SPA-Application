@@ -12,7 +12,7 @@ module.exports = function (data) {
                 });
         },
         findTeacherByUsername(req, res) {
-            let username = req.query.username;
+            let username = req.params.username;
             return data.findTeacherByUsername(username)
                 .then(teacher => {
                     res.json(JSON.stringify(teacher));

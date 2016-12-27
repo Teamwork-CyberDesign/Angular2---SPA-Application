@@ -13,7 +13,6 @@ export class ClassListComponent implements OnInit {
 
     constructor(private data: ClassService) {
         this.currentSelection = new Class();
-
     }
 
     ngOnInit() {

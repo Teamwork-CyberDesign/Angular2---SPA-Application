@@ -10,6 +10,7 @@ import { StudentService } from '../../services/student.service';
 
 export class SingleStudentComponent {
     @Input() data: Student;
+    @Input() subject: string;
     // private revertData: Student;
 
     private notifier: NotificationsService;
@@ -23,14 +24,14 @@ export class SingleStudentComponent {
 
     private saveStudent() {
         // TODO: get teacher subjects
-        this.studentService.addMarksToStudent(this.data, 'bio')
+        this.studentService.addMarksToStudent(this.data, this.subject)
             .subscribe(() => {
                 this.notifier.success('Student saved!', 'Hopefully');
             });
     }
 
-    private addMark(mark, subject) {
-        let markInfo = this.data.marks.filter(info => info.subject === subject)[0];
+    private addMark(mark) {
+        let markInfo = this.data.marks.filter(info => info.subject === this.subject)[0];
         markInfo.marks.push(+mark);
         this.notifier.success('Mark added successfully!', '');
     }

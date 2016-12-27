@@ -15,10 +15,14 @@ export class TeacherGuard extends AuthGuard {
 
     canActivate(): boolean {
         if (super.canActivate()) {
-            // TODO:
-            // return this.auth.userIs('teacher');
-            return true;
+            let isTeacher = this.auth.userIs('teacher');
+            if (!isTeacher) {
+                this.notifier.error('Error', 'You must be a teacher in order to do that!');
+            }
+
+            return isTeacher;
         }
+
         this.notifier.error('Error', 'You must be a teacher in order to do that!');
         return false;
     }

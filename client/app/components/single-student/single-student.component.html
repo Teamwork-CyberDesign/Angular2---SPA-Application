@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 Current marks:
-                <p *ngFor="let markInfo of (data.marks | filterByTeacherSubject:'bio')" #subject>{{markInfo.subject}}
+                <p *ngFor="let markInfo of (data.marks | filterByTeacherSubject:subject)" #subject>{{markInfo.subject}}
                     <span *ngFor="let mark of markInfo.marks">{{mark}} </span>
                 </p>
                 <form class="form-inline">
@@ -20,7 +20,7 @@
                             <option value="5">5</option>
                             <option value="6">6</option>
                         </select>
-                        <button type="button" class="btn btn-success" (click)="addMark(addMarkSelect.value, 'bio')">Add mark
+                        <button type="button" class="btn btn-success" (click)="addMark(addMarkSelect.value)">Add mark
                         </button>
                     </div>
                     <div class="modal-footer">

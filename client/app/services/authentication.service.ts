@@ -6,9 +6,10 @@ import { Observable } from 'rxjs';
 import { NotificationsService } from 'angular2-notifications';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { CookieOptions } from 'angular2-cookie/services/base-cookie-options';
+import { UserService } from './user.service';
 
 const storageUserKey = 'currentUser';
-// const storageUserRoleKey = 'userRole';
+const storageUserRoleKey = 'userRole';
 const storageSessionKey = 'sessionKey';
 
 @Injectable()
@@ -16,13 +17,16 @@ export class AuthenticationService {
     private requester: AjaxRequesterService<User>;
     private notifier: NotificationsService;
     private cookieService: CookieService;
+    private userService: UserService;
 
     constructor(requester: AjaxRequesterService<User>,
                 notifier: NotificationsService,
+                userService: UserService,
                 cookieService: CookieService) {
         this.requester = requester;
         this.notifier = notifier;
         this.cookieService = cookieService;
+        this.userService = userService;
     }
 
     login(username: string, password: string): Observable<User> {
@@ -34,6 +38,7 @@ export class AuthenticationService {
                     options.expires = new Date(now.setTime(now.getTime() + 31 * 86400000));
                     this.cookieService.put(storageUserKey, sessionInfo.username, options);
                     this.cookieService.put(storageSessionKey, sessionInfo.token, options);
+                    this.cookieService.put(storageUserRoleKey, sessionInfo.role, options);
                 }
 
                 return Promise.resolve(sessionInfo);
@@ -43,6 +48,7 @@ export class AuthenticationService {
     logout(): void {
         this.cookieService.remove(storageSessionKey);
         this.cookieService.remove(storageUserKey);
+        this.cookieService.remove(storageUserRoleKey);
 
         this.notifier.success('Success', 'You have logged out successfully');
     }
@@ -51,13 +57,21 @@ export class AuthenticationService {
         return this.cookieService.get(storageUserKey);
     }
 
+    getRole(): string {
+        return this.cookieService.get(storageUserRoleKey);
+    }
+
     isLoggedIn(): boolean {
         return !!this.cookieService.get(storageUserKey) && !!this.cookieService.get(storageSessionKey);
     }
 
-    // userIs(role: string): boolean {
-    //     if (!this.isLoggedIn()) {
-    //         return false;
-    //     }
-    // }
+    userIs(role: string): boolean {
+        if (!this.isLoggedIn()) {
+            return false;
+        }
+
+        let userRole = this.getRole();
+
+        return role === userRole;
+    }
 }

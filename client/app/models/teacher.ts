@@ -5,7 +5,7 @@ export class Teacher implements Person{
     firstName: string;
     lastName: string;
     class: string;
-    subjects: any[];
+    subject: string;
     students: any[];
 
 }

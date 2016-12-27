@@ -33,6 +33,7 @@ import { FilterByTeacherSubjectPipe } from './pipes/filter-by-teacher-subject.pi
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { StudentService } from './services/student.service';
 import { AveragePipe } from './pipes/average.pipe';
+import { TeacherService } from './services/teacher.service';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -72,6 +73,7 @@ import { AveragePipe } from './pipes/average.pipe';
         AjaxRequesterService,
         AuthGuard,
         StudentService,
+        TeacherService,
         TeacherGuard,
         CookieService]
 })
