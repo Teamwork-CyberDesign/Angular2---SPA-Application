@@ -9,7 +9,7 @@ import { User } from '../../models/user';
 
 export class ProfileComponent implements OnInit{
     model: any = {};
-    user: any = {};
+    user: any = [];
 
     constructor(private router: Router,
                 private userService: UserService) {
@@ -23,8 +23,7 @@ export class ProfileComponent implements OnInit{
         this.userService.getUserByUsername("alex0101")
             .subscribe(
                 data => {
-                    console.log(data[0]);
-                    this.user = data[0];
+                    this.user.push(data[0]);
                     console.log(this.user);
                     //this.router.navigate(['/profile']);
                 },
