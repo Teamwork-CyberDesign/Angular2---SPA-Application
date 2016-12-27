@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component'; //
 import { AddMarkComponent } from './components/add-mark/add-mark.component'; // import component for adding marks
 import { AddClassComponent } from './components/create-class/addClass.component'; // import component for adding marks
 import { UsersComponent } from './components/users/users.component';
+import { ProfileComponent } from './components/student-profile/profile.component';
 import { AboutComponent } from './components/about/about.component'; // import about component
 import { routing } from './app.routing';
 import { APP_BASE_HREF } from '@angular/common';
@@ -53,6 +54,7 @@ import { AveragePipe } from './pipes/average.pipe';
         ClassListComponent,
         SingleClassComponent,
         SingleStudentComponent,
+        ProfileComponent,
         SortByFirstNamePipe,
         SortByFirstThenByLastNamePipe,
         SortByClassNumberPipe,

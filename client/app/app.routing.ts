@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent} from './components/register/register.component';
+import { ProfileComponent} from './components/student-profile/profile.component';
 import { AboutComponent } from './components/about/about.component';
 import { AddMarkComponent } from './components/add-mark/add-mark.component';
 import { AddClassComponent } from './components/create-class/addClass.component';
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'about', component: AboutComponent },
   { path: 'addMark', component: AddMarkComponent },
   { path: 'addClass', component: AddClassComponent },
