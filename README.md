@@ -3,7 +3,7 @@
 <img src="https://camo.githubusercontent.com/08ecbe7b67d65cc7c6990787e2836b27b4296f2d/68747470733a2f2f7261772e6769746875622e636f6d2f666c65787472792f54656c6572696b2d41636164656d792f6d61737465722f50726f6772616d6d696e6725323077697468253230432532332f436f6465732f4f746865722f54656c6572696b2e706e67"/>
 </a>
 
-<h1 align="center">Single page applications with Angular2 Team "CyberDesign"</h1>
+<h1 align="center">Single page applications with Angular2 - Team "CyberDesign"</h1>
 
 <p align="center">
     <img src="https://cloud.githubusercontent.com/assets/1016365/9863762/a84fed4a-5af7-11e5-9dde-d5da01e797e7.png" alt="Webpack and Angular 2" width="500" height="320"/>
@@ -16,7 +16,7 @@
 |Александър Несторов |__Alexander.N__	        |
 |Иван Първанов |__ivan.parvanov.1__	        |
 
-# E-School
+# E-School - Gradebook
 
 <img src="https://tgc-cache.s3.amazonaws.com/images/remote/http_s3.amazonaws.com/tgc-ee2/articles/615_Graduate_Graduation_College_Reuters.jpg"/>
 
