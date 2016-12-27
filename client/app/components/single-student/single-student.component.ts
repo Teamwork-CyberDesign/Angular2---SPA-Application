@@ -36,6 +36,14 @@ export class SingleStudentComponent {
         this.notifier.success('Mark added successfully!', '');
     }
 
-    private revertToPrevious() {
+    private removeMark(mark) {
+        let markInfo = this.data.marks.filter(info => info.subject === this.subject)[0];
+        let index = markInfo.marks.indexOf(+mark);
+        if (index > -1) {
+            markInfo.marks.splice(index, 1);
+            this.notifier.success('Mark removed successfully!', '');
+        } else {
+            this.notifier.alert('Student doesn\'t have selected mark!', '');
+        }
     }
 }

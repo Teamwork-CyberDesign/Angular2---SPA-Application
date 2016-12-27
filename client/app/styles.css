@@ -49,3 +49,7 @@ html, body {
 .navbar-toggle .icon-bar {
     background-color: #ecf0f1;
 }
+
+.simple-notification {
+    z-index: 9999;
+}

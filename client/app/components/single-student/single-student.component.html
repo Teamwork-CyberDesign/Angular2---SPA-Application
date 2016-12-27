@@ -12,7 +12,7 @@
                 </p>
                 <form class="form-inline">
                     <div class="form-group">
-                        <label for="addMark">Select new mark:</label>
+                        <label for="addMark">Select mark:</label>
                         <select class="form-control" name="addMark" id="addMark" #addMarkSelect>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -20,14 +20,17 @@
                             <option value="5">5</option>
                             <option value="6">6</option>
                         </select>
+                    </div>
+                    <div class="form-group">
                         <button type="button" class="btn btn-success" (click)="addMark(addMarkSelect.value)">Add mark
+                        </button>
+                        <button type="button" class="btn btn-danger" (click)="removeMark(addMarkSelect.value)">Remove mark
                         </button>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" data-dismiss="modal"
                                 (click)="saveStudent(addMarkSelect.value)">Save
                         </button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="revertToPrevious()">Cancel</button>
                     </div>
                 </form>
 
