@@ -14,7 +14,7 @@
     <tr *ngFor="let student of  (data.students | sortByClassNumber)">
         <td>{{student.classNumber}}</td>
         <td>{{student.user.firstName + ' ' + student.user.lastName}}</td>
-        <td><span *ngFor="let markInfo of (student.marks | filterByTeacherSubject:subject)"><span *ngFor="let mark of markInfo.marks"> {{mark}}</span></span></td>
+        <td><span *ngFor="let markInfo of (student.marks | filterByTeacherSubject:subject)"><span *ngFor="let mark of markInfo.marks"> {{mark}},</span></span></td>
         <td><span *ngFor="let markInfo of (student.marks | filterByTeacherSubject:subject)"><span>{{markInfo.marks | average}}</span></span></td>
         <td>
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#editStudentModal" (click)="onEditClick(student)">Edit</button>

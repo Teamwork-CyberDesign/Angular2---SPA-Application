@@ -6,11 +6,11 @@
                 <h4 class="modal-title">{{data.classNumber}}: {{data.user.firstName + " " + data.user.lastName}}</h4>
             </div>
             <div class="modal-body">
-                Current marks:
-                <p *ngFor="let markInfo of (data.marks | filterByTeacherSubject:subject)" #subject>{{markInfo.subject}}
-                    <span *ngFor="let mark of markInfo.marks">{{mark}} </span>
-                </p>
-                <form class="form-inline">
+                <p>Current marks:</p>
+                <span *ngFor="let markInfo of (data.marks | filterByTeacherSubject:subject)" #subject>
+                    <span *ngFor="let mark of markInfo.marks">{{mark}}, </span>
+                </span>
+                <form class="">
                     <div class="form-group">
                         <label for="addMark">Select mark:</label>
                         <select class="form-control" name="addMark" id="addMark" #addMarkSelect>

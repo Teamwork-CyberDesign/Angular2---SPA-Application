@@ -70,8 +70,6 @@ export class AuthenticationService {
             return false;
         }
 
-        let userRole = this.getRole();
-
-        return role === userRole;
+        return role === this.getRole();
     }
 }

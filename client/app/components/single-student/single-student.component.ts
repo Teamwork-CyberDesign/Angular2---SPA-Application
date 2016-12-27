@@ -23,7 +23,6 @@ export class SingleStudentComponent {
     }
 
     private saveStudent() {
-        // TODO: get teacher subjects
         this.studentService.addMarksToStudent(this.data, this.subject)
             .subscribe(() => {
                 this.notifier.success('Student saved!', 'Hopefully');

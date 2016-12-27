@@ -34,6 +34,7 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { StudentService } from './services/student.service';
 import { AveragePipe } from './pipes/average.pipe';
 import { TeacherService } from './services/teacher.service';
+import { CreateTeacherComponent } from './components/create-teacher/create-teacher.component';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -54,6 +55,7 @@ import { TeacherService } from './services/teacher.service';
         UsersComponent,
         PageNotFoundComponent,
         ClassListComponent,
+        CreateTeacherComponent,
         SingleClassComponent,
         SingleStudentComponent,
         ProfileComponent,

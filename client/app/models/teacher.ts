@@ -1,11 +1,13 @@
-import { Person } from './person';
+import { User } from './user';
 
-export class Teacher implements Person{
-    _id: string;
-    firstName: string;
-    lastName: string;
-    class: string;
+export class Teacher {
+    user: User;
     subject: string;
-    students: any[];
+    classes: string[];
 
+    constructor() {
+        this.subject = '';
+        this.classes = [];
+        this.user = new User();
+    }
 }
