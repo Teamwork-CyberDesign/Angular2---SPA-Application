@@ -18,6 +18,8 @@
 
 # E-School
 
+<img src="https://tgc-cache.s3.amazonaws.com/images/remote/http_s3.amazonaws.com/tgc-ee2/articles/615_Graduate_Graduation_College_Reuters.jpg"/>
+
 ## Project Description  
 
 This is a simple project management system that allows students, teachers and parents view in real time the education process in current school
@@ -66,7 +68,7 @@ Visitors cannot view marks until they're not logged in the app.
 
 ## Application private part
 
-Only LeadUser can add tasks.
+Only User with Role: headMaster can create new classes.
 Only Users with Role: teacher can add or edit data in current class.
 
 ## Backend server
