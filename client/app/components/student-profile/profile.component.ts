@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
             .subscribe(
                 data => {
                     this.user = data[0] as User;
+                    console.log(this.user.imagePath);
                     // this.router.navigate(['/profile']);
                 },
                 error => {

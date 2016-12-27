@@ -49,6 +49,10 @@ let UserSchema = new Schema({
         enum: roles,
         default: "student"
     },
+    imagePath: {
+        type: String,
+        default: "../../client/images/default.png"
+    },
     resetPasswordToken: String,
     resetPasswordExpires: Date
 });

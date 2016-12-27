@@ -6,6 +6,7 @@ export class User {
     password: string;
     token: string;
     role: string;
+    imagePath: string;
 
     constructor() {
     }
