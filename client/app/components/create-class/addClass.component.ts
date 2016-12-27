@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotificationsService} from 'angular2-notifications';
 import { ClassService } from '../../services/class.service';
 import { UserService } from '../../services/user.service';
 import { subjects} from '../../utils/subjects-data';
@@ -21,7 +22,8 @@ export class AddClassComponent implements OnInit{
 
     constructor(private router: Router,
                 private classService: ClassService,
-                private userService: UserService) {
+                private userService: UserService,
+                private notifier: NotificationsService) {
     }
 
         ngOnInit() {
@@ -33,9 +35,11 @@ export class AddClassComponent implements OnInit{
             .subscribe(
                 data => {
                     console.log(data);
+                    this.notifier.success('Success', 'You create new class successfully');
                     this.router.navigate(['/']);
                 },
                 error => {
+                    this.notifier.error('Error', error);
                     console.log(error);
                 }
             );

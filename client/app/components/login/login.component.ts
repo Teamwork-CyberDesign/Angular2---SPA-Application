@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
                 data => {
                     console.log(data);
                     if (data.username === this.model.username){
-                        this.router.navigate([this.returnUrl]);
+                        this.router.navigate(['/profile']);
                         this.notifier.success('Success', 'You have logged in successfully');
                     }else{
                         this.notifier.error('Error', 'Invalid username or password');
