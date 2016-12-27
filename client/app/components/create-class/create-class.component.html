@@ -39,7 +39,7 @@
             <ul class="list-group">
                 <li *ngFor="let st of model.students" class="list-group-item">
                     <span>{{st.user.firstName + ' ' + st.user.lastName}}</span>
-                    <button (click)="removeStudent(st)" class="badge btn btn-danger btn-xs">X</button>
+                    <button (click)="removeStudent(st._id)" class="badge btn btn-danger btn-xs">X</button>
                 </li>
             </ul>
         </div>
