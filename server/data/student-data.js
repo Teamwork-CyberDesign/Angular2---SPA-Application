@@ -83,6 +83,19 @@ module.exports = function (models) {
 
                     student.save();
                 })
+        },
+        getAllStudents() {
+            return new Promise((resolve, reject) => {
+                Student.find({})
+                    .populate("user", "-password -salt")
+                    .exec((err, user) => {
+                        if (err) {
+                            return reject(err);
+                        }
+
+                        return resolve(user);
+                    });
+            });
         }
     };
 };

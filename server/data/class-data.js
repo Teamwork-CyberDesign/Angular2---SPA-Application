@@ -2,7 +2,7 @@
 "use strict";
 
 module.exports = function (models) {
-    let { Class } = models;
+    let { Class, Student } = models;
 
     return {
         createClass(grade, subjects, students = []) {
@@ -17,6 +17,37 @@ module.exports = function (models) {
                     if (err) {
                         return reject(err);
                     }
+
+                    students.sort((first, second) => {
+                        let a = first.user;
+                        let b = second.user;
+
+                        if (a.firstName === b.firstName) {
+                            if (a.lastName === b.lastName) {
+                                return 0;
+                            } else if (a.lastName < b.lastName) {
+                                return -1;
+                            } else {
+                                return 1;
+                            }
+                        } else if (a.firstName < b.firstName) {
+                            return -1;
+                        } else {
+                            return 1;
+                        }
+                    });
+
+                    students.forEach((student, index) => {
+                        Student.findOne({ _id: student._id })
+                            .exec((err, dbStudent) => {
+                                if(err) {
+                                    reject(err);
+                                }
+
+                                dbStudent.classNumber = index + 1;
+                                dbStudent.save();
+                            })
+                    });
 
                     return resolve(cl);
                 });

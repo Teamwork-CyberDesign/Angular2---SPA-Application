@@ -2,6 +2,7 @@ import { User } from './user';
 import { MarkInfo } from './mark-info';
 
 export class Student {
+    _id: string;
     user: User;
     classNumber: number;
     egn: number;

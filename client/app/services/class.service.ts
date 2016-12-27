@@ -17,16 +17,15 @@ export class ClassService {
         this.auth = auth;
     }
 
-    createClass(cl: Class): Observable<Class> {
-        console.log(cl);
+    createClass(cl: Class): Observable<any> {
         return this.requester.post(this.classUrl, cl, true);
     }
 
-    getClasses(/*classNumber: string*/): Observable<Class[]> {
+    getClasses(/*classNumber: string*/): Observable<any> {
         return this.requester.get(this.classUrl);
     }
 
-    getClassesForCurrentUser(): Observable<Class[]> {
+    getClassesForCurrentUser(): Observable<any> {
         let username = this.auth.getCurrentUser();
         if (username) {
             return this.requester.get(this.classUrl + '/' + username);

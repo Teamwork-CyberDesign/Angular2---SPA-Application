@@ -51,6 +51,15 @@ module.exports = function (data) {
                 .catch(err => {
                     res.json(JSON.stringify(err));
                 });
+        },
+        getAllStudents(req, res) {
+            return data.getAllStudents()
+                .then(students => {
+                    res.json(JSON.stringify(students));
+                })
+                .catch(err => {
+                    res.json(JSON.stringify(err));
+                });
         }
     };
 };

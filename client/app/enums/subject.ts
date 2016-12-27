@@ -9,3 +9,8 @@ export enum Subject {
     Bulgarian,
     None
 }
+
+export const SubjectsAsString = Object.keys(Subject)
+    .map(s => Subject[s])
+    .filter(v => typeof v === 'string');
+

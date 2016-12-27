@@ -11,20 +11,20 @@ import { NotificationsService } from 'angular2-notifications';
 })
 
 export class ClassListComponent implements OnInit {
+    private _currentSelection: Class;
     private classes: Class[];
     private teacher: Teacher;
-    private _currentSelection: Class;
     private teacherService: TeacherService;
     private auth: AuthenticationService;
     private classService: ClassService;
     private notifier: NotificationsService;
 
-    constructor(data: ClassService,
+    constructor(classService: ClassService,
                 auth: AuthenticationService,
                 teacherService: TeacherService,
                 notifier: NotificationsService) {
         this.currentSelection = new Class();
-        this.classService = data;
+        this.classService = classService;
         this.teacher = new Teacher();
         this.teacherService = teacherService;
         this.auth = auth;

@@ -7,7 +7,7 @@ import { RegisterComponent} from './components/register/register.component';
 import { ProfileComponent} from './components/student-profile/profile.component';
 import { AboutComponent } from './components/about/about.component';
 import { AddMarkComponent } from './components/add-mark/add-mark.component';
-import { AddClassComponent } from './components/create-class/addClass.component';
+import { AddClassComponent } from './components/create-class/create-class.component';
 import { UsersComponent } from './components/users/users.component';
 import { PageNotFoundComponent } from './components/page-not-found';
 import { ClassListComponent } from './components/class-list';

@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ClassService } from '../../services/class.service';
-import { Class } from '../../models';
+import { Component } from '@angular/core';
 import { animateFactory } from 'ng2-animate';
 
 @Component({
@@ -8,27 +6,10 @@ import { animateFactory } from 'ng2-animate';
     templateUrl: 'home.component.html',
     animations:  [animateFactory(1000, 200, 'ease-in')]
 })
-export class HomeComponent implements OnInit{
-    title: string;
-    classes: Class[]
+export class HomeComponent/* implements OnInit*/{
+    private title: string;
 
-    constructor(private classService: ClassService) {
+    constructor() {
         this.title = 'School administrative software';
     };
-
-    ngOnInit(){
-        this.loadClasses();
-    }
-
-    loadClasses() {
-        this.classService.getClasses()
-            .subscribe(
-                cl => {
-                    this.classes = cl as Class[];
-                    console.log(this.classes);
-                },
-                err => {
-                    console.log(err);
-                });
-    }
 }

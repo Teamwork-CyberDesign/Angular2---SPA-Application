@@ -8,7 +8,7 @@ import { HomeComponent } from './components/home/home.component'; // import home
 import { LoginComponent } from './components/login/login.component'; // import login component
 import { RegisterComponent } from './components/register/register.component'; // import register component
 import { AddMarkComponent } from './components/add-mark/add-mark.component'; // import component for adding marks
-import { AddClassComponent } from './components/create-class/addClass.component'; // import component for adding marks
+import { AddClassComponent } from './components/create-class/create-class.component'; // import component for adding marks
 import { UsersComponent } from './components/users/users.component';
 import { ProfileComponent } from './components/student-profile/profile.component';
 import { AboutComponent } from './components/about/about.component'; // import about component

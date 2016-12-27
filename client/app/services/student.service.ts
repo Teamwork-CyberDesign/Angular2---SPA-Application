@@ -30,4 +30,8 @@ export class StudentService {
             subject
         }, true);
     }
+
+    getAllStudents(): Observable<Student[]> {
+        return this.requester.get(this.studentUrl);
+    }
 }

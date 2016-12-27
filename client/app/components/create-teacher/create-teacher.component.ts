@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
 import { ClassService } from '../../services/class.service';
 import { Class, Teacher } from '../../models';
-import { Subject } from '../../enums/subject';
+import { Subject, SubjectsAsString } from '../../enums/subject';
 import { TeacherService } from '../../services/teacher.service';
 
 @Component({
@@ -23,9 +23,7 @@ export class CreateTeacherComponent {
         this.classService = classService;
         this.notifier = notifier;
         this.teacherService = teacherService;
-        this.subjects = Object.keys(Subject)
-            .map(s => Subject[s])
-            .filter(v => typeof v === 'string');
+        this.subjects = SubjectsAsString;
 
         this.model = new Teacher();
         this.classes = [];
