@@ -19,7 +19,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent },
   { path: 'addMark', component: AddMarkComponent },
   { path: 'addClass', component: AddClassComponent },

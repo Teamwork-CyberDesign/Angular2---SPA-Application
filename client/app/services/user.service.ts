@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class UserService {
     private requester: AjaxRequesterService<User>;
     private usersUrl = '/api/users';
-    private profileUrl = '/api/profile/:username';
+    private profileUrl = '/api/profile';
 
     constructor(requester: AjaxRequesterService<User>) {
         this.requester = requester;
@@ -20,7 +20,7 @@ export class UserService {
     }
 
     getUserByUsername(username: string): Observable<User[] | User> {
-        return this.requester.get(this.profileUrl);
+        return this.requester.get(this.profileUrl + `/${username}`);
     }
 
     createUser(user: User): Observable<User> {

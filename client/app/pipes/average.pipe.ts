@@ -1,6 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'average', pure: false })
+@Pipe({
+    name: 'average',
+    pure: false
+})
+
 export class AveragePipe implements PipeTransform {
     transform(numbers: number[]) {
         if (numbers.length === 0) {
