@@ -65,6 +65,7 @@
     "jquery": "^3.1.1",
     "mongoose": "^4.7.3",
     "morgan": "^1.7.0",
+    "multer": "^1.2.1",
     "ng2-animate": "^1.2.1",
     "ng2-auto-complete": "^0.8.2",
     "nodemailer": "^2.7.0",
