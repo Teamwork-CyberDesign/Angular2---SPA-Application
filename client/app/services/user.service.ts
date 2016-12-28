@@ -23,11 +23,11 @@ export class UserService {
         return this.requester.get(this.profileUrl + `/${username}`);
     }
 
-    createUser(user: User): Observable<User> {
+    createUser(user: User): Observable<any> {
         return this.requester.post(this.usersUrl, user, false);
     }
 
-    updateUser(user: User): Observable<User> {
+    updateUser(user: User): Observable<any> {
         return this.requester.put(this.usersUrl, user, true);
     }
 

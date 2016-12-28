@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { NotificationsService} from 'angular2-notifications';
+import { NotificationsService } from 'angular2-notifications';
 import { User } from '../../models/user';
 
 @Component({
@@ -22,9 +22,13 @@ export class RegisterComponent {
             .subscribe(
                 data => {
                     console.log(data);
-                    this.notifier.success('Success', 'Registration has completed successfully.')
-                    this.notifier.info('Note:', 'Now you must log in to get access of your profile.')
-                    this.router.navigate(['/login']);
+                    if (data.errmsg) {
+                        this.notifier.error('Error', data.errmsg);
+                    } else {
+                        this.notifier.success('Success', 'Registration has completed successfully.');
+                        this.notifier.info('Note:', 'Now you must log in to get access of your profile.');
+                        this.router.navigate(['/login']);
+                    }
                 },
                 error => {
                     console.log(error);

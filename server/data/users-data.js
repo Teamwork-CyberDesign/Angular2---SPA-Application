@@ -27,9 +27,9 @@ module.exports = function (models) {
                     if (err) {
                         let error;
                         if (err.code === 11000 && err.message.indexOf("email") > 0) {
-                            error = new Error("This email is already in use!");
+                            error = { errmsg: "This email is already in use!" };
                         } else if (err.code === 11000 && err.message.indexOf("username") > 0) {
-                            error = new Error("This username is already in use!");
+                            error = { errmsg: "This username is already in use!" };
                         } else {
                             error = err;
                         }
@@ -60,7 +60,7 @@ module.exports = function (models) {
                         if (err) {
                             return reject(err);
                         }
-            
+
                         return resolve(user);
                     });
             });
@@ -77,17 +77,17 @@ module.exports = function (models) {
             });
         },
         getAllUsers() {
-             return new Promise((resolve, reject) => {
-                 User.find({})
-                     .select('-password -salt')
-                     .exec((err, users) => {
-                         if (err) {
+            return new Promise((resolve, reject) => {
+                User.find({})
+                    .select('-password -salt')
+                    .exec((err, users) => {
+                        if (err) {
 
-                             return reject(err);
-                         }
+                            return reject(err);
+                        }
 
-                         return resolve(users);
-                     });
+                        return resolve(users);
+                    });
             });
         },
         searchUsers(username) {
