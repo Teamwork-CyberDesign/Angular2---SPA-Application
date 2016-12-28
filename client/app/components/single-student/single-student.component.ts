@@ -3,7 +3,6 @@ import { Student } from '../../models';
 import { NotificationsService } from 'angular2-notifications';
 import { StudentService } from '../../services/student.service';
 import { Subject } from '../../enums/subject';
-import { MarkInfo } from '../../models/mark-info';
 
 @Component({
     selector: 'single-student',
@@ -13,7 +12,6 @@ import { MarkInfo } from '../../models/mark-info';
 export class SingleStudentComponent {
     @Input() data: Student;
     @Input() subject: Subject;
-    // private revertData: Student;
 
     private notifier: NotificationsService;
     private studentService: StudentService;
@@ -27,7 +25,7 @@ export class SingleStudentComponent {
     private saveStudent(): void {
         this.studentService.addMarksToStudent(this.data, this.subject)
             .subscribe(() => {
-                this.notifier.success('Student saved!', 'Hopefully');
+                this.notifier.success('Student saved!', '');
             });
     }
 
@@ -35,10 +33,9 @@ export class SingleStudentComponent {
         let markInfo = this.data.marks.filter(info => info.subject === this.subject)[0];
 
         if (!markInfo) {
-            markInfo = new MarkInfo();
-            markInfo.subject = this.subject;
+            markInfo = { subject: this.subject, marks: [] };
             this.data.marks.push(markInfo);
-            markInfo = this.data.marks[this.data.marks.length - 1];
+            markInfo = this.data.marks.filter(info => info.subject === this.subject)[0];
         }
 
         markInfo.marks.push(+mark);
