@@ -22,26 +22,26 @@ export class EqualValidator implements Validator {
 
     validate(c: AbstractControl): { [key: string]: any } {
         let thisValue = c.value;
-        let otherValue = c.root.get(this.validateEqual);
+        let otherControl = c.root.get(this.validateEqual);
 
         // value not equal
-        if (otherValue && thisValue !== otherValue.value && !this.isReverse) {
+        if (otherControl && thisValue !== otherControl.value && !this.isReverse) {
             return {
                 validateEqual: false
             };
         }
 
         // value equal and reverse
-        if (otherValue && thisValue === otherValue.value && this.isReverse) {
-            delete otherValue.errors['validateEqual'];
-            if (!Object.keys(otherValue.errors).length) {
-                otherValue.setErrors(null);
+        if (otherControl && thisValue === otherControl.value && this.isReverse) {
+            delete otherControl.errors['validateEqual'];
+            if (!Object.keys(otherControl.errors).length) {
+                otherControl.setErrors(null);
             }
         }
 
         // value not equal and reverse
-        if (otherValue && thisValue !== otherValue.value && this.isReverse) {
-            otherValue.setErrors({ validateEqual: false });
+        if (otherControl && thisValue !== otherControl.value && this.isReverse) {
+            otherControl.setErrors({ validateEqual: false });
         }
 
         return null;

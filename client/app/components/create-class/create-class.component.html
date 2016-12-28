@@ -29,7 +29,7 @@
         </div>
         <div class="form-group well">
             <label for="students">Students</label><br>
-            <input class="form-control" ng2-auto-complete name="students"
+            <input (focus)="getStudents()" class="form-control" ng2-auto-complete name="students"
                    [source]="studentData" value-property-name="username" #student id="students"
                    display-property-name="_id" placeholder="Search for student"/>
 

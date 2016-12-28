@@ -13,7 +13,6 @@ import { SubjectsAsString } from '../../enums/subject';
 export class AddClassComponent implements OnInit {
     private model: Class;
     private subjects: string[] = SubjectsAsString;
-    // private students: Student[];
     private studentData: Student[];
 
     constructor(private router: Router,
@@ -62,9 +61,9 @@ export class AddClassComponent implements OnInit {
             .subscribe(
                 students => {
                     this.studentData = students as Student[];
-                    console.log(this.studentData);
                 },
                 err => {
+                    this.notifier.error('Error', err);
                     console.log(err);
                 });
     }

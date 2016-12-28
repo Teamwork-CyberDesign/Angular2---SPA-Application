@@ -98,5 +98,6 @@ export class CreateTeacherComponent {
 
     handleSelectChange(subject: string) {
         this.model.subject = Subject[subject];
+        this.model.classes = [];
     }
 }
