@@ -98,16 +98,23 @@ module.exports = function (models) {
                 userIds = [userIds];
             }
 
-            return this.findClassByGradeAndLetter(grade)
-                .then(cl => {
-                    userIds.forEach(id => {
-                        if (cl.students.indexOf(id) < 0) {
-                            cl.students.push(id);
+            return new Promise((resolve, reject) => {
+                Class.findOne({ grade })
+                    .exec((err, cl) => {
+                        if (err) {
+                            return reject(err);
                         }
-                    });
 
-                    cl.save();
-                })
+                        userIds.forEach(id => {
+                            if (cl.students.indexOf(id) < 0) {
+                                cl.students.push(id);
+                            }
+                        });
+
+                        cl.save();
+                        return resolve(cl);
+                    });
+            });
         },
         getAllClasses() {
             return new Promise((resolve, reject) => {

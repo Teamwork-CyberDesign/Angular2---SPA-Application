@@ -5,12 +5,11 @@ module.exports = function (models) {
     let { Student } = models;
 
     return {
-        createStudent(user, username, classNumber, egn, marks = []) {
+        createStudent(user, username, classNumber, marks = []) {
             let student = new Student({
                 user,
                 username,
                 classNumber,
-                egn,
                 marks
             });
 

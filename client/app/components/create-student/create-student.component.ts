@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
 import { ClassService } from '../../services/class.service';
-import { Class, User, Student } from '../../models';
+import { Class, Student } from '../../models';
 import { UserService } from '../../services/user.service';
 import { StudentService } from '../../services/student.service';
 
@@ -43,33 +43,16 @@ export class CreateStudentComponent {
     }
 
     createStudent() {
-        console.log(this.model);
-        this.userService.createUser(this.model.user)
-            .subscribe(user => {
-                console.log(user);
+        this.studentService.createStudent(this.model, this.studentClass)
+            .subscribe(res => {
+                console.log(res);
+                if (res.err || res.errmsg) {
+                    this.notifier.error('Error', res.err || res.errmsg);
+                } else {
+                    this.notifier.success('Success', 'Student has been created!');
+                }
             }, err => {
-
+                this.notifier.error('Error', err);
             });
-        //     if (!this.model.user.username || this.model.user.username.length < 1) {
-    //         this.notifier.error('Error', 'Teacher username is required!');
-    //         return;
-    //     }
-    //
-    //     // if (!this.model.subject) {
-    //     //     this.notifier.error('Error', 'Teacher subject is required!');
-    //     //     return;
-    //     // }
-    //     //
-    //     // if (!this.model.classes || this.model.classes.length < 1) {
-    //     //     this.notifier.error('Error', 'Teacher classes are required!');
-    //     //     return;
-    //     // }
-    //
-    //     this.studentService.createStudent();
-    }
-
-    handleSelectChange(grade: string) {
-        this.studentClass = grade;
-        console.log(grade);
     }
 }

@@ -18,11 +18,12 @@ export class StudentService {
         this.auth = auth;
     }
 
-    createStudent(student: Student): Observable<Student> {
-        return this.requester.post(this.studentUrl, student, true);
+    createStudent(student: Student, grade: string): Observable<any> {
+        let body = { student, grade };
+        return this.requester.post(this.studentUrl, body, true);
     }
 
-    addMarksToStudent(student: Student, subject: Subject): Observable<Student> {
+    addMarksToStudent(student: Student, subject: Subject): Observable<any> {
         let marks = student.marks.filter(info => info.subject === subject)[0].marks;
         return this.requester.put(this.studentUrl + `/add-marks`, {
             marks,
