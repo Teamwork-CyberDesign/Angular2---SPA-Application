@@ -18,9 +18,8 @@ export class StudentService {
         this.auth = auth;
     }
 
-    createStudent(student: Student, grade: string): Observable<any> {
-        let body = { student, grade };
-        return this.requester.post(this.studentUrl, body, true);
+    createStudent(student: Student): Observable<any> {
+        return this.requester.post(this.studentUrl, student, true);
     }
 
     addMarksToStudent(student: Student, subject: Subject): Observable<any> {

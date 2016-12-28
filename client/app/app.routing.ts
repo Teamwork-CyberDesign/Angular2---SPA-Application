@@ -13,7 +13,6 @@ import { ClassListComponent } from './components/class-list';
 import { AuthGuard } from './services/auth-guard.service';
 import { TeacherGuard } from './services/teacher-guard.service';
 import { CreateTeacherComponent } from './components/create-teacher/create-teacher.component';
-import { CreateStudentComponent } from './components/create-student/create-student.component';
 
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -25,7 +24,6 @@ const appRoutes: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'addMark', component: AddMarkComponent, canActivate: [TeacherGuard] },
     { path: 'addClass', component: AddClassComponent, canActivate: [TeacherGuard] },
-    { path: 'addStudent', component: CreateStudentComponent, canActivate: [TeacherGuard] },
     { path: 'classes', component: ClassListComponent, canActivate: [TeacherGuard] },
     { path: 'addTeacher', component: CreateTeacherComponent, canActivate: [TeacherGuard] },
     { path: '', component: HomeComponent, pathMatch: 'full' },

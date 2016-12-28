@@ -1,4 +1,5 @@
 <div class="col-md-6 col-md-offset-3">
+    <create-student-modal></create-student-modal>
     <h2>Add Class to School</h2>
     <form name="form" (ngSubmit)="f.form.valid && createClass()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !grade.valid }">

@@ -38,6 +38,7 @@ import { CreateTeacherComponent } from './components/create-teacher/create-teach
 import { FilterClassBySubject } from './pipes/filter-class-by-subject.pipe';
 import { CreateStudentComponent } from './components/create-student';
 import { EqualValidator } from './directives/validate-equal.directive';
+import { CreateStudentModalComponent } from './components/create-student-modal/create-student-modal.component';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -70,6 +71,7 @@ import { EqualValidator } from './directives/validate-equal.directive';
         AveragePipe,
         FilterClassBySubject,
         CeiboShare,
+        CreateStudentModalComponent,
         EqualValidator
     ],
     bootstrap: [AppComponent], // root component to bootstarp
