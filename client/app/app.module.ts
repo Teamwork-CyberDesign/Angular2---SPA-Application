@@ -36,6 +36,8 @@ import { AveragePipe } from './pipes/average.pipe';
 import { TeacherService } from './services/teacher.service';
 import { CreateTeacherComponent } from './components/create-teacher/create-teacher.component';
 import { FilterClassBySubject } from './pipes/filter-class-by-subject.pipe';
+import { CreateStudentComponent } from './components/create-student';
+import { EqualValidator } from './directives/validate-equal.directive';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -59,6 +61,7 @@ import { FilterClassBySubject } from './pipes/filter-class-by-subject.pipe';
         CreateTeacherComponent,
         SingleClassComponent,
         SingleStudentComponent,
+        CreateStudentComponent,
         ProfileComponent,
         SortByFirstNamePipe,
         SortByFirstThenByLastNamePipe,
@@ -66,7 +69,8 @@ import { FilterClassBySubject } from './pipes/filter-class-by-subject.pipe';
         FilterByTeacherSubjectPipe,
         AveragePipe,
         FilterClassBySubject,
-        CeiboShare
+        CeiboShare,
+        EqualValidator
     ],
     bootstrap: [AppComponent], // root component to bootstarp
     providers: [

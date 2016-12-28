@@ -21,7 +21,7 @@
             <ul class="list-group">
                 <li *ngFor="let subject of model.subjects" class="list-group-item">
                     <span>{{subject}}</span>
-                    <button (click)="removeSubject(subject)" class="badge btn btn-danger btn-xs">X</button>
+                    <button (click)="removeSubject(subject)" class="badge btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
                 </li>
             </ul>
 
@@ -39,7 +39,7 @@
             <ul class="list-group">
                 <li *ngFor="let st of model.students" class="list-group-item">
                     <span>{{st.user.firstName + ' ' + st.user.lastName}}</span>
-                    <button (click)="removeStudent(st._id)" class="badge btn btn-danger btn-xs">X</button>
+                    <button (click)="removeStudent(st._id)" class="badge btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
                 </li>
             </ul>
         </div>
