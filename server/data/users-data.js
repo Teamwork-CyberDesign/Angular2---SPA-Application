@@ -78,13 +78,16 @@ module.exports = function (models) {
         },
         getAllUsers() {
              return new Promise((resolve, reject) => {
-                 User.find((err, users) => {
-                     if (err) {
-                         return reject(err);
-                     }
-            
-                     return resolve(users);
-                 });
+                 User.find({})
+                     .select('-password -salt')
+                     .exec((err, users) => {
+                         if (err) {
+
+                             return reject(err);
+                         }
+
+                         return resolve(users);
+                     });
             });
         },
         searchUsers(username) {

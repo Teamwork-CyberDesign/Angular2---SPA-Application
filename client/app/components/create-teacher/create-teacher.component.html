@@ -1,16 +1,19 @@
 <div class="col-md-6 col-md-offset-3">
     <h2>Create a new teacher</h2>
-    <form name="form" (ngSubmit)="f.form.valid && createTeacher()" #f="ngForm" novalidate>
+    <form name="form" (ngSubmit)="f.form.valid && createTeacher($event)" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
             <label for="username">Teacher username: </label>
-            <input type="text" class="form-control" id="username" name="username" [(ngModel)]="model.user.username"
-                   #username="ngModel" required/>
-            <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+
+            <input class="form-control" ng2-auto-complete name="username"
+                   [source]="teacherData" value-property-name="username" id="username"
+                   [(ngModel)]="model.user" #username="ngModel"
+                   display-property-name="username" placeholder="Search for teacher"/>
         </div>
         <div class="form-group">
             <label for="subject">Subject</label>
-            <select class="form-control" name="subject" id="subject" (change)="handleSelectChange($event.target.value)" required>
-                <option *ngFor="let sub of subjects" value="{{sub}}" selected>{{sub}}</option>
+            <select class="form-control" name="subject" id="subject" (change)="handleSelectChange($event.target.value)" #subj>
+                <option value="None"></option>
+                <option *ngFor="let sub of subjects" value="{{sub}}">{{sub}}</option>
             </select>
         </div>
         <div class="form-group">

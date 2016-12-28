@@ -5,7 +5,7 @@
             <label for="grade">Grade</label>
             <input class="form-control" name="grade"
                    [(ngModel)]="model.grade" #grade="ngModel"
-                   id="grade" required placeholder="Enter an unique class identifier. Eg '12A' "/>
+                   id="grade" required placeholder="Enter an unique class identifier. E.g. '12A' "/>
 
             <div *ngIf="f.submitted && !grade.valid" class="help-block">Grade is required</div>
         </div>

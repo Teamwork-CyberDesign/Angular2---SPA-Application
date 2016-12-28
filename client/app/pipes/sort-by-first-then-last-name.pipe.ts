@@ -1,7 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Person } from '../models/person';
+import { Person } from '../models';
 
-@Pipe({ name: 'sortByFirstThenByLastName' })
+@Pipe({
+    name: 'sortByFirstThenByLastName'
+})
 export class SortByFirstThenByLastNamePipe implements PipeTransform {
     transform(people: Person[]) {
         return people.sort((a, b) => {

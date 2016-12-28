@@ -12,6 +12,11 @@ module.exports = function (models) {
                         if (err) {
                             return reject(err);
                         }
+
+                        if(!user) {
+                            return reject({ errmsg: "Teacher's user not found!" });
+                        }
+
                         user.role = 'teacher';
                         user.save(err => {
                             if (err) {
@@ -89,5 +94,19 @@ module.exports = function (models) {
                     });
             });
         },
+        getAllTeachers() {
+            return new Promise((resolve, reject) => {
+                Teacher.find({})
+                    .populate("user", "-password -salt")
+                    .populate("classes")
+                    .exec((err, user) => {
+                        if (err) {
+                            return reject(err);
+                        }
+
+                        return resolve(user);
+                    });
+            });
+        }
     };
 };

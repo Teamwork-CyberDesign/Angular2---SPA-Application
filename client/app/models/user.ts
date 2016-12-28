@@ -9,6 +9,14 @@ export class User {
     imagePath: string;
 
     constructor() {
+        this._id = '';
+        this.username = '';
+        this.firstName = '';
+        this.lastName = '';
+        this.password = '';
+        this.token = '';
+        this.role = '';
+        this.imagePath = '';
     }
 
     public get fullName(): string {

@@ -12,5 +12,5 @@ export enum Subject {
 
 export const SubjectsAsString = Object.keys(Subject)
     .map(s => Subject[s])
-    .filter(v => typeof v === 'string');
+    .filter(v => typeof v === 'string' && v !== 'None');
 

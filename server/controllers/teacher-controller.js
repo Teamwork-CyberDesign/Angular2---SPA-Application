@@ -35,6 +35,15 @@ module.exports = function (data) {
                 .catch(err => {
                     res.json(JSON.stringify(err));
                 });
+        },
+        getAllTeachers(req, res) {
+            return data.getAllTeachers()
+                .then(teachers => {
+                    res.json(JSON.stringify(teachers));
+                })
+                .catch(err => {
+                    res.json(JSON.stringify(err));
+                });
         }
     };
 };

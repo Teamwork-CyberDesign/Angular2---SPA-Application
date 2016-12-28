@@ -32,4 +32,8 @@ export class TeacherService {
         return this.requester.get(this.url + `/${username}`);
     }
 
+    getAllTeachers(): Observable<any> {
+        return this.requester.get(this.url);
+    }
+
 }
