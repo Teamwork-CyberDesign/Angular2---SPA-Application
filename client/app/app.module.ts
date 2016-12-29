@@ -27,7 +27,7 @@ import { SingleClassComponent } from './components/single-class';
 import { AuthGuard } from './services/auth-guard.service';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { TeacherGuard } from './services/teacher-guard.service';
-import { SingleStudentComponent } from './components/single-student/single-student.component';
+import { SingleStudentComponent } from './components/single-student';
 import { SortByClassNumberPipe } from './pipes/sort-by-class-number.pipe';
 import { FilterByTeacherSubjectPipe } from './pipes/filter-by-teacher-subject.pipe';
 import { CookieService } from 'angular2-cookie/services/cookies.service';

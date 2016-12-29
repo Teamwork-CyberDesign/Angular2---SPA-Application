@@ -1,8 +1,10 @@
 import { Subject } from '../enums/subject';
+import { MarkType } from '../enums/mark-type';
+import { Mark } from './mark';
 
 export class MarkInfo {
     subject: Subject;
-    marks: number[];
+    marks: Mark[];
 
     constructor() {
         this.marks = [];

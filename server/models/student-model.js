@@ -7,13 +7,17 @@ const Schema = mongoose.Schema;
 
 let MarkInfoSchema = new Schema({
     subject: String,
-    marks: [Number]
+    marks: [{
+        date: Date,
+        teacher: String,
+        value: Number,
+        markType: Number
+    }]
 });
 
 let StudentSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: "User", unique: true },
     username: { type: String, unique: true },
-    // class: { type: Schema.Types.ObjectId, ref: "Class" },
     classNumber: { type: Number },
     EGN: { type: Number },
     marks: {

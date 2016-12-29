@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Class, Student } from '../../models';
+import { Class, Student, Teacher } from '../../models';
 
 @Component({
     selector: 'single-class',
@@ -8,7 +8,7 @@ import { Class, Student } from '../../models';
 
 export class SingleClassComponent {
     @Input() data: Class;
-    @Input() subject: string;
+    @Input() teacher: Teacher;
 
     private currentStudent: Student;
 

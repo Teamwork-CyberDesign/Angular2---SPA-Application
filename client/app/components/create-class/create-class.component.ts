@@ -33,6 +33,7 @@ export class AddClassComponent {
             return;
         }
 
+        this.model.grade = this.model.grade.toUpperCase();
         this.classService.createClass(this.model)
             .subscribe(
                 data => {

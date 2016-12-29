@@ -2,6 +2,6 @@
     <li *ngFor="let cl of classes"><a href="#" (click)="showClassInfo($event.target.innerHTML)">{{cl.grade}}</a></li>
 </ul>
 
-<single-class *ngIf="classes && classes.length > 0" [(data)]="currentSelection" [(subject)]="teacher.subject"></single-class>
+<single-class *ngIf="classes && classes.length > 0" [(data)]="currentSelection" [(teacher)]="teacher"></single-class>
 
 <h4 *ngIf="!(classes && classes.length > 0)">You don't have any classes!</h4>
