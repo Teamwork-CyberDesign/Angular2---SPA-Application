@@ -16,12 +16,22 @@
         </ul>
     </section>
     <article class="article">
-        <h2 [@animate]="'fadeIn'">TOP CLASSES</h2>
+        <h2 class="breadcrumb" [@animate]="'fadeIn'">TOP CLASSES</h2>
         <div class="row" *ngFor="let class of classes" [attr.class]="class">
             <div class="col-md-6 mb-r">
                 <h3 class="section-heading" [@animate]="'zoomIn'">{{class.grade}}</h3>
                 <div [@animate]="'zoomIn'" *ngFor="let subject of class.subjects">Subject: {{subject}}</div>
                 <button class="btn btn-info btn-outline-blue"><i class="fa fa-clone left"></i> View students</button>
+            </div>
+        </div>
+    </article>
+    <br />
+    <article class="article">
+        <h2 class="breadcrumb" [@animate]="'fadeIn'">TOP STUDENTS</h2>
+        <div class="row" *ngFor="let student of students" [attr.class]="student">
+            <div class="col-md-6 mb-r">
+                <h3 class="section-heading" [@animate]="'zoomIn'">{{student.username}}</h3>
+                <button class="btn btn-info btn-outline-blue"><i class="fa fa-clone left"></i> View marks</button>
             </div>
         </div>
     </article>
