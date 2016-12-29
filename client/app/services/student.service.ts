@@ -34,4 +34,8 @@ export class StudentService {
     getAllStudents(): Observable<Student[]> {
         return this.requester.get(this.studentUrl);
     }
+
+    getStudentByUsername(username: string): Observable<any> {
+        return this.requester.get(`${this.studentUrl}/${username}`);
+    }
 }

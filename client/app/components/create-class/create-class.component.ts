@@ -1,29 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NotificationsService } from 'angular2-notifications';
 import { ClassService } from '../../services/class.service';
-import { Student, Class } from '../../models';
+import { Class } from '../../models';
 import { StudentService } from '../../services/student.service';
 import { SubjectsAsString } from '../../enums/subject';
+import { NotificationsService } from 'angular2-notifications';
 
 @Component({
     templateUrl: 'create-class.component.html'
 })
 
-export class AddClassComponent implements OnInit {
+export class AddClassComponent {
     private model: Class;
     private subjects: string[] = SubjectsAsString;
-    private studentData: Student[];
+    private studentUrl = 'api/student?user=:user';
 
     constructor(private router: Router,
                 private classService: ClassService,
                 private studentService: StudentService,
                 private notifier: NotificationsService) {
         this.model = new Class();
-    }
-
-    ngOnInit() {
-        this.getStudents();
     }
 
     createClass(): void {
@@ -56,18 +52,6 @@ export class AddClassComponent implements OnInit {
             );
     }
 
-    getStudents(): void {
-        this.studentService.getAllStudents()
-            .subscribe(
-                students => {
-                    this.studentData = students as Student[];
-                },
-                err => {
-                    this.notifier.error('Error', err);
-                    console.log(err);
-                });
-    }
-
     addSubject(subject: string): void {
         if (subject
             && subject.length > 0
@@ -88,21 +72,36 @@ export class AddClassComponent implements OnInit {
         }
     }
 
-    addStudent(studentId: string): void {
-        let student = this.studentData.filter(st => st._id === studentId)[0];
-        if (student
-            && this.model.students.indexOf(student) < 0) {
-
-            this.model.students.push(student);
+    addStudent(username: string): void {
+        if (username === '') {
+            return;
         }
+
+        this.studentService.getStudentByUsername(username)
+            .subscribe(
+                (student) => {
+                    if (!student) {
+                        this.notifier.error('Student not found!', 'Please select a student from the dropdown');
+                    } else if (student.errmsg) {
+                        this.notifier.error('Error', student.errmsg);
+                    } else {
+                        let modelStudent = this.model.students.filter(st => st.user.username === username)[0];
+
+                        if (!modelStudent) {
+                            this.model.students.push(student);
+                        }
+                    }
+                },
+                (err) => {
+                    this.notifier.error('Error', err);
+                });
     }
 
-    removeStudent(studentId: string): void {
-        let student = this.studentData.filter(st => st._id === studentId)[0];
+    removeStudent(username: string): void {
+        let student = this.model.students.filter(st => st.user.username === username)[0];
         let index = this.model.students.indexOf(student);
         if (student
             && index > -1) {
-
             this.model.students.splice(index, 1);
         }
     }

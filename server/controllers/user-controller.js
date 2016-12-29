@@ -7,15 +7,14 @@ module.exports = function (data) {
         viewAllUsers(req, res) {
             data.getAllUsers()
                 .then(users => {
-                    console.log(users);
-                    res.json(JSON.stringify(users));
+                    res.json(users);
                 });
         },
         viewUserByName(req, res) {
             data.findUserByUsername(req.params.name)
                 .then(foundUsers => {
                     let user = foundUsers;
-                    res.json(JSON.stringify(user));
+                    res.json(user);
                 });
         },
         createUser(req, res) {
@@ -29,11 +28,11 @@ module.exports = function (data) {
 
             return data.registerUser(firstName, lastName, username, password, email)
                 .then(user => {
-                    return res.json(JSON.stringify(user));
+                    return res.json(user);
                 })
                 .catch(err => {
                     // req.flash("errorMessage", err.message);
-                    res.json(JSON.stringify(err));
+                    res.json(err);
                 });
         },
         handleForgottenPassword(req, res) {
@@ -83,7 +82,7 @@ module.exports = function (data) {
 
                 if (!user) {
                     // req.flash("errorMessage", "Invalid username or password!");
-                    res.json(JSON.stringify(new Error("Invalid username or password!")));
+                    res.json(new Error("Invalid username or password!"));
                 }
 
                 req.login(user, error => {
@@ -93,7 +92,7 @@ module.exports = function (data) {
                     }
 
                     // req.flash("successMessage", "You have logged in successfully!");
-                    res.json(JSON.stringify({ username: user.username, token: req.sessionID, role: user.role }));
+                    res.json({ username: user.username, token: req.sessionID, role: user.role });
                     // res.redirect(req.session.returnTo || "/");
                     req.session.returnTo = null;
                 });

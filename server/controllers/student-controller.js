@@ -5,10 +5,10 @@ module.exports = function (data) {
             let userId = req.query.userId;
             return data.findStudentByUserId(userId)
                 .then(student => {
-                    res.json(JSON.stringify(student));
+                    res.json(student);
                 })
                 .catch(err => {
-                    res.json(JSON.stringify(err));
+                    res.json(err);
                 });
         },
         createStudent(req, res) {
@@ -22,20 +22,20 @@ module.exports = function (data) {
                     return data.createStudent(user._id, user.username, 0);
                 })
                 .then(student => {
-                    res.json(JSON.stringify(student));
+                    res.json(student);
                 })
                 .catch(err => {
-                    res.json(JSON.stringify(err));
+                    res.json(err);
                 });
         },
         findStudentByUsername(req, res) {
-            let username = req.query.username;
+            let username = req.params.username;
             return data.findStudentByUsername(username)
-                .then(teacher => {
-                    res.json(JSON.stringify(teacher));
+                .then(student => {
+                    res.json(student);
                 })
                 .catch(err => {
-                    res.json(JSON.stringify(err));
+                    res.json(err);
                 });
         },
         addMark(req, res) {
@@ -47,20 +47,41 @@ module.exports = function (data) {
 
             return data.addMarkToStudent(username, subject, marks)
                 .then(() => {
-                    res.json(JSON.stringify("Marks updated successfully!"));
+                    res.json({ message: "Marks updated successfully!" });
                 })
                 .catch(err => {
-                    res.json(JSON.stringify(err));
+                    res.json(err);
                 });
         },
         getAllStudents(req, res) {
             return data.getAllStudents()
                 .then(students => {
-                    res.json(JSON.stringify(students));
+                    res.json(students);
                 })
                 .catch(err => {
-                    res.json(JSON.stringify(err));
+                    res.json(err);
                 });
+        },
+        searchStudents(req, res) {
+            let user = req.query.user;
+            if (user) {
+                return data.searchStudents(user)
+                    .then(students => {
+                        res.json(students);
+                    })
+                    .catch(err => {
+                        res.json(err);
+                    });
+            } else {
+                return data.getAllStudents()
+                    .then(students => {
+                        res.json(students);
+                    })
+                    .catch(err => {
+                        res.json(err);
+                    });
+            }
+
         }
     };
 };

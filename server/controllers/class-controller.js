@@ -6,18 +6,18 @@ module.exports = function (data) {
             if (grade) {
                 return data.findClassByGradeAndLetter(grade)
                     .then(cl => {
-                        res.json(JSON.stringify(cl));
+                        res.json(cl);
                     })
                     .catch(err => {
-                        res.json(JSON.stringify(err));
+                        res.json(err);
                     });
             } else {
                 return data.getAllClasses()
                     .then(classes => {
-                        res.json(JSON.stringify(classes));
+                        res.json(classes);
                     })
                     .catch(err => {
-                        res.json(JSON.stringify(err));
+                        res.json(err);
                     });
             }
         },
@@ -30,10 +30,10 @@ module.exports = function (data) {
 
             return data.createClass(grade, subjects, students)
                 .then(cl => {
-                    res.json(JSON.stringify(cl));
+                    res.json(cl);
                 })
                 .catch(err => {
-                    res.json(JSON.stringify(err));
+                    res.json(err);
                 });
         },
         addStudentsToClass(req, res) {
@@ -44,20 +44,20 @@ module.exports = function (data) {
 
             return data.addStudentsToClass(students, grade)
                 .then(cl => {
-                    res.json(JSON.stringify(cl));
+                    res.json(cl);
                 })
                 .catch(err => {
-                    res.json(JSON.stringify(err));
+                    res.json(err);
                 });
         },
         findClassesForUser(req, res) {
             let user = req.params.user;
             return data.getClassesForUser(user)
                 .then(classes => {
-                    res.json(JSON.stringify(classes));
+                    res.json(classes);
                 })
                 .catch(err => {
-                    res.json(JSON.stringify(err));
+                    res.json(err);
                 });
         }
     };

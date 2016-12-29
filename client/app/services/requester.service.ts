@@ -17,7 +17,7 @@ export class AjaxRequesterService<T> {
 
     public get(url: string): Observable<T[]> {
         return this.http.get(url)
-            .map(res => JSON.parse(res.json()));
+            .map(res =>  res.json());
     }
 
     public post(url: string, item: any, isAuthenticated: boolean, headers?: any): Observable<T> {
@@ -25,7 +25,7 @@ export class AjaxRequesterService<T> {
 
         return this.http
             .post(url, JSON.stringify(item), { headers: parsedHeaders })
-            .map(res => JSON.parse(res.json()));
+            .map(res => res.json());
     }
 
     public put(url: string, item: any, isAuthenticated: boolean, headers?: any): Observable<T> {
@@ -33,7 +33,7 @@ export class AjaxRequesterService<T> {
 
         return this.http
             .put(url, JSON.stringify(item), { headers: parsedHeaders })
-            .map(res => JSON.parse(res.json()));
+            .map(res => res.json());
     }
 
     private prepareHeaders(isAuthenticated: boolean, options?: any): Headers {

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
-import { ClassService } from '../../services/class.service';
-import { Class, Student } from '../../models';
-import { UserService } from '../../services/user.service';
+import { Student } from '../../models';
 import { StudentService } from '../../services/student.service';
 
 @Component({
@@ -16,7 +14,6 @@ export class CreateStudentComponent {
     private model: Student;
 
     constructor(studentService: StudentService,
-                userService: UserService,
                 notifier: NotificationsService) {
         this.studentService = studentService;
         this.notifier = notifier;
@@ -26,7 +23,6 @@ export class CreateStudentComponent {
     createStudent(a: any) {
         this.studentService.createStudent(this.model)
             .subscribe(res => {
-                console.log(res);
                 if (res.err || res.errmsg) {
                     this.notifier.error('Error', res.err || res.errmsg);
                 } else {

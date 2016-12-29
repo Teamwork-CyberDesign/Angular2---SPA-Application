@@ -57,7 +57,7 @@ export class CreateTeacherComponent {
 
     createTeacher() {
         if (!this.model.user.username || this.model.user.username.length < 1) {
-            this.notifier.error('Error', 'Teacher username is required!');
+            this.notifier.error('Error', 'Please select a teacher from the dropdown!');
             return;
         }
 

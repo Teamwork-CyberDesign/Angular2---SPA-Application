@@ -29,18 +29,18 @@
         </div>
         <div class="form-group well">
             <label for="students">Students</label><br>
-            <input (focus)="getStudents()" class="form-control" ng2-auto-complete name="students"
-                   [source]="studentData" value-property-name="username" #student id="students"
-                   display-property-name="_id" placeholder="Search for student"/>
+            <input class="form-control" ng2-auto-complete name="students"
+                   [source]="studentUrl" value-property-name="username" #studentTb id="students"
+                   display-property-name="username" placeholder="Search for student"/>
 
             <button class="btn btn-default btn-primary" type="button"
-                    (click)="addStudent(student.value); student.value = ''">Add Student
+                    (click)="addStudent(studentTb.value); studentTb.value = ''">Add Student
             </button>
 
             <ul class="list-group">
                 <li *ngFor="let st of model.students" class="list-group-item">
                     <span>{{st.user.firstName + ' ' + st.user.lastName}}</span>
-                    <button (click)="removeStudent(st._id)" class="badge btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
+                    <button (click)="removeStudent(st.user.username)" class="badge btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
                 </li>
             </ul>
         </div>

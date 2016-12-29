@@ -67,7 +67,7 @@
     "morgan": "^1.7.0",
     "multer": "^1.2.1",
     "ng2-animate": "^1.2.1",
-    "ng2-auto-complete": "^0.8.2",
+    "ng2-auto-complete": "^0.8.4",
     "ng2-social-share": "0.0.10",
     "nodemailer": "^2.7.0",
     "nodemon": "^1.11.0",

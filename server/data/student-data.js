@@ -50,6 +50,20 @@ module.exports = function (models) {
                     });
             });
         },
+        searchStudents(username) {
+            let query = { "username": new RegExp(username, "i") };
+            return new Promise((resolve, reject) => {
+                Student.find(query)
+                    .populate("user", "-password -salt")
+                    .exec((err, cl) => {
+                        if (err) {
+                            return reject(err);
+                        }
+
+                        return resolve(cl);
+                    });
+            });
+        },
         findStudentById(id) {
             return new Promise((resolve, reject) => {
                 Student.findById(id)
