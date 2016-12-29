@@ -1,7 +1,7 @@
 "use strict";
 const path = require("path");
 const crypto = require("crypto");
-const fileDirectory = path.join(__dirname, "../../client/images/");
+const fileDirectory = path.join(__dirname, "/images");
 let multer = require("multer");
 
 let storage = multer.diskStorage({

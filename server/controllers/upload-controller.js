@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = function () {
     return {
         singleUpload(req, res) {
-            req.user.imagePath = path.join("../client/images", req.file.filename);
+            req.user.imagePath = path.join("/images", req.file.filename);
             let imageUser = req.user.imagePath;
             req.user.imagePath = imageUser;
             req.user.save(() => {

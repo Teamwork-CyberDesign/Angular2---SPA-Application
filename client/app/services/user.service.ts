@@ -10,6 +10,7 @@ export class UserService {
     private requester: AjaxRequesterService<User>;
     private usersUrl = '/api/users';
     private profileUrl = '/api/profile';
+    private profilePhotoUrl = '/api/profile/photo';
 
     constructor(requester: AjaxRequesterService<User>) {
         this.requester = requester;
@@ -29,6 +30,10 @@ export class UserService {
 
     updateUser(user: User): Observable<any> {
         return this.requester.put(this.usersUrl, user, true);
+    }
+
+    uploadPhoto(username: string): Observable<User[] | User> {
+        return this.requester.post(this.profileUrl,username, false);
     }
 
     // deleteUser(id: string){

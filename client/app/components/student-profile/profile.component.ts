@@ -31,8 +31,21 @@ export class ProfileComponent implements OnInit {
                     // this.router.navigate(['/profile']);
                 },
                 error => {
-                    console.log(error);
+                    console.log(error.message);
                 }
             );
+    }
+
+    uploadPhotoForUser(){
+        this.userService.uploadPhoto(this.auth.getCurrentUser())
+        .subscribe(
+            data =>{
+                console.log(this.user);
+                this.user = data[0] as User;
+            },
+            error => {
+                console.log(error);
+            }
+        )
     }
 }
