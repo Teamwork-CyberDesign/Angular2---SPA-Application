@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { subjects} from '../../utils/subjects-data';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models';
-
+import { SubjectsAsString } from '../../enums/subject';
 @Component({
     templateUrl: 'add-mark.component.html'
 })
 export class AddMarkComponent implements OnInit {
     returnUrl: string;
-    students: User[]
-    subjects: string[] = subjects;
+    students: User[];
+    subjects: string[] = SubjectsAsString;
     autoCompleteModelSubjects: any;
     autoCompleteModelStudents: User[];
 

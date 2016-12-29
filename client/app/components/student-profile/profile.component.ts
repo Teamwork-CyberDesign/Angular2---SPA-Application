@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
             .subscribe(
                 data => {
                     this.user = data[0] as User;
-                    console.log(this.user.imagePath);
+                    this.user.imagePath = this.user.imagePath || require('../../../images/default.png');
                     // this.router.navigate(['/profile']);
                 },
                 error => {

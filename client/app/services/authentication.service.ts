@@ -7,6 +7,7 @@ import { NotificationsService } from 'angular2-notifications';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { CookieOptions } from 'angular2-cookie/services/base-cookie-options';
 import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 const storageUserKey = 'currentUser';
 const storageUserRoleKey = 'userRole';
@@ -18,11 +19,14 @@ export class AuthenticationService {
     private notifier: NotificationsService;
     private cookieService: CookieService;
     private userService: UserService;
+    private router: Router;
 
     constructor(requester: AjaxRequesterService<User>,
                 notifier: NotificationsService,
+                router: Router,
                 userService: UserService,
                 cookieService: CookieService) {
+        this.router = router;
         this.requester = requester;
         this.notifier = notifier;
         this.cookieService = cookieService;
@@ -50,6 +54,7 @@ export class AuthenticationService {
         this.cookieService.remove(storageUserKey);
         this.cookieService.remove(storageUserRoleKey);
 
+        this.router.navigate(['/']);
         this.notifier.success('Success', 'You have logged out successfully');
     }
 

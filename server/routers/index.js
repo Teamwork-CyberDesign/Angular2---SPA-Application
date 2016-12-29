@@ -2,14 +2,13 @@
 const fs = require("fs"),
     path = require("path");
 
-function isAuthenticated (req, res, next) {
+function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
 
-    // req.flash("errorMessage", "You must be logged in to do that!");
     req.session.returnTo = req.path;
-    res.status(401).redirect("/login");
+    res.status(401).json({ errmsg: "You must be logged in to do that!" })
 }
 
 module.exports = function (server, controller) {

@@ -17,11 +17,10 @@ import { CreateTeacherComponent } from './components/create-teacher/create-teach
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'logout', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'about', component: AboutComponent },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
-    { path: 'about', component: AboutComponent },
     { path: 'addMark', component: AddMarkComponent, canActivate: [TeacherGuard] },
     { path: 'addClass', component: AddClassComponent, canActivate: [TeacherGuard] },
     { path: 'classes', component: ClassListComponent, canActivate: [TeacherGuard] },
