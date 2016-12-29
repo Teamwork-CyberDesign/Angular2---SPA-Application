@@ -33,7 +33,7 @@ export class UserService {
     }
 
     uploadPhoto(username: string): Observable<User[] | User> {
-        return this.requester.post(this.profileUrl,username, false);
+        return this.requester.get(this.profilePhotoUrl);
     }
 
     // deleteUser(id: string){

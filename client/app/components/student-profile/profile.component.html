@@ -3,7 +3,7 @@
     <img [src]='user.imagePath' />
     <h2>Upload your photo here</h2>
     <form name="form" enctype="multipart/form-data" (ngSubmit)="f.form.valid && uploadPhotoForUser()" #f="ngForm" novalidate >
-        <input class="form-control btn btn-success" type="file" name="photo" placeholder="Choose from file" accept="image/*" required />
+        <input class="form-control btn btn-success" type="file" name="single" placeholder="Choose from file" accept="image/*" ng2FileSelect [uploader]="uploader" required />
         <input class="btn btn-success" type="submit" value="Save" />
     </form>
     </div>
