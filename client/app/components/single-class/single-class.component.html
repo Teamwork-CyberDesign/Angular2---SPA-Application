@@ -1,4 +1,4 @@
-<h3>Now viewing {{data.grade}} class as a {{subject}} teacher.</h3>
+<h3>Now viewing {{teacher.subject}} marks for {{data.grade}} class.</h3>
 
 <table class="table table-striped table-hover table-responsive table-sm">
     <thead>
@@ -17,7 +17,7 @@
         <td><span *ngFor="let markInfo of (student.marks | filterByTeacherSubject:teacher.subject)"><span *ngFor="let mark of markInfo.marks"> {{mark.value}},</span></span></td>
         <td><span *ngFor="let markInfo of (student.marks | filterByTeacherSubject:teacher.subject)"><span>{{markInfo.marks | average}}</span></span></td>
         <td>
-            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editStudentModal" (click)="onEditClick(student)">Edit</button>
+            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editStudentModal" (click)="onEditClick(student)"><span class="glyphicon glyphicon-pencil"></span></button>
         </td>
     </tr>
     </tbody>
