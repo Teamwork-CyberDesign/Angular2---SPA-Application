@@ -7,11 +7,13 @@ export class Student {
     classNumber: number;
     egn: number;
     marks: MarkInfo[];
+    modified: boolean;
 
     constructor() {
         this.user = new User();
         this.classNumber = 0;
         this.egn = 0;
         this.marks = [];
+        this.modified = false;
     }
 }

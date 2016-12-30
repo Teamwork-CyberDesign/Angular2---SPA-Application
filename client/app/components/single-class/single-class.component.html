@@ -11,7 +11,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let student of  (data.students | sortByClassNumber)">
+    <tr *ngFor="let student of  (data.students | sortByClassNumber)" [ngClass]="{'modified': student.modified}">
         <td scope="row">{{student.classNumber}}</td>
         <td>{{student.user.firstName + ' ' + student.user.lastName}}</td>
         <td><span *ngFor="let markInfo of (student.marks | filterByTeacherSubject:teacher.subject)"><span *ngFor="let mark of markInfo.marks"> {{mark.value}},</span></span></td>

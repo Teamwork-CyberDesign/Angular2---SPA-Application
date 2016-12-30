@@ -27,11 +27,13 @@ export class SingleStudentComponent {
     private saveStudent(): void {
         this.studentService.addMarksToStudent(this.data, this.teacher.subject)
             .subscribe(() => {
+                this.data.modified = false;
                 this.notifier.success('Success', 'Student saved!');
             });
     }
 
     private addMark(markValue: string, markType: string): void {
+        this.data.modified = true;
         let markTypeEnum = MarkType[markType];
         let markInfo = this.data.marks.filter(info => info.subject === this.teacher.subject)[0];
 
@@ -43,14 +45,13 @@ export class SingleStudentComponent {
 
         let studentMark = new Mark(new Date(), this.teacher.user.firstName + ' ' + this.teacher.user.lastName, +markValue, markTypeEnum);
         markInfo.marks.push(studentMark);
-        this.notifier.success('Mark added successfully!', '');
-        console.log(this.data);
-        console.log(this.teacher);
     }
 
     private removeMark(mark): void {
+        this.data.modified = true;
         let markInfo = this.data.marks.filter(info => info.subject === this.teacher.subject)[0];
 
+        console.log(this.data);
         let index = markInfo.marks.indexOf(mark);
         if (index > -1) {
             markInfo.marks.splice(index, 1);

@@ -3,7 +3,8 @@ import { Class, Student, Teacher } from '../../models';
 
 @Component({
     selector: 'single-class',
-    templateUrl: 'single-class.component.html'
+    templateUrl: 'single-class.component.html',
+    styles: ['.modified { color: red; font-style: italic; }']
 })
 
 export class SingleClassComponent {
