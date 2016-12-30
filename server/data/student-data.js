@@ -82,17 +82,12 @@ module.exports = function (models) {
                 marks = [...marks];
             }
 
-            marks.forEach(mark => {
-                mark.date = new Date();
-            });
-
             return this.findStudentByUsername(username)
                 .then(student => {
                     let subjectMarks = student.marks.filter(markInfo => markInfo.subject.toLowerCase() === subject.toLowerCase());
 
                     if (subjectMarks.length < 1) {
                         student.marks.push({ subject, marks: marks });
-                        // student.marks[student.marks.length - 1].marks = marks;
                     }
                     else {
                         subjectMarks[0].marks = marks;
