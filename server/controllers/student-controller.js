@@ -12,14 +12,18 @@ module.exports = function (data) {
                 });
         },
         createStudent(req, res) {
-            let firstName = req.body.user.firstName;
-            let lastName = req.body.user.lastName;
-            let username = req.body.user.username;
-            let password = req.body.user.password;
-            let email = req.body.user.email;
+            let {
+                firstName,
+                lastName,
+                username,
+                password,
+                email,
+            } = req.body.user;
+
+            let classNumber = req.body.classNumber;
             return data.registerUser(firstName, lastName, username, password, email)
                 .then((user) => {
-                    return data.createStudent(user._id, user.username, 0);
+                    return data.createStudent(user._id, user.username, classNumber || 0);
                 })
                 .then(student => {
                     res.json(student);

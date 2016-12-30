@@ -67,7 +67,9 @@ export class AuthenticationService {
     }
 
     isLoggedIn(): boolean {
-        return !!this.cookieService.get(storageUserKey) && !!this.cookieService.get(storageSessionKey);
+        return !!this.cookieService.get(storageUserKey)
+            && !!this.cookieService.get(storageSessionKey)
+            && !!this.cookieService.get(storageUserRoleKey);
     }
 
     userIs(role: string): boolean {

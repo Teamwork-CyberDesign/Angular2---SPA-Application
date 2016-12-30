@@ -15,8 +15,8 @@
                 <li class="nav-item"><a class="" routerLink="/home" routerLinkActive="active">Home</a></li>
                 <li class="nav-item"><a class="" routerLink="/about" routerLinkActive="active">About Us</a></li>
                 <li class="nav-item"><a class="" routerLink="/users" routerLinkActive="active">Users</a></li>
-                <li class="nav-item"><a class="" routerLink="/classes" routerLinkActive="active">Classes</a></li>
-                <li class="dropdown">
+                <li *ngIf="auth.userIs('teacher')" class="nav-item"><a class="" routerLink="/classes" routerLinkActive="active">Classes</a></li>
+                <li *ngIf="auth.userIs('teacher')" class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Create <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li class="nav-item"><a class="dropdown-item" routerLink="/addMark" routerLinkActive="active">Add

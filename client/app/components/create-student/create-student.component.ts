@@ -23,6 +23,7 @@ export class CreateStudentComponent {
     }
 
     createStudent(a: any) {
+        this.model.classNumber = Math.max(...this.studentClass.students.map(st => st.classNumber)) + 1;
         this.studentService.createStudent(this.model)
             .subscribe(res => {
                 if (res.err || res.errmsg) {
