@@ -40,7 +40,7 @@ module.exports = function (models) {
                     students.forEach((student, index) => {
                         Student.findOne({ _id: student._id })
                             .exec((err, dbStudent) => {
-                                if(err) {
+                                if (err) {
                                     reject(err);
                                 }
 
@@ -93,9 +93,9 @@ module.exports = function (models) {
                     });
             });
         },
-        addStudentsToClass(userIds, grade) {
-            if (!Array.isArray(userIds)) {
-                userIds = [userIds];
+        addStudentsToClass(studentIds, grade) {
+            if (!Array.isArray(studentIds)) {
+                studentIds = [studentIds];
             }
 
             return new Promise((resolve, reject) => {
@@ -105,14 +105,27 @@ module.exports = function (models) {
                             return reject(err);
                         }
 
-                        userIds.forEach(id => {
+                        studentIds.forEach(id => {
                             if (cl.students.indexOf(id) < 0) {
                                 cl.students.push(id);
                             }
                         });
 
                         cl.save();
-                        return resolve(cl);
+
+                        Class.populate(cl, {
+                                path: 'students',
+                                populate: {
+                                    path: 'user -password - salt',
+                                    model: 'User'
+                                }
+                            },
+                            (err, populatedClass) => {
+                                if(err) {
+                                    reject(err);
+                                }
+                                return resolve(populatedClass);
+                            });
                     });
             });
         },

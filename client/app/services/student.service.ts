@@ -31,6 +31,11 @@ export class StudentService {
         }, true);
     }
 
+    addStudentToClass(student: Student, grade: string): Observable<any> {
+        let studentId = student._id;
+        return this.requester.put('/api/class/add-student', { grade: grade, students: [studentId] }, true);
+    }
+
     getAllStudents(): Observable<Student[]> {
         return this.requester.get(this.studentUrl);
     }
