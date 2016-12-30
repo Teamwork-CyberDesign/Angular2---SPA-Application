@@ -41,6 +41,7 @@ import { EqualValidator } from './directives/validate-equal.directive';
 import { CreateStudentModalComponent } from './components/create-student-modal/create-student-modal.component';
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 import { FilterMarks } from './pipes/filter-marks.pipe';
+import { AddClassesComponent } from './components/add-classes/add-classes.component';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -66,6 +67,7 @@ import { FilterMarks } from './pipes/filter-marks.pipe';
         SingleStudentComponent,
         CreateStudentComponent,
         ProfileComponent,
+        AddClassesComponent,
         SortByFirstNamePipe,
         SortByFirstThenByLastNamePipe,
         SortByClassNumberPipe,

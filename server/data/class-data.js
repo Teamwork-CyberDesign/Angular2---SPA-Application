@@ -121,7 +121,7 @@ module.exports = function (models) {
                                 }
                             },
                             (err, populatedClass) => {
-                                if(err) {
+                                if (err) {
                                     reject(err);
                                 }
                                 return resolve(populatedClass);
@@ -154,6 +154,26 @@ module.exports = function (models) {
                 .then(teacher => {
                     return teacher.classes;
                 })
+        },
+        findClassesWithSubject(subject) {
+            return new Promise((resolve, reject) => {
+                Class.find({ subjects: { "$in": [subject] } })
+                    .populate("students")
+                    .populate({
+                        path: 'students',
+                        populate: {
+                            path: 'user',
+                            model: 'User'
+                        }
+                    })
+                    .exec((err, classes) => {
+                        if (err) {
+                            return reject(err);
+                        }
+
+                        return resolve(classes);
+                    });
+            });
         }
     };
 };

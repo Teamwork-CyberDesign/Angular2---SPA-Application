@@ -59,6 +59,16 @@ module.exports = function (data) {
                 .catch(err => {
                     res.json(err);
                 });
+        },
+        findClassesWithSubject(req, res) {
+            let subject = req.params.subject;
+            return data.findClassesWithSubject(subject)
+                .then(classes => {
+                    res.json(classes);
+                })
+                .catch(err => {
+                    res.json(err);
+                })
         }
     };
 };

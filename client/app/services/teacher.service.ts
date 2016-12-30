@@ -5,7 +5,6 @@ import { AjaxRequesterService } from './requester.service';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
 import { Teacher } from '../models/teacher';
-import { Subject } from '../enums/subject';
 
 @Injectable()
 export class TeacherService {
@@ -22,7 +21,7 @@ export class TeacherService {
         let teacherToSend = {
             username: teacher.user.username,
             classes: teacher.classes,
-            subject: Subject[teacher.subject]
+            subject: teacher.subject
         };
 
         return this.requester.post(this.url, teacherToSend, true);
@@ -34,6 +33,23 @@ export class TeacherService {
 
     getAllTeachers(): Observable<any> {
         return this.requester.get(this.url);
+    }
+
+    addClassesToTeacher(teacher: Teacher): Observable<any> {
+        let classes = teacher.classes.map(cl => {
+            if (cl._id) {
+                return cl._id;
+            }
+
+            return cl;
+        });
+
+        let body = {
+            classes: classes,
+            username: teacher.username
+        };
+
+        return this.requester.put(`${this.url}/add-classes`, body, true);
     }
 
 }

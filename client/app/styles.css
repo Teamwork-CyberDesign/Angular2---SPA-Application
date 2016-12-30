@@ -53,3 +53,6 @@ html, body {
 .simple-notification {
     z-index: 9999;
 }
+.modal-backdrop{
+    z-index: 999;
+}

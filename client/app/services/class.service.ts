@@ -31,4 +31,8 @@ export class ClassService {
             return this.requester.get(this.classUrl + '/' + username);
         }
     }
+
+    getClassesWithSubject(subject: string): Observable<any> {
+        return this.requester.get(`${this.classUrl}/subject/${subject}/`);
+    }
 }

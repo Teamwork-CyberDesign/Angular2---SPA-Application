@@ -13,7 +13,7 @@ module.exports = function (models) {
                             return reject(err);
                         }
 
-                        if(!user) {
+                        if (!user) {
                             return reject({ errmsg: "Teacher's user not found!" });
                         }
 
@@ -105,6 +105,35 @@ module.exports = function (models) {
                         }
 
                         return resolve(user);
+                    });
+            });
+        },
+        searchTeachers(username) {
+            let query = { "username": new RegExp(username, "i") };
+            return new Promise((resolve, reject) => {
+                Teacher.find(query)
+                    .populate("user", "-password -salt")
+                    .exec((err, teachers) => {
+                        if (err) {
+                            return reject(err);
+                        }
+
+                        return resolve(teachers);
+                    });
+            });
+        },
+        addClassesToTeacher(username, classes) {
+            return new Promise((resolve, reject) => {
+                Teacher.findOneAndUpdate(
+                    { username },
+                    { classes })
+                    .populate("user", "-password -salt")
+                    .exec((err, teacher) => {
+                        if (err) {
+                            return reject(err);
+                        }
+
+                        return resolve(teacher);
                     });
             });
         }

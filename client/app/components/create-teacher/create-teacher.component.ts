@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
 import { ClassService } from '../../services/class.service';
 import { Class, Teacher } from '../../models';
-import { Subject, SubjectsAsString } from '../../enums/subject';
+import { SubjectsAsString } from '../../enums/subject';
 import { TeacherService } from '../../services/teacher.service';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
@@ -30,7 +30,6 @@ export class CreateTeacherComponent {
         this.userService = userService;
         this.notifier = notifier;
         this.subjects = SubjectsAsString;
-
         this.model = new Teacher();
         this.classes = [];
     }
@@ -97,7 +96,7 @@ export class CreateTeacherComponent {
     }
 
     handleSelectChange(subject: string) {
-        this.model.subject = Subject[subject];
+        this.model.subject = subject;
         this.model.classes = [];
     }
 }

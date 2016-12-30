@@ -14,3 +14,7 @@
     <div>E-Mail: {{user.email}}</div>
     </div>
 </div>
+
+<div *ngIf="auth.userIs('student')" class="container">
+    user is a student
+</div>

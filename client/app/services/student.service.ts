@@ -22,7 +22,7 @@ export class StudentService {
         return this.requester.post(this.studentUrl, student, true);
     }
 
-    addMarksToStudent(student: Student, subject: Subject): Observable<any> {
+    addMarksToStudent(student: Student, subject: string): Observable<any> {
         let marks = student.marks.filter(info => info.subject === subject)[0].marks;
         return this.requester.put(this.studentUrl + `/add-marks`, {
             marks,

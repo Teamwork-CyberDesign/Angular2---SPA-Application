@@ -44,6 +44,40 @@ module.exports = function (data) {
                 .catch(err => {
                     res.json(err);
                 });
+        },
+        searchTeachers(req, res) {
+            let user = req.query.user;
+            if (user) {
+                return data.searchTeachers(user)
+                    .then(teachers => {
+                        res.json(teachers);
+                    })
+                    .catch(err => {
+                        res.json(err);
+                    });
+            } else {
+                return data.getAllTeachers()
+                    .then(students => {
+                        res.json(students);
+                    })
+                    .catch(err => {
+                        res.json(err);
+                    });
+            }
+        },
+        addClassesToTeacher(req, res) {
+            let {
+                classes,
+                username
+            } = req.body;
+
+            return data.addClassesToTeacher(username, classes)
+                .then(teacher => {
+                    res.json(teacher);
+                })
+                .catch(err => {
+                    res.json(err);
+                })
         }
     };
 };

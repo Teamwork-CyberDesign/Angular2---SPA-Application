@@ -13,6 +13,7 @@ import { ClassListComponent } from './components/class-list';
 import { AuthGuard } from './services/auth-guard.service';
 import { TeacherGuard } from './services/teacher-guard.service';
 import { CreateTeacherComponent } from './components/create-teacher/create-teacher.component';
+import { AddClassesComponent } from './components/add-classes/add-classes.component';
 
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -23,8 +24,9 @@ const appRoutes: Routes = [
     { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
     { path: 'addMark', component: AddMarkComponent, canActivate: [TeacherGuard] },
     { path: 'addClass', component: AddClassComponent, canActivate: [TeacherGuard] },
-    { path: 'classes', component: ClassListComponent, canActivate: [TeacherGuard] },
+    { path: 'assign', component: AddClassesComponent, canActivate: [TeacherGuard] },
     { path: 'addTeacher', component: CreateTeacherComponent, canActivate: [TeacherGuard] },
+    { path: 'classes', component: ClassListComponent, canActivate: [TeacherGuard] },
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }// redirect to home page on load
 ];

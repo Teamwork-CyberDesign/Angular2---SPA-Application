@@ -24,7 +24,7 @@ export class AjaxRequesterService<T> {
         let parsedHeaders = this.prepareHeaders(isAuthenticated, headers);
 
         return this.http
-            .post(url, JSON.stringify(item), { headers: parsedHeaders })
+            .post(url, item, { headers: parsedHeaders })
             .map(res => res.json());
     }
 
@@ -32,7 +32,7 @@ export class AjaxRequesterService<T> {
         let parsedHeaders = this.prepareHeaders(isAuthenticated, headers);
 
         return this.http
-            .put(url, JSON.stringify(item), { headers: parsedHeaders })
+            .put(url, item, { headers: parsedHeaders })
             .map(res => res.json());
     }
 

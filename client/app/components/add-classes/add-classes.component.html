@@ -1,0 +1,27 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Assign classes to teacher</h2>
+    <form name="form" (ngSubmit)="f.form.valid && addClasses()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="username">Teacher username: </label><br>
+
+            <input class="form-control" ng2-auto-complete name="username"
+                   [source]="teacherUrl" value-property-name="username" id="username"
+                   [(ngModel)]="model" (ngModelChange)="getClasses()" #username="ngModel"
+                   display-property-name="username" placeholder="Search for teacher"/>
+        </div>
+        <div class="form-group">
+            Classes:
+            <span *ngIf="loading" class="text-success">Loading classes...</span>
+            <span *ngFor="let cl of classesForTeacher">
+                <label> {{cl.grade}}
+                    <input *ngIf="findIndexByKeyValue(model.classes, '_id', cl._id) < 0" type="checkbox" value="{{cl._id}}" (change)="toggleClass($event.target.value)">
+                    <input *ngIf="findIndexByKeyValue(model.classes, '_id', cl._id) >= 0" checked="checked" type="checkbox" value="{{cl._id}}" (change)="toggleClass($event.target.value)">
+                </label>
+            </span>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-success" type="submit" value="Save">
+        </div>
+    </form>
+</div>
+
