@@ -18,19 +18,16 @@ export class AuthenticationService {
     private requester: AjaxRequesterService<User>;
     private notifier: NotificationsService;
     private cookieService: CookieService;
-    private userService: UserService;
     private router: Router;
 
     constructor(requester: AjaxRequesterService<User>,
                 notifier: NotificationsService,
                 router: Router,
-                userService: UserService,
                 cookieService: CookieService) {
         this.router = router;
         this.requester = requester;
         this.notifier = notifier;
         this.cookieService = cookieService;
-        this.userService = userService;
     }
 
     login(username: string, password: string): Observable<User> {
