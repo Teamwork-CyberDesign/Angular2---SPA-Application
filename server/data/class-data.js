@@ -60,7 +60,7 @@ module.exports = function (models) {
                     .populate({
                         path: 'students',
                         populate: {
-                            path: 'user',
+                            path: 'user -password - salt',
                             model: 'User'
                         }
                     })
@@ -80,7 +80,7 @@ module.exports = function (models) {
                     .populate({
                         path: 'students',
                         populate: {
-                            path: 'user',
+                            path: 'user -password - salt',
                             model: 'User'
                         }
                     })
@@ -136,7 +136,7 @@ module.exports = function (models) {
                     .populate({
                         path: 'students',
                         populate: {
-                            path: 'user',
+                            path: 'user -password -salt',
                             model: 'User'
                         }
                     })
@@ -162,7 +162,7 @@ module.exports = function (models) {
                     .populate({
                         path: 'students',
                         populate: {
-                            path: 'user',
+                            path: 'user -password -salt',
                             model: 'User'
                         }
                     })
