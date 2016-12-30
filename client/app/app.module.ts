@@ -40,6 +40,7 @@ import { CreateStudentComponent } from './components/create-student';
 import { EqualValidator } from './directives/validate-equal.directive';
 import { CreateStudentModalComponent } from './components/create-student-modal/create-student-modal.component';
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
+import { FilterMarks } from './pipes/filter-marks.pipe';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -70,6 +71,7 @@ import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
         SortByClassNumberPipe,
         FilterByTeacherSubjectPipe,
         AveragePipe,
+        FilterMarks,
         FilterClassBySubject,
         CeiboShare,
         CreateStudentModalComponent,

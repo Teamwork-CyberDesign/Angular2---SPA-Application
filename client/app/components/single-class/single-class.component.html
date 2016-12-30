@@ -15,7 +15,7 @@
         <td scope="row">{{student.classNumber}}</td>
         <td>{{student.user.firstName + ' ' + student.user.lastName}}</td>
         <td><span *ngFor="let markInfo of (student.marks | filterByTeacherSubject:teacher.subject)"><span *ngFor="let mark of markInfo.marks"> {{mark.value}},</span></span></td>
-        <td><span *ngFor="let markInfo of (student.marks | filterByTeacherSubject:teacher.subject)"><span>{{markInfo.marks | average}}</span></span></td>
+        <td><span *ngFor="let markInfo of (student.marks | filterByTeacherSubject:teacher.subject)"><span>{{markInfo.marks | filterMarks | average}}</span></span></td>
         <td>
             <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editStudentModal" (click)="onEditClick(student)"><span class="glyphicon glyphicon-pencil"></span></button>
         </td>
