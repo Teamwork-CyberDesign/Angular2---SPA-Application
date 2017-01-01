@@ -18,8 +18,6 @@ import { APP_BASE_HREF } from '@angular/common';
 import { UserService } from './services/user.service';
 import { ClassService } from './services/class.service';
 import { AuthenticationService } from './services/authentication.service';
-import { SortByFirstNamePipe } from './pipes/sort-by-first-name.pipe';
-import { SortByFirstThenByLastNamePipe } from './pipes/sort-by-first-then-last-name.pipe';
 import { PageNotFoundComponent } from './components/page-not-found';
 import { AjaxRequesterService } from './services/requester.service';
 import { ClassListComponent } from './components/class-list';
@@ -28,21 +26,17 @@ import { AuthGuard } from './services/auth-guard.service';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { TeacherGuard } from './services/teacher-guard.service';
 import { SingleStudentComponent } from './components/single-student';
-import { SortByClassNumberPipe } from './pipes/sort-by-class-number.pipe';
-import { FilterByTeacherSubjectPipe } from './pipes/filter-by-teacher-subject.pipe';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { StudentService } from './services/student.service';
-import { AveragePipe } from './pipes/average.pipe';
 import { TeacherService } from './services/teacher.service';
 import { CreateTeacherComponent } from './components/create-teacher/create-teacher.component';
-import { FilterClassBySubject } from './pipes/filter-class-by-subject.pipe';
 import { CreateStudentComponent } from './components/create-student';
 import { EqualValidator } from './directives/validate-equal.directive';
 import { CreateStudentModalComponent } from './components/create-student-modal/create-student-modal.component';
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
-import { FilterMarks } from './pipes/filter-marks.pipe';
 import { AddClassesComponent } from './components/add-classes/add-classes.component';
 import { StudentMarksComponent } from './components/student-marks/student-marks.component';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -51,6 +45,7 @@ import { StudentMarksComponent } from './components/student-marks/student-marks.
         HttpModule,
         FormsModule,
         Ng2AutoCompleteModule,
+        PipesModule,
         SimpleNotificationsModule],
     declarations: [ // declare all derectives and components
         AppComponent,
@@ -70,13 +65,6 @@ import { StudentMarksComponent } from './components/student-marks/student-marks.
         ProfileComponent,
         StudentMarksComponent,
         AddClassesComponent,
-        SortByFirstNamePipe,
-        SortByFirstThenByLastNamePipe,
-        SortByClassNumberPipe,
-        FilterByTeacherSubjectPipe,
-        AveragePipe,
-        FilterMarks,
-        FilterClassBySubject,
         CeiboShare,
         CreateStudentModalComponent,
         EqualValidator,

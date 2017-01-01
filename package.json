@@ -1,6 +1,6 @@
 {
-  "name": "angular2-start",
-  "version": "1.0.0",
+  "name": "e-gradebook",
+  "version": "0.0.1",
   "description": "",
   "engines": {
     "node": "7.2.1"

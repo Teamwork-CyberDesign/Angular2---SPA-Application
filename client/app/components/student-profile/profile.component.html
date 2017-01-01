@@ -33,7 +33,9 @@
             </div>
         </div>
     </div>
-    <student-marks *ngIf="auth.userIs('student')" [username]="auth.getCurrentUser()"></student-marks>
+    <div *ngIf="auth.userIs('student')" class="row">
+        <student-marks [username]="auth.getCurrentUser()"></student-marks>
+    </div>
 </div>
 
 

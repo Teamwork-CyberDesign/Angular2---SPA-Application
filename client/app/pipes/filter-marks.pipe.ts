@@ -6,7 +6,7 @@ import { Mark } from '../models/mark';
     pure: false
 })
 
-export class FilterMarks implements PipeTransform {
+export class FilterMarksPipe implements PipeTransform {
     transform(marks: Mark[]) {
         return marks.map(mark => mark.value);
     }

@@ -7,7 +7,7 @@ import { Subject } from '../enums/subject';
     pure: false
 })
 
-export class FilterClassBySubject implements PipeTransform {
+export class FilterClassBySubjectPipe implements PipeTransform {
     transform(classes: Class[], subject: string) {
         return classes.filter(cl => {
             return cl.subjects.some(el => el.toLowerCase() === subject.toLowerCase());
