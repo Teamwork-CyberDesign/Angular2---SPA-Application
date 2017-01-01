@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { AuthenticationService } from '../../services/authentication.service';
-import { User } from '../../models';
+import { User, Student } from '../../models';
 import { FileUploader } from 'ng2-file-upload';
 
 @Component({
@@ -10,8 +10,8 @@ import { FileUploader } from 'ng2-file-upload';
 })
 
 export class ProfileComponent implements OnInit {
-    public uploader:FileUploader = new FileUploader({url:'/api/profile/photo'})
-    model: any = {};
+    public uploader: FileUploader = new FileUploader({ url: '/api/profile/photo' })
+    model: Student;
     user: User;
 
     constructor(private router: Router,
@@ -38,16 +38,16 @@ export class ProfileComponent implements OnInit {
             );
     }
 
-    uploadPhotoForUser(){
+    uploadPhotoForUser() {
         this.userService.uploadPhoto(this.auth.getCurrentUser())
-        .subscribe(
-            data =>{
-                this.user = data[0] as User;
-                console.log(data);
-            },
-            error => {
-                console.log(error);
-            }
-        )
+            .subscribe(
+                data => {
+                    this.user = data[0] as User;
+                    console.log(data);
+                },
+                error => {
+                    console.log(error);
+                }
+            )
     }
 }

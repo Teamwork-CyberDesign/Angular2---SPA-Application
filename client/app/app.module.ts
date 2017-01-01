@@ -42,6 +42,7 @@ import { CreateStudentModalComponent } from './components/create-student-modal/c
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 import { FilterMarks } from './pipes/filter-marks.pipe';
 import { AddClassesComponent } from './components/add-classes/add-classes.component';
+import { StudentMarksComponent } from './components/student-marks/student-marks.component';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -67,6 +68,7 @@ import { AddClassesComponent } from './components/add-classes/add-classes.compon
         SingleStudentComponent,
         CreateStudentComponent,
         ProfileComponent,
+        StudentMarksComponent,
         AddClassesComponent,
         SortByFirstNamePipe,
         SortByFirstThenByLastNamePipe,

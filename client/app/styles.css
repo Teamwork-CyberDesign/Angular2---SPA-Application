@@ -53,6 +53,12 @@ html, body {
 .simple-notification {
     z-index: 9999;
 }
-.modal-backdrop{
+
+.modal-backdrop {
     z-index: 999;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
 }
