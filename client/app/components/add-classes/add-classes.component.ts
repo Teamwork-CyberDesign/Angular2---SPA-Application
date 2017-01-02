@@ -73,6 +73,10 @@ export class AddClassesComponent {
 
     // TODO: extract
     private findIndexByKeyValue(arraytosearch: any[], key: string, value: any) {
+        if (!arraytosearch || arraytosearch.length < 0) {
+            return -1;
+        }
+
         for (let i = 0; i < arraytosearch.length; i++) {
             if (arraytosearch[i][key] === value) {
                 return i;

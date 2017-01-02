@@ -14,8 +14,8 @@
             <span *ngIf="loading" class="text-success">Loading classes...</span>
             <span *ngFor="let cl of classesForTeacher">
                 <label> {{cl.grade}}
-                    <input *ngIf="findIndexByKeyValue(model.classes, '_id', cl._id) < 0" type="checkbox" value="{{cl._id}}" (change)="toggleClass($event.target.value)">
-                    <input *ngIf="findIndexByKeyValue(model.classes, '_id', cl._id) >= 0" checked="checked" type="checkbox" value="{{cl._id}}" (change)="toggleClass($event.target.value)">
+                    <input *ngIf="model && findIndexByKeyValue(model.classes, '_id', cl._id) < 0" type="checkbox" value="{{cl._id}}" (change)="toggleClass($event.target.value)">
+                    <input *ngIf="model && findIndexByKeyValue(model.classes, '_id', cl._id) >= 0" checked="checked" type="checkbox" value="{{cl._id}}" (change)="toggleClass($event.target.value)">
                 </label>
             </span>
         </div>
