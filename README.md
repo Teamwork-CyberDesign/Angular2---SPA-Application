@@ -25,10 +25,11 @@
 This is a simple school management system that allows students, teachers and parents to track the education process in real time.
 
 The application is hosted in the following domains:
-- <a href="https://cyber-design.herokuapp.com/">Heroku Link</a>
+- [Heroku](https://cyber-design.herokuapp.com/)
 
 You can view the youtube video here:
 
+ - [Youtube](https://youtu.be/JwKWU1tBJHY)
 ## Demo Accounts
 #### Headmaster
     username: headmaster
@@ -46,7 +47,7 @@ You can view the youtube video here:
 
 ## Usage
 
-#### Basic Workflow
+#### Basic workflow
 1. School headmaster/administration staff logs in with provided headmaster account. 
 2. Headmaster goes to Manage/Add Class
 3. Headmaster chooses a class name, e.g. 12A, copies the class subjects from his program and adds them, selects students in class from the dropdown menu (if student doesn't have a student profile the headmaster can register them with 'Register a new student') and adds them to the class.
@@ -60,14 +61,13 @@ Every student must register and be added to a class to view current marks, progr
 
 ## Application public part
 
-Everyone can see information about current classes and subjects which are set to be public in this app and also basic information for all users.
-Visitors cannot view marks until they're not logged in the app.
+Everyone can see information about school events, current classes and subjects  and also basic information for all users.
 
 ## Application private part
 
 Users with role teacher can create new classes, add students to classes, assign teachers to classes and create and edit school events.
 
-Users with role student can view school events and their marks.
+Users with role student can view their marks.
 
 ## Backend server
 
