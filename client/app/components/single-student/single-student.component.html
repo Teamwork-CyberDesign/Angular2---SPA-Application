@@ -41,10 +41,12 @@
                     <h3>Current marks:</h3>
                     <table class="table table-striped table-responsive table-hover">
                         <thead>
-                        <th>Type</th>
-                        <th>Date</th>
-                        <th>Mark</th>
-                        <th>Remove</th>
+                        <tr>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Mark</th>
+                            <th>Remove</th>
+                        </tr>
                         </thead>
                         <tbody *ngFor="let markInfo of (data.marks | filterByTeacherSubject:teacher.subject)">
                         <tr *ngFor="let mark of markInfo.marks">
