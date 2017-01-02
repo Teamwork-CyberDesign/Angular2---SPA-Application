@@ -16,7 +16,13 @@ html, body {
     left: 0;
     z-index: -1;
 }
-
+.navbar-header > a{
+    color: #fff;
+}
+.navbar-header > a:hover{
+    color: #bdc3c7;
+    background-color: #fff
+}
 .nav.navbar-nav > li > a {
     color: #fff
 }
@@ -61,4 +67,20 @@ html, body {
 .col-centered {
     float: none;
     margin: 0 auto;
+}
+.facebook{
+    background-color: #3B5998;
+    color: #fff;
+}
+.linked-in{
+    background-color: #007BB6;
+    color: #fff;
+}
+.google-plus{
+    background-color: #DD4B39;
+    color: #fff;
+}
+.twitter{
+    background-color: #55ACEE;
+    color: #fff;
 }

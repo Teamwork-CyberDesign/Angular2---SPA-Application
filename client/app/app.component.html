@@ -7,33 +7,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Placeholder</a>
+            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-education"></span> E-Gradebook</a>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar">
             <ul [@animate]="'rotateInDownRight'" class="nav navbar-nav">
-                <li class="nav-item"><a class="" routerLink="/home" routerLinkActive="active">Home</a></li>
-                <li class="nav-item"><a class="" routerLink="/about" routerLinkActive="active">About Us</a></li>
-                <li class="nav-item"><a class="" routerLink="/users" routerLinkActive="active">Users</a></li>
-                <li class="nav-item"><a class="" routerLink="/events" routerLinkActive="active">School Events</a></li>
-                <li *ngIf="auth.userIs('teacher')" class="nav-item"><a class="" routerLink="/classes" routerLinkActive="active">Classes</a></li>
+                <li class="nav-item"><a class="" routerLink="/home" routerLinkActive="active"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li class="nav-item"><a class="" routerLink="/about" routerLinkActive="active"><span class="glyphicon glyphicon-info-sign"></span> About Us</a></li>
+                <li class="nav-item"><a class="" routerLink="/users" routerLinkActive="active"><span class="glyphicon glyphicon-th-list"></span> Users</a></li>
+                        <li class="nav-item"><a class="" routerLink="/events" routerLinkActive="active"><span class="glyphicon glyphicon-bullhorn"></span> School Events</a></li>
+                        <li *ngIf="auth.userIs('teacher')" class="nav-item"><a class="" routerLink="/classes" routerLinkActive="active"><span class="glyphicon glyphicon-list-alt"></span> Classes</a></li>
                 <li *ngIf="auth.userIs('teacher')" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manage <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-option-vertical"></span> Manage <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li class="nav-item"><a class="dropdown-item" routerLink="/addClass" routerLinkActive="active">Add
+                        <li class="nav-item"><a class="dropdown-item" routerLink="/addClass" routerLinkActive="active"><span class="glyphicon glyphicon-tasks"></span> Add
                             Class</a></li>
-                        <li class="nav-item"><a class="dropdown-item" routerLink="/addTeacher" routerLinkActive="active">Add
-                            Teacher</a></li><li class="nav-item"><a class="dropdown-item" routerLink="/assign" routerLinkActive="active">Assign Classes</a></li>
-
+                        <li class="nav-item"><a class="dropdown-item" routerLink="/addTeacher" routerLinkActive="active"><span class="glyphicon glyphicon-tasks"></span> Add
+                            Teacher</a></li><li class="nav-item"><a class="dropdown-item" routerLink="/assign" routerLinkActive="active"><span class="glyphicon glyphicon-tasks"></span> Assign Classes</a></li>
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button (click)="show" [@animate]="'rotateInDownRight'" *ngIf="show" type="submit" class="btn btn-default">Submit</button>
-            </form>
             <ul [@animate]="'rotateInDownRight'" class="nav navbar-nav navbar-right">
                 <li *ngIf="!auth.isLoggedIn()" class="nav-item"><a class="" routerLink="/login" routerLinkActive="active"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 <li *ngIf="!auth.isLoggedIn()" class="nav-item"><a class="" routerLink="/register" routerLinkActive="active"><span class="glyphicon glyphicon-user"></span> Register</a></li>
