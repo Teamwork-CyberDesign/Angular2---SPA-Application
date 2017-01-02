@@ -22,7 +22,7 @@
 
 ## Project Description  
 
-This is a simple project management system that allows students, teachers and parents view in real time the education process in current school
+This is a simple school management system that allows students, teachers and parents to track the education process in real time.
 
 The application is hosted in the following domains:
 - <a href="https://cyber-design.herokuapp.com/">Heroku Link</a>
@@ -65,17 +65,17 @@ Visitors cannot view marks until they're not logged in the app.
 
 ## Application private part
 
-Only User with Role: teacher can create new classes, add students to classes and assign teachers to classes.
+Users with role teacher can create new classes, add students to classes, assign teachers to classes and create and edit school events.
 
-Only Users with Role: student can view their marks.
+Users with role student can view school events and their marks.
 
 ## Backend server
 
-We are using nodeJs with express set up.
+We are using Node.js with an Express server.
 
 ## Database
 
-We are using mongoDb with mongoose.
+MongoDb with Mongoose.
 
 ## FAQ
 

@@ -65,7 +65,7 @@ UserSchema
     });
 
 UserSchema.query.byName = function (name) {
-    let query = { "username": new RegExp(name, "i") };
+    let query = { "username": new RegExp(`^${name}$`, "i") };
     return this.find(query);
 };
 
