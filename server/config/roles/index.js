@@ -1,17 +1,13 @@
 const ConnectRoles = require("connect-roles");
 
 const user = new ConnectRoles({
-    failureHandler (req, res, action) {
-        const accept = req.headers.accept || "";
+    failureHandler (req, res, role) {
+        let message = `You must be an ${role} to access this page!`;
+        let err = new Error(message);
+        err.status = 403;
+
         res.status(403);
-        if (accept.indexOf("html") >= 0) {
-            let message = `You don't have permission to ${action}!`;
-            let err = new Error(message);
-            err.status = 403;
-            res.json({ message, err });
-        } else {
-            res.json(`Access Denied - You don't have permission to ${action}!`);
-        }
+        res.json({ message, err });
     }
 });
 
