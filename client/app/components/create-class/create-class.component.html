@@ -16,7 +16,7 @@
             <input class="form-control" ng2-auto-complete [source]="subjects" name="subjects"
                    #subject id="subjects" placeholder="Enter a subject name"/>
             <button class="btn btn-default btn-primary" type="button"
-                    (click)="addSubject(subject.value); subject.value = ''">Add Subject
+                    (click)="addSubject(subject.value); subject.value = ''"><span class="glyphicon glyphicon-book"></span> Add Subject
             </button>
 
             <ul class="list-group">
@@ -34,7 +34,7 @@
                    display-property-name="username" placeholder="Search for student"/>
 
             <button class="btn btn-default btn-primary" type="button"
-                    (click)="addStudent(studentTb.value); studentTb.value = ''">Add Student
+                    (click)="addStudent(studentTb.value); studentTb.value = ''"><span class="glyphicon glyphicon-user"></span> Add Student
             </button>
 
             <ul class="list-group">
