@@ -7,9 +7,9 @@ import { animateFactory } from 'ng2-animate';
 @Component({
     selector: 'app-home',
     templateUrl: 'home.component.html',
-    animations:  [animateFactory(1000, 200, 'ease-in')]
+    animations: [animateFactory(1000, 200, 'ease-in')]
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
     private title: string;
     private classes: Class[];
     private students: Student[];
@@ -17,10 +17,10 @@ export class HomeComponent implements OnInit{
     private studentService: StudentService;
 
     constructor(classService: ClassService,
-    studentService: StudentService) {
+                studentService: StudentService) {
         this.title = 'School administrative software';
-         this.classService = classService;
-         this.studentService = studentService;
+        this.classService = classService;
+        this.studentService = studentService;
     };
 
     ngOnInit() {
@@ -42,10 +42,10 @@ export class HomeComponent implements OnInit{
     private getStudents(): void {
         this.studentService.getAllStudents()
             .subscribe(st => {
-                this.students = st;
-            },
-            (err) => {
-                console.log(err);
-            });
+                    this.students = st;
+                },
+                (err) => {
+                    console.log(err);
+                });
     }
 }

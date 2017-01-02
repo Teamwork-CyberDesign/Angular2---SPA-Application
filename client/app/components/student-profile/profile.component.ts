@@ -10,7 +10,7 @@ import { FileUploader } from 'ng2-file-upload';
 })
 
 export class ProfileComponent implements OnInit {
-    public uploader: FileUploader = new FileUploader({ url: '/api/profile/photo' })
+    public uploader: FileUploader = new FileUploader({ url: '/api/profile/photo' });
     model: Student;
     user: User;
 
@@ -48,6 +48,6 @@ export class ProfileComponent implements OnInit {
                 error => {
                     console.log(error);
                 }
-            )
+            );
     }
 }

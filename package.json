@@ -14,6 +14,7 @@
     "clean:install": "npm set progress=false && npm install",
     "clean:start": "npm start",
     "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist",
+    "lint": "tslint \"client/app/**/*.ts?(x)\" --fix",
     "rimraf": "rimraf",
     "server": "npm run server:dev",
     "server:dev": "concurrently \"npm run watch:dev\" \"nodemon server/server.js\"",
