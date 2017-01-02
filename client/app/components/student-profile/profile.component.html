@@ -17,19 +17,6 @@
                             <br/>
                     </div>
                 </div>
-                <button class="btn btn-info btn-outline-blue" data-toggle="collapse" data-target="#photo">Upload photo</button>
-                <div class="row">
-                    <div id="photo" class="col-md-6 mb-r collapse">
-                        <form name="form" enctype="multipart/form-data"
-                              (ngSubmit)="f.form.valid && uploadPhotoForUser()" #f="ngForm"
-                              novalidate>
-                            <input class="form-control btn btn-primary" type="file" name="single"
-                                   placeholder="Choose from file"
-                                   accept="image/*" ng2FileSelect [uploader]="uploader" required/>
-                            <input class="btn btn-primary" type="submit" value="Save"/>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
