@@ -5,7 +5,6 @@ import 'web-animations-js';
 import 'intl';
 import 'intl/locale-data/jsonp/en.js';
 import 'zone.js';
-import 'zone.js/'
 if (process.env.ENV === 'production') {
     // Production
 } else {

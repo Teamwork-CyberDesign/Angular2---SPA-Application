@@ -37,11 +37,11 @@ export class EventService {
         return this.requester.get(this.eventUrl + '/' + id)
             .flatMap(event => {
                 if (event.err || event.errmsg) {
-                    return Promise.resolve(event);
+                    return Observable.of(event);
                 }
 
                 this.cache[event._id] = event;
-                return Promise.resolve(event);
+                return Observable.of(event);
             });
     }
 }

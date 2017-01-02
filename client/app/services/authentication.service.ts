@@ -41,7 +41,7 @@ export class AuthenticationService {
                     this.cookieService.put(storageUserRoleKey, sessionInfo.role, options);
                 }
 
-                return Promise.resolve(sessionInfo);
+                return Observable.of(sessionInfo);
             });
     }
 

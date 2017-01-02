@@ -81,3 +81,11 @@ MongoDb with Mongoose.
 
 ## FAQ
 
+## Project TODOs
+
+1. Semesters
+2. Yearly migrations for students
+3. Student remarks
+4. Dedicated parent profiles
+
+

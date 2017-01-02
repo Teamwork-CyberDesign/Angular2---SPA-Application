@@ -3,6 +3,7 @@ import { NotificationsService } from 'angular2-notifications';
 import { Student } from '../../models';
 import { StudentService } from '../../services/student.service';
 import { Class } from '../../models/class';
+import { Observable } from 'rxjs';
 
 @Component({
     templateUrl: 'create-student.component.html',
@@ -29,37 +30,35 @@ export class CreateStudentComponent {
         }
 
         this.studentService.createStudent(this.model)
-            .subscribe(res => {
+            .flatMap(res => {
                 if (res.err || res.errmsg) {
                     this.notifier.error('Error', res.err || res.errmsg);
                 } else {
                     a.reset();
-                    this.notifier.success('Success', 'Student has been created!');
-
                     this.onFormSubmitted.emit(true);
-
-                    if (this.studentClass) {
-                        // TODO: fix nesting
-                        this.studentService.addStudentToClass(res, this.studentClass.grade)
-                            .subscribe(
-                                response => {
-                                    if (response.err || response.errmsg) {
-                                        this.notifier.error('Error', response.err || response.errmsg);
-                                    } else {
-                                        response.students.forEach(st => {
-                                            if (!this.studentClass.students.find(stud => stud._id === st._id)) {
-                                                this.studentClass.students.push(st);
-                                            }
-                                        });
-                                    }
-                                },
-                                err => {
-                                    this.notifier.error('Error', res.response || err);
-                                });
-                    }
+                    this.notifier.success('Success', 'Student has been created!');
                 }
-            }, err => {
-                this.notifier.error('Error', err);
-            });
+
+                if (this.studentClass) {
+                    return this.studentService.addStudentToClass(res, this.studentClass.grade);
+                }
+
+                return Observable.of(res);
+            })
+            .subscribe(
+                response => {
+                    if (response.err || response.errmsg) {
+                        this.notifier.error('Error', response.err || response.errmsg);
+                    } else if (this.studentClass) {
+                        response.students.forEach(st => {
+                            if (!this.studentClass.students.find(stud => stud._id === st._id)) {
+                                this.studentClass.students.push(st);
+                            }
+                        });
+                    }
+                },
+                err => {
+                    this.notifier.error('Error', err);
+                });
     }
 }
