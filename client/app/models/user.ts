@@ -1,4 +1,6 @@
-export class User {
+import { Person } from './person';
+
+export class User implements Person {
     _id: string;
     username: string;
     firstName: string;
