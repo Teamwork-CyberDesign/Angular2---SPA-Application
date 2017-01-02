@@ -35,7 +35,7 @@
         <br />
         <div class="row" *ngFor="let student of students" [attr.class]="student">
             <div class="col-md-6 mb-r">
-                <h3 class="section-heading" [@animate]="'zoomIn'">{{student.username}}: <span *ngFor="let markInfo of (student.marks)"><span>{{markInfo.marks | filterMarks | average}}</span></span></h3>
+                <h3 class="section-heading" [@animate]="'zoomIn'">{{student.username}}: <span *ngFor="let markInfo of (student.marks)"><span>{{markInfo.subject}}: {{markInfo.marks | filterMarks | average}} </span></span></h3>
             </div>
         </div>
     </article>
