@@ -37,7 +37,7 @@
         <input id="password" type="password" class="form-control" name="password"
                [(ngModel)]="model.user.password"
                #password="ngModel"
-               required minlength="6" pattern="^[A-Za-z0-9_.!@#$%^&*(){}:'<>?~|]+$/"
+               required minlength="6"
                validateEqual="confirmPassword" reverse="true">
 
         <div *ngIf="(f.submitted || !password.untouched) && !password.valid" class="help-block">Password must be more than 6 characters long

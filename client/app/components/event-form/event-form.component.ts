@@ -13,7 +13,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 export class EventFormComponent implements AfterContentInit {
     @Input() schoolEvent: SchoolEvent;
     @Output() onFormSuccess = new EventEmitter<boolean>();
-    private isEdit: boolean;
+    private isCreate: boolean;
     private buttonText: string;
 
     constructor(private eventService: EventService,
@@ -21,17 +21,17 @@ export class EventFormComponent implements AfterContentInit {
                 private notifier: NotificationsService) {
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this.buttonText = this.schoolEvent ? 'Edit' : 'Create New Event';
         if (!this.schoolEvent) {
-            this.isEdit = true;
+            this.isCreate = true;
             this.schoolEvent = new SchoolEvent();
         }
     }
 
-    onSubmit(close) {
+    onSubmit(close): void {
         let sub: Observable<any>;
-        if (this.isEdit) {
+        if (this.isCreate) {
             this.schoolEvent.createdBy = this.auth.getCurrentUser();
             sub = this.eventService.createEvent(this.schoolEvent);
         } else {

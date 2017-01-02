@@ -74,7 +74,7 @@ UserSchema.methods.comparePassword = function (password) {
 };
 
 UserSchema.statics.validatePassword = function (password) {
-    if (password.length < constants.passwordMinLength || !constants.passwordRegex.test(password)) {
+    if (password.length < constants.passwordMinLength) {
         throw new Error("Password must be at least 6 characters long and can contain only the symbols A-Z, a-z, 0-9 and _.!@#$%^&*(){}:\"<>?~|");
     }
 };
