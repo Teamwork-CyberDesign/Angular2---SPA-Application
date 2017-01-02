@@ -1,6 +1,7 @@
 "use strict";
 const fs = require("fs"),
-    path = require("path");
+    path = require("path"),
+    roles = require("../config/roles");
 
 function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
@@ -16,6 +17,6 @@ module.exports = function (server, controller) {
         .filter(fileName => fileName.indexOf("-router") !== -1)
         .forEach((routerName) => {
             const router = require(path.join(__dirname, `/${routerName}`));
-            router(server, controller, isAuthenticated);
+            router(server, controller, isAuthenticated, roles);
         });
 };
