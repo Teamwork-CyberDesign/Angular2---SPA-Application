@@ -1,10 +1,11 @@
 import 'core-js/es6';
 import 'core-js/es7/reflect';
-// import '../node_modules/core-js/client/shim.min.js'
-// import '../node_modules/reflect-metadata/Reflect.js'
+import 'core-js/shim';
 import 'web-animations-js';
-require('zone.js/dist/zone');
-
+import 'intl';
+import 'intl/locale-data/jsonp/en.js';
+import 'zone.js';
+import 'zone.js/'
 if (process.env.ENV === 'production') {
     // Production
 } else {
