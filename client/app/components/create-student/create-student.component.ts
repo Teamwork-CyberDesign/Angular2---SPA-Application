@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
 import { Student } from '../../models';
 import { StudentService } from '../../services/student.service';
@@ -11,6 +11,7 @@ import { Class } from '../../models/class';
 
 export class CreateStudentComponent {
     @Input() studentClass: Class;
+    @Output() onFormSubmitted = new EventEmitter<boolean>();
     private studentService: StudentService;
     private notifier: NotificationsService;
     private model: Student;
@@ -34,6 +35,8 @@ export class CreateStudentComponent {
                 } else {
                     a.reset();
                     this.notifier.success('Success', 'Student has been created!');
+
+                    this.onFormSubmitted.emit(true);
 
                     if (this.studentClass) {
                         // TODO: fix nesting

@@ -31,6 +31,7 @@ module.exports = function (data) {
             return data.createTeacher(username, subject, classes)
                 .then(teacher => {
                     res.json(teacher);
+                    return data.deleteStudent(username);
                 })
                 .catch(err => {
                     res.json(err);

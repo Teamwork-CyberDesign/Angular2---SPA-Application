@@ -1,11 +1,11 @@
-<div class="panel-group col-md-6 col-centered well" id="accordion" role="tablist" aria-multiselectable="true">
+<div *ngIf="model.marks.length > 0" class="panel-group col-md-6 col-centered well" id="accordion" role="tablist" aria-multiselectable="true">
     <div *ngFor="let markInfo of model.marks" class="panel panel-default">
         <div class="panel-heading" role="tab">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion"
                    [attr.href]="'#' + markInfo.subject"
                    aria-expanded="true" [attr.aria-controls]="markInfo.subject">
-                    <i class="more-less glyphicon glyphicon-chevron-down"></i>{{markInfo.subject}} marks
+                    <i class="more-less glyphicon glyphicon-chevron-down"></i>{{markInfo.subject | splitByCapitalLetters}} marks
                 </a>
             </h4>
         </div>
@@ -22,7 +22,7 @@
                     <tr *ngFor="let mark of markInfo.marks">
                         <td>{{mark.value}}</td>
                         <td>{{mark.date | date: 'dd.MM.y'}}</td>
-                        <td>{{MarkType[mark.markType]}}</td>
+                        <td>{{MarkType[mark.markType] | splitByCapitalLetters}}</td>
                         <td>{{mark.teacher}}</td>
                     </tr>
                     </tbody>
@@ -30,4 +30,7 @@
             </div>
         </div>
     </div>
+</div>
+<div *ngIf="model.marks.length <= 0" class="panel-group col-md-6 col-centered well">
+    <h4>You don't have any marks yet!</h4>
 </div>

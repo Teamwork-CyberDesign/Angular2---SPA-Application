@@ -19,7 +19,7 @@
                             </select>
                             <label for="markType">Select type:</label>
                             <select class="form-control" name="markType" id="markType" #markTypeSelect>
-                                <option *ngFor="let type of markTypesAsString" value="{{type}}" selected>{{type}}
+                                <option *ngFor="let type of markTypesAsString" value="{{type}}" selected>{{type | splitByCapitalLetters}}
                                 </option>
                             </select>
                         </div>
@@ -48,7 +48,7 @@
                         </thead>
                         <tbody *ngFor="let markInfo of (data.marks | filterByTeacherSubject:teacher.subject)">
                         <tr *ngFor="let mark of markInfo.marks">
-                            <td>{{MarkType[mark.markType]}}</td>
+                            <td>{{MarkType[mark.markType] | splitByCapitalLetters}}</td>
                             <td>{{mark.date | date: 'dd.MM.y'}}</td>
                             <td><span>{{mark.value}}</span></td>
                             <td>

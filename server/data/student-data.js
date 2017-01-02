@@ -78,7 +78,7 @@ module.exports = function (models) {
             });
         },
         addMarkToStudent(username, subject, marks) {
-            if(!Array.isArray(marks)) {
+            if (!Array.isArray(marks)) {
                 marks = [...marks];
             }
 
@@ -106,6 +106,18 @@ module.exports = function (models) {
                         }
 
                         return resolve(user);
+                    });
+            });
+        },
+        deleteStudent(username) {
+            return new Promise((resolve, reject) => {
+                Student.findOneAndRemove({ username })
+                    .exec((err, student) => {
+                        if (err) {
+                            return reject(err);
+                        }
+
+                        return resolve(student);
                     });
             });
         }

@@ -29,37 +29,34 @@ The application is hosted in the following domains:
 
 You can view the youtube video here:
 
+## Demo Accounts
+#### Headmaster
+    username: headmaster
+    password: headmaster
+   
+#### Student
+    username: student
+    password: student
+    
 ## Local Install
     $ npm install
     
-## Local Start
+## Local Dev Start
     $ npm run server
 
 ## Usage
 
-#### Register
+#### Basic Workflow
+1. School headmaster/administration staff logs in with provided headmaster account. 
+2. Headmaster goes to Manage/Add Class
+3. Headmaster chooses a class name, e.g. 12A, copies the class subjects from his program and adds them, selects students in class from the dropdown menu (if student doesn't have a student profile the headmaster can register them with 'Register a new student') and adds them to the class.
+4. If there's already an existing appropriate teacher for the class, the headmaster can assign them to the newly created class from Manage/Assign Classes, otherwise he can create a new teacher from an existing account via Manage/Add Teacher.
+5. After teachers have been assigned they can log in with their accounts and add marks to students in their classes via Classes. They can also add new students to a class in case a student is transferred during the school year.
+6. The students can now view their marks by subjects by going to My Profile.
 
-Every student must register to view current marks, program schedule and other required information.
+#### Registration
 
-#### Login
-
-Follow up the Login page to see available options.
-
-- Local login
-
-#### Basic functionalities
-
- Every user in this app can create project and automatically sets him as Lead user for the project.
- In every school Director can:
- 
- - add classes and teachers
- 
- In every class Teacher can:
- - add marks and subjects
-
-#### Add Mark
-
-Teachers can add marks to every student which has teacher's disciplines.
+Every student must register and be added to a class to view current marks, program schedule and other required information. 
 
 ## Application public part
 
@@ -68,8 +65,9 @@ Visitors cannot view marks until they're not logged in the app.
 
 ## Application private part
 
-Only User with Role: headMaster can create new classes.
-Only Users with Role: teacher can add or edit data in current class.
+Only User with Role: teacher can create new classes, add students to classes and assign teachers to classes.
+
+Only Users with Role: student can view their marks.
 
 ## Backend server
 

@@ -51,7 +51,6 @@ export class SingleStudentComponent {
         this.data.modified = true;
         let markInfo = this.data.marks.filter(info => info.subject === this.teacher.subject)[0];
 
-        console.log(this.data);
         let index = markInfo.marks.indexOf(mark);
         if (index > -1) {
             markInfo.marks.splice(index, 1);

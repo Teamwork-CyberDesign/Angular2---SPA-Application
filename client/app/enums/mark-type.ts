@@ -2,7 +2,7 @@ export enum MarkType {
     None,
     Entry,
     External,
-    Final,
+    FinalExam,
     Homework,
     Verbal,
     Project,
