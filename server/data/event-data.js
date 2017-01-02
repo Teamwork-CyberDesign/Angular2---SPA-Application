@@ -46,6 +46,7 @@ module.exports = function (models) {
             let query = { "title": new RegExp(title, "i") };
             return new Promise((resolve, reject) => {
                 Event.find(query)
+                    .sort({ createdAt: -1 })
                     .exec((err, event) => {
                         if (err) {
                             return reject(err);

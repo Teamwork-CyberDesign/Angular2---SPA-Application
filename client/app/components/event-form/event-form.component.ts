@@ -1,8 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { SchoolEvent } from '../../models';
-import { EventService } from '../../services/event.service';
+import { Component, Input, Output, EventEmitter, AfterContentInit } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
 import { Observable } from 'rxjs';
+import { SchoolEvent } from '../../models';
+import { EventService } from '../../services/event.service';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AuthenticationService } from '../../services/authentication.service';
     selector: 'event-form'
 })
 
-export class EventFormComponent {
+export class EventFormComponent implements AfterContentInit {
     @Input() schoolEvent: SchoolEvent;
     @Output() onFormSuccess = new EventEmitter<boolean>();
     private isEdit: boolean;
