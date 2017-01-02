@@ -37,6 +37,10 @@ import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 import { AddClassesComponent } from './components/add-classes/add-classes.component';
 import { StudentMarksComponent } from './components/student-marks/student-marks.component';
 import { PipesModule } from './pipes/pipes.module';
+import { EventService } from './services/event.service';
+import { EventListComponent } from './components/event-list/event-list.component';
+import { SingleEventComponent } from './components/single-event/single-event.component';
+import { EventFormComponent } from './components/event-form/event-form.component';
 
 @NgModule({
     imports: [ // other modules the app depends on
@@ -54,6 +58,7 @@ import { PipesModule } from './pipes/pipes.module';
         LoginComponent,
         RegisterComponent,
         AddMarkComponent,
+        SingleEventComponent,
         AddClassComponent,
         UsersComponent,
         PageNotFoundComponent,
@@ -61,10 +66,12 @@ import { PipesModule } from './pipes/pipes.module';
         CreateTeacherComponent,
         SingleClassComponent,
         SingleStudentComponent,
+        EventListComponent,
         CreateStudentComponent,
         ProfileComponent,
         StudentMarksComponent,
         AddClassesComponent,
+        EventFormComponent,
         CeiboShare,
         CreateStudentModalComponent,
         EqualValidator,
@@ -78,6 +85,7 @@ import { PipesModule } from './pipes/pipes.module';
         ClassService,
         AjaxRequesterService,
         AuthGuard,
+        EventService,
         StudentService,
         TeacherService,
         TeacherGuard,

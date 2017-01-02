@@ -1,0 +1,14 @@
+<div class="col-xs-12 col-sm-6 col-md-6 col-centered">
+    <event-form *ngIf="auth.userIs('teacher')" [schoolEvent]="model"></event-form>
+    <div class="well">
+        <h4>{{model.title}}</h4>
+        <p>
+            <span class="glyphicon glyphicon-calendar"></span>
+            <strong>{{model.createdAt| date: 'dd.MM.y HH:mm'}}</strong>
+            <br/>
+            <i class="glyphicon glyphicon-user"></i>{{model.createdBy}}
+            <br/>
+        </p>
+        <p>{{model.description}}</p>
+    </div>
+</div>

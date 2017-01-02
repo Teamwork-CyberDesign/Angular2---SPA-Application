@@ -7,6 +7,7 @@ import { AveragePipe } from './average.pipe';
 import { FilterMarksPipe } from './filter-marks.pipe';
 import { FilterClassBySubjectPipe } from './filter-class-by-subject.pipe';
 import { SplitByCapitalLettersPipe } from './split-by-capital-letters.pipe';
+import { TruncatePipe } from './truncate.pipe';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { SplitByCapitalLettersPipe } from './split-by-capital-letters.pipe';
         AveragePipe,
         FilterMarksPipe,
         FilterClassBySubjectPipe,
-        SplitByCapitalLettersPipe
+        SplitByCapitalLettersPipe,
+        TruncatePipe
     ],
     exports: [
         SortByFirstNamePipe,
@@ -27,7 +29,8 @@ import { SplitByCapitalLettersPipe } from './split-by-capital-letters.pipe';
         AveragePipe,
         FilterMarksPipe,
         FilterClassBySubjectPipe,
-        SplitByCapitalLettersPipe
+        SplitByCapitalLettersPipe,
+        TruncatePipe
     ]
 })
 export class PipesModule {

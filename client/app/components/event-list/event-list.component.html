@@ -1,0 +1,10 @@
+<div class="col-md-6 col-md-offset-3">
+    <event-form *ngIf="auth.userIs('teacher')" (onFormSuccess)="getEvents()"></event-form>
+    <div class="list-group">
+        <a *ngFor="let event of events" routerLink="/events/{{event._id}}" class="list-group-item">
+            <h4 class="list-group-item-heading">{{event.title}}</h4>
+            <p class="list-group-item-text">{{event.description | truncate: 150}}</p>
+            <p><strong>{{event.createdAt | date: 'dd.MM.y HH:mm'}}</strong></p>
+        </a>
+    </div>
+</div>

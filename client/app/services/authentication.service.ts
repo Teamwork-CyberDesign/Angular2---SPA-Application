@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { NotificationsService } from 'angular2-notifications';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { CookieOptions } from 'angular2-cookie/services/base-cookie-options';
-import { UserService } from './user.service';
 import { Router } from '@angular/router';
 
 const storageUserKey = 'currentUser';

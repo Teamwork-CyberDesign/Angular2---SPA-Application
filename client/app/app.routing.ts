@@ -13,6 +13,8 @@ import { AuthGuard } from './services/auth-guard.service';
 import { TeacherGuard } from './services/teacher-guard.service';
 import { CreateTeacherComponent } from './components/create-teacher/create-teacher.component';
 import { AddClassesComponent } from './components/add-classes/add-classes.component';
+import { EventListComponent } from './components/event-list/event-list.component';
+import { SingleEventComponent } from './components/single-event/single-event.component';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' }, // redirect to home page on load
@@ -21,6 +23,8 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'about', component: AboutComponent },
     { path: 'users', component: UsersComponent },
+    { path: 'events', component: EventListComponent },
+    { path: 'events/:id', component: SingleEventComponent },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'addClass', component: AddClassComponent, canActivate: [TeacherGuard] },
     { path: 'assign', component: AddClassesComponent, canActivate: [TeacherGuard] },

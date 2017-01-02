@@ -15,7 +15,7 @@ export class AjaxRequesterService<T> {
         this.cookieService = cookieService;
     }
 
-    public get(url: string): Observable<T[]> {
+    public get(url: string): Observable<any> {
         return this.http.get(url)
             .map(res =>  res.json());
     }

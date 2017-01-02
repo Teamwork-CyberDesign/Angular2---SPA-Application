@@ -8,6 +8,7 @@ const express = require("express"),
     // paginate = require("express-paginate"),
     path = require("path"),
     User = require("../models/user-model"),
+    Event = require("../models/event-model"),
     Student = require("../models/student-model"),
     Teacher = require("../models/teacher-model"),
     Class = require("../models/class-model");
@@ -64,7 +65,7 @@ function initAppComponents(app, connectionString, appSecret) {
     require("./session")(app, connectionString, appSecret);
     require("./passport")(app);
 
-    const data = require("../data")({ User, Student, Teacher, Class });
+    const data = require("../data")({ User, Student, Teacher, Class, Event });
     const controllers = require("../controllers")(data);
     require("../routers")(app, controllers);
 }
