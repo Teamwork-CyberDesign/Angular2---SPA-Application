@@ -23,19 +23,23 @@
                 <h3 class="section-heading" [@animate]="'zoomIn'">{{class.grade}}</h3>
                 <div [@animate]="'zoomIn'" *ngFor="let subject of class.subjects">Subject: {{subject}}</div>
                 <button class="btn btn-info btn-outline-blue" data-toggle="collapse" [attr.data-target]="'#' + class._id"><i class="fa fa-clone left"></i> View students</button>
-                <div [attr.id]="class._id" class="panel-collapse collapse">
-                    <div [@animate]="'zoomIn'" *ngFor="let student of class.students">{{student.classNumber}}. {{student.user.firstName}} {{student.user.lastName}}</div>
-                </div>
+                <ul [attr.id]="class._id" class="panel-collapse collapse">
+                    <li [@animate]="'zoomIn'" *ngFor="let student of class.students">{{student.classNumber}}. {{student.user.firstName}} {{student.user.lastName}}</li>
+                </ul>
             </div>
         </div>
     </article>
     
     <article class="article">
-        <h2 [@animate]="'fadeIn'">STUDENTS AVERAGE SCORE</h2>
+        <h2 [@animate]="'fadeIn'">STUDENTS AVERAGE MARKS</h2>
         <br />
         <div class="row" *ngFor="let student of students" [attr.class]="student">
             <div class="col-md-6 mb-r">
-                <h3 class="section-heading" [@animate]="'zoomIn'">{{student.username}}: <span *ngFor="let markInfo of (student.marks)"><span>{{markInfo.subject}}: {{markInfo.marks | filterMarks | average}} </span></span></h3>
+                <h3 class="section-heading" [@animate]="'zoomIn'">{{student.username}}</h3>
+                <button class="btn btn-info btn-outline-blue" data-toggle="collapse" [attr.data-target]="'#' + student.username"><i class="fa fa-clone left"></i> Student average marks</button>
+                <ul [attr.id]="student.username" class="panel-collapse collapse">
+                    <li [@animate]="'zoomIn'" *ngFor="let markInfo of (student.marks)">{{markInfo.subject}}: {{markInfo.marks | filterMarks | average}} </li>
+                </ul>
             </div>
         </div>
     </article>
