@@ -27,18 +27,6 @@ export class EventService {
 
     getEvents(): Observable<any> {
         return this.requester.get(this.eventUrl);
-        //     .flatMap(events => {
-        //     if (events.err || events.errmsg) {
-        //         return Promise.resolve(events);
-        //     }
-        //
-        //     events.forEach(event => {
-        //         console.log(event);
-        //         this.cache[event._id] = events;
-        //     });
-        //
-        //     return Promise.resolve(events);
-        // });
     }
 
     getEventById(id: string): Observable<any> {

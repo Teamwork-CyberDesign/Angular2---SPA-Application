@@ -3,11 +3,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" #closeBtn>x</button>
                 <h4 class="modal-title">{{buttonText}}</h4>
             </div>
             <div class="modal-body">
-                <form class="form" #f>
+                <form class="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(closeBtn)">
                     <div class="form-group" [ngClass]="{ 'has-error': (f.submitted || !title.untouched) && !title.valid }">
                         <label for="title">Title</label>
                         <input id="title" type="text" class="form-control" name="title"
@@ -26,11 +26,12 @@
                         <div *ngIf="(f.submitted || !description.untouched) && !description.valid" class="help-block">Description is required
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-success" value="Save">
+                    </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="onSubmit()">Save</button>
-            </div>
+
         </div>
     </div>
 </div>

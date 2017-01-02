@@ -29,7 +29,7 @@ export class EventFormComponent implements AfterContentInit {
         }
     }
 
-    onSubmit() {
+    onSubmit(close) {
         let sub: Observable<any>;
         if (this.isEdit) {
             this.schoolEvent.createdBy = this.auth.getCurrentUser();
@@ -42,6 +42,7 @@ export class EventFormComponent implements AfterContentInit {
             if (res.err || res.errmsg) {
                 this.notifier.error('Error', res.err || res.errmsg);
             } else {
+                close.click();
                 this.onFormSuccess.emit(true);
                 this.notifier.success('Success', 'Event saved!');
             }
