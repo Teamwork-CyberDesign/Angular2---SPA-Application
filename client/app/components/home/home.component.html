@@ -16,19 +16,21 @@
         </ul>
     </section>
     <article class="article">
-        <h2 class="breadcrumb" [@animate]="'fadeIn'">SCHOOL CLASSES</h2>
+        <h2 [@animate]="'fadeIn'">SCHOOL CLASSES</h2>
         <div class="row" *ngFor="let class of classes" [attr.class]="class">
             <div class="col-md-6 mb-r">
                 <h3 class="section-heading" [@animate]="'zoomIn'">{{class.grade}}</h3>
                 <div [@animate]="'zoomIn'" *ngFor="let subject of class.subjects">Subject: {{subject}}</div>
-                <button class="btn btn-info btn-outline-blue"><i class="fa fa-clone left"></i> View students</button>
-                <div [@animate]="'zoomIn'" *ngFor="let student of class.students">{{student.classNumber}}. {{student.user.firstName}} {{student.user.lastName}}</div>
+                <button class="btn btn-info btn-outline-blue" data-toggle="collapse" [attr.data-target]="'#' + class._id"><i class="fa fa-clone left"></i> View students</button>
+                <div [attr.id]="class._id" class="panel-collapse collapse">
+                    <div [@animate]="'zoomIn'" *ngFor="let student of class.students">{{student.classNumber}}. {{student.user.firstName}} {{student.user.lastName}}</div>
+                </div>
             </div>
         </div>
     </article>
     <br />
     <article class="article">
-        <h2 class="breadcrumb" [@animate]="'fadeIn'">STUDENTS AVERAGE SCORE</h2>
+        <h2 [@animate]="'fadeIn'">STUDENTS AVERAGE SCORE</h2>
         <div class="row" *ngFor="let student of students" [attr.class]="student">
             <div class="col-md-6 mb-r">
                 <h3 class="section-heading" [@animate]="'zoomIn'">{{student.username}}: <span *ngFor="let markInfo of (student.marks)"><span>{{markInfo.marks | filterMarks | average}}</span></span></h3>
